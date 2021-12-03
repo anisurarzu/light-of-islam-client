@@ -3,24 +3,25 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
+        <div>
+          <img src="https://i.ibb.co/mTdNW94/logo.png" alt="" />
+        </div>
+        <p className="title ">Light OF Islam</p>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">
                 Home
@@ -28,47 +29,32 @@ const Header = () => {
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                Features
+                About
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+                Service
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                Pricing
+              <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+                Get Schedule
               </a>
             </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown link
+            <li class="nav-item">
+              <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+                Contact
               </a>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
             </li>
           </ul>
+          <a href="#">
+            <i className="fas fa-shopping-cart text-2xl pr-2 cart "></i>
+          </a>
+          <button className="btn-grad " type="submit">
+            Login
+          </button>
         </div>
       </div>
     </nav>
