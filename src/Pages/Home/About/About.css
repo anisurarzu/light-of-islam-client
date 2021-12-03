@@ -1,0 +1,11 @@
+.about-container h2 {
+  color: #062265;
+  line-height: 65px;
+  font-family: "Berkshire Swash", cursive;
+}
+.about-container h4 {
+  color: #00b4d6;
+}
+.about-container p {
+  font-family: "Nunito Sans", sans-serif;
+}

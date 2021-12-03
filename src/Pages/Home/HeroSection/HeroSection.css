@@ -1,0 +1,32 @@
+.hero-container {
+  background: #ecfbf9;
+}
+.hero-container h2 {
+  color: #062265;
+  line-height: 55px;
+  font-family: "Berkshire Swash", cursive;
+}
+.hero-container p {
+  font-family: "Nunito Sans", sans-serif;
+}
+.hero-container .btn-text {
+  color: #088ba5;
+}
+.btn-design {
+  border: 5px solid #c8eaf5;
+  padding: 3px;
+  background-image: linear-gradient(
+    to right,
+    #00d7d8 0%,
+    #00add5 51%,
+    #00add5 100%
+  );
+}
+.first-width {
+  background: url("../../../images/bg2.png");
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.hero {
+  transition: ease-in-out 1.5s;
+}

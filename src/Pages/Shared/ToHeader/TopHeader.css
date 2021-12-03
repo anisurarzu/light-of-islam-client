@@ -1,0 +1,20 @@
+.top-nav-container {
+  font-family: "Nunito Sans", sans-serif;
+}
+.top-nav {
+  background: #ffffff;
+  border-bottom: 1px solid #d9dfe5;
+}
+.phn {
+  border-right: 1px solid #d9dfe5;
+}
+.btn-donate {
+  border: 2px solid #c8eaf5;
+  padding: 3px;
+  background-image: linear-gradient(
+    to right,
+    #00d7d8 0%,
+    #00add5 51%,
+    #00add5 100%
+  );
+}
