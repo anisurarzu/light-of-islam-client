@@ -24,11 +24,11 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-        <div className="xl:py-16 xl:mt-8 lg:mt-8 lg:py-16 px-20 img-design relative">
-          <img className="hero" src={hero} alt="Mother with his child" />
+        <div className="xl:py-16 xl:mt-8 lg:mt-8 lg:py-16 px-20 img-design  relative">
+          <img className="hero " src={hero} alt="Mother with his child" />
           <div className="hero-thumb shadow-md rounded-full ">
             <img
-              className="xl:p-2 lg:p-2"
+              className="xl:p-2 lg:p-2 "
               src="https://i.ibb.co/yf4WjRZ/quran.png"
               alt=""
             />
