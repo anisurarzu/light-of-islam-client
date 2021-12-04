@@ -1,0 +1,14 @@
+.donate-container {
+  background: #f9f9fc;
+}
+.donate-container .btn-text {
+  color: #088ba5;
+}
+.donate-container h2 {
+  color: #062265;
+  line-height: 55px;
+  font-family: "Berkshire Swash", cursive;
+}
+.donate-container p {
+  font-family: "Nunito Sans", sans-serif;
+}

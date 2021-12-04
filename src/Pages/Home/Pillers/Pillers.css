@@ -1,0 +1,82 @@
+.parent {
+  width: 100%;
+}
+.child {
+  transition: all 0.5s;
+}
+.parent:hover .child,
+.parent:focus .child {
+  transform: scale(1.2);
+}
+.child::before {
+  content: "";
+  display: none;
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.parent:hover .child:before,
+.parent:focus .child:before {
+  display: block;
+}
+.card-container h4 {
+  padding-top: 30px;
+
+  font-family: "Ubuntu", sans-serif;
+
+  font-size: 24px;
+  font-weight: 600;
+}
+.text-1 {
+  color: #00c5d7;
+}
+.text-2 {
+  color: #ff9182;
+}
+.text-3 {
+  color: #ae86fa;
+}
+.text-4 {
+  color: #fd92c9;
+}
+.text-5 {
+  color: #70d99b;
+}
+.box0 {
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  background: url("https://i.ibb.co/M6nT3Fq/img-1-bf62d5d2-1.png");
+  background-size: cover;
+}
+.box1 {
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  background: url("https://i.ibb.co/XxVJ3Ds/img-2-761f4042-1.png");
+  background-size: cover;
+}
+.box2 {
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  background: url("https://i.ibb.co/nCnTD5R/img-4-0ff0599c.png");
+  background-size: cover;
+}
+.box3 {
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  background: url("https://i.ibb.co/gmLFhnM/img-5-f77f2c4f.png");
+  background-size: cover;
+}
+.box4 {
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  background: url("https://i.ibb.co/gSPMpbj/img-6-a69e2bb9.png");
+  background-size: cover;
+}

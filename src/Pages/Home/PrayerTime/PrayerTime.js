@@ -28,7 +28,7 @@ const PrayerTime = () => {
     setLocation(data.location);
   };
   return (
-    <div className="container pt-12 xl:pt-48 lg:pt-48 prayer-container">
+    <div className="px-2 pt-12 xl:pt-48 lg:pt-48 prayer-container">
       <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2">
         <div>
           <img
@@ -77,20 +77,20 @@ const PrayerTime = () => {
               <div className="text-2xl pl-4 xl:pl-24">Start</div>
             </div>
             <div className="flex pt-2  next-div shadow-md">
-              <div className="text-2xl pr-20 xl:pr-28 ">Fajar</div>
+              <div className="text-2xl pr-16 xl:pr-28 ">Fajar</div>
               <div className="text-2xl pl-0 xl:pl-20 lg:pl-20">
                 {time?.results?.datetime[0]?.times.Fajr}
               </div>
             </div>
             <div className="flex pt-2  next-div shadow-md">
-              <div className="text-2xl pr-16 xl:pr-28 ">Sunrise</div>
+              <div className="text-2xl pr-12 xl:pr-28 ">Sunrise</div>
               <div className="text-2xl pl-0 xl:pl-16 lg:pl-16">
                 {time?.results?.datetime[0]?.times.Sunrise}
               </div>
             </div>
             <div className="flex pt-2  next-div shadow-md">
-              <div className="text-2xl pr-16 ">Dhuhr</div>
-              <div className="text-2xl pl-4 xl:pl-28 lg:pl-28">
+              <div className="text-2xl pr-12 ">Dhuhr</div>
+              <div className="text-2xl pl-4 xl:pl-32 lg:pl-32">
                 {time?.results?.datetime[0]?.times.Dhuhr}
               </div>
             </div>
@@ -117,9 +117,9 @@ const PrayerTime = () => {
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="#fff"
+          fill="#F1FDFA"
           fill-opacity="1"
-          d="M0,192L48,165.3C96,139,192,85,288,64C384,43,480,53,576,74.7C672,96,768,128,864,149.3C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+          d="M0,192L48,165.3C96,139,192,85,288,64C384,43,480,53,576,74.7C672,96,768,128,864,149.3C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
       </svg>
     </div>

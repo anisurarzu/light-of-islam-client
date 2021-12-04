@@ -1,0 +1,51 @@
+.event-container {
+  background: #ffffff;
+}
+.event-container .btn-text {
+  color: #088ba5;
+}
+.event-container h2 {
+  color: #062265;
+  line-height: 55px;
+  font-family: "Berkshire Swash", cursive;
+}
+.event-container h3 {
+  color: #062265;
+  font-weight: 600;
+  font-family: "Ubuntu", sans-serif;
+}
+.event-container h6 {
+  font-family: "Nunito Sans", sans-serif;
+  color: #088ba5;
+  padding-inline-start: 10px;
+}
+.event-container p {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.thumb-text {
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  background: url("https://i.ibb.co/C5C2gHX/text-img.png");
+  background-size: cover;
+  width: 60px;
+  height: 85px;
+  text-align: center;
+  padding-top: 4px;
+  padding-right: 8px;
+}
+@media (max-width: 660px) {
+  .thumb-text {
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    background: url("https://i.ibb.co/C5C2gHX/text-img.png");
+    background-size: cover;
+    width: 60px;
+    height: 85px;
+    text-align: center;
+    padding-top: 4px;
+    padding-right: 8px;
+  }
+}

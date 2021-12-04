@@ -1,0 +1,15 @@
+.learn-container {
+  background: #f1fdfa;
+}
+.learn-container .btn-text {
+  color: #088ba5;
+}
+.learn-container h2 {
+  color: #062265;
+  line-height: 55px;
+  font-family: "Berkshire Swash", cursive;
+}
+
+.learn-container p {
+  font-family: "Nunito Sans", sans-serif;
+}
