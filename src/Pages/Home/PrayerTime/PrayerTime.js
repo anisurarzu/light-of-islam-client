@@ -61,7 +61,7 @@ const PrayerTime = () => {
             <span className="text-red-600 py-2">{message}</span>
             <h5>
               Location: {time?.results?.location?.city},
-              {time?.results?.location?.country}
+              <span>{time?.results?.location?.country}</span>
             </h5>
 
             <div className="pt-2">

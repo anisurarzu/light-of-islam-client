@@ -1,6 +1,7 @@
 import React from "react";
 import "./HeroSection.css";
 import hero from "../../../images/hero.png";
+import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <div className="hero-container ">
@@ -18,29 +19,31 @@ const HeroSection = () => {
               And the holy Quran!
             </p>
             <div className="xl:flex xl:pl-20 pt-2 lg:pl-20">
-              <button className="btn-design   p-2 text-white rounded-full px-4">
-                Ask Question?
-              </button>
+              <Link to="/question">
+                <button className="btn-design   p-2 text-white rounded-full px-4">
+                  Ask Question?
+                </button>
+              </Link>
             </div>
           </div>
         </div>
         <div className="xl:py-16 xl:mt-8 lg:mt-8 lg:py-16 px-20 img-design  relative">
           <img className="hero " src={hero} alt="Mother with his child" />
-          <div className="hero-thumb shadow-md rounded-full ">
+          <div className="hero-thumb shadow-md rounded-full  ">
             <img
               className="xl:p-2 lg:p-2 "
               src="https://i.ibb.co/yf4WjRZ/quran.png"
               alt=""
             />
           </div>
-          <div className="hero-thumb-1 shadow-md rounded-full ">
+          <div className="hero-thumb-1 shadow-md rounded-full  ">
             <img
               className="xl:p-2 lg:p-2"
               src="https://i.ibb.co/r0SV0P4/moslem.png"
               alt=""
             />
           </div>
-          <div className="hero-thumb-2 shadow-md rounded-full ">
+          <div className="hero-thumb-2 shadow-md rounded-full  ">
             <img
               className="xl:p-2 lg:p-2"
               src="https://i.ibb.co/SyxHbk9/allah.png"

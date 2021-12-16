@@ -1,0 +1,28 @@
+.sidebar-div {
+  border-bottom: 1px solid #dde7cf;
+  color: #7d7c7a;
+  font-family: "Nunito Sans", sans-serif;
+  padding: 5px;
+  text-align: start;
+  padding-left: 10px;
+  height: 100%;
+}
+.sidebar-div:hover {
+  background: #eff7e5;
+  color: #5a7101;
+  font-weight: bold;
+}
+.profile {
+  font-family: "Titillium Web", sans-serif;
+  color: #5a7101;
+  border-bottom: 1px solid #dde7cf;
+  padding-bottom: 10px;
+}
+.fas-icon {
+  color: #cdc8b9;
+  padding-right: 4px;
+}
+
+.dashboard-second {
+  height: 100%;
+}

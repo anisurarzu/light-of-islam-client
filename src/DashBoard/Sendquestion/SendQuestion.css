@@ -1,0 +1,9 @@
+.send-container label {
+  color: rgb(90, 113, 1);
+}
+
+.send-container h5 {
+  font-family: "Nunito Sans", sans-serif;
+  color: rgb(90, 113, 1);
+  font-weight: 600;
+}
