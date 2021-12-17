@@ -15,6 +15,7 @@ import Profile from "./Profile/Profile";
 import MakeAdmin from "./MakeAdmin/MakeAdmin";
 import MyQuestion from "./Myquestion/MyQuestion";
 import AddScholar from "./AddScholar/AddScholar";
+import ScholarQuestion from "./ScholarHouse/ScholarQuestion/ScholarQuestion";
 
 // import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
@@ -98,7 +99,7 @@ const Dashboard = () => {
                         <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Questions</span>
+                    <span class="ml-3">প্রশ্নগুলি দেখুন</span>
                   </a>
                 </li>
                 <li class="my-px">
@@ -119,7 +120,7 @@ const Dashboard = () => {
                         <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Answers</span>
+                    <span class="ml-3">উত্তরগুলি দেখুন</span>
                   </Link>
                 </li>
                 <li class="my-px">
@@ -140,7 +141,7 @@ const Dashboard = () => {
                         <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Users</span>
+                    <span class="ml-3">ব্যবহারকারী</span>
                     {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
                       1k
                     </span> */}
@@ -164,7 +165,7 @@ const Dashboard = () => {
                         <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Make Admin</span>
+                    <span class="ml-3">এডমিন বানান</span>
                   </Link>
                 </li>
                 <li class="my-px">
@@ -211,7 +212,7 @@ const Dashboard = () => {
                         <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Profile</span>
+                    <span class="ml-3">প্রোফাইল</span>
                   </Link>
                 </li>
 
@@ -234,7 +235,7 @@ const Dashboard = () => {
                       </svg>
                     </span>
                     <button class="ml-3" onClick={logOut}>
-                      Logout
+                      লগআউট
                     </button>
                   </a>
                 </li>
@@ -242,8 +243,8 @@ const Dashboard = () => {
             </div>
           </div>
         ) : userInfo?.role === "scholar" ? (
-          <div class=" flex items-center justify-center  ">
-            <div class="flex w-full max-w-xs p-4 bg-white">
+          <div class=" flex items-center justify-center scholar ">
+            <div class="flex w-full max-w-xs p-4 ">
               <ul class="flex flex-col w-full">
                 <li class="">
                   <Link
@@ -271,8 +272,8 @@ const Dashboard = () => {
                 </li>
 
                 <li class="my-px">
-                  <a
-                    href="/"
+                  <Link
+                    to={`${url}/scholarquestions`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                   >
                     <span class="flex items-center justify-center text-lg text-gray-400">
@@ -288,13 +289,13 @@ const Dashboard = () => {
                         <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Q&A(Questions)</span>
-                  </a>
+                    <span class="ml-3">প্রশ্ন-উত্তর</span>
+                  </Link>
                 </li>
 
                 <li class="my-px">
                   <Link
-                    to={`${url}/makeadmin`}
+                    to={`${url}/createevent`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                   >
                     <span class="flex items-center justify-center text-lg text-green-400">
@@ -310,7 +311,7 @@ const Dashboard = () => {
                         <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Create Event</span>
+                    <span class="ml-3">ইভেন্ট তৈরী করুন</span>
                   </Link>
                 </li>
                 <li class="my-px">
@@ -321,7 +322,7 @@ const Dashboard = () => {
                     <span class="flex items-center justify-center text-lg text-green-400">
                       <i class="far fa-clock text-xl pl-1"></i>
                     </span>
-                    <span class="ml-3">Check Schedule</span>
+                    <span class="ml-3">শিডিউল চেকিং</span>
                   </Link>
                 </li>
                 <li class="my-px">
@@ -347,7 +348,7 @@ const Dashboard = () => {
                         <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Profile</span>
+                    <span class="ml-3">প্রোফাইল</span>
                   </Link>
                 </li>
 
@@ -370,7 +371,7 @@ const Dashboard = () => {
                       </svg>
                     </span>
                     <button class="ml-3" onClick={logOut}>
-                      Logout
+                      লগআউট
                     </button>
                   </a>
                 </li>
@@ -496,7 +497,7 @@ const Dashboard = () => {
                         <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Profile</span>
+                    <span class="ml-3">প্রোফাইল</span>
                   </Link>
                 </li>
                 <li class="my-px">
@@ -542,7 +543,7 @@ const Dashboard = () => {
                         <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Settings</span>
+                    <span class="ml-3">সেটিংস</span>
                   </a>
                 </li>
                 <li class="my-px">
@@ -564,7 +565,7 @@ const Dashboard = () => {
                       </svg>
                     </span>
                     <button class="ml-3" onClick={logOut}>
-                      Logout
+                      লগআউট
                     </button>
                   </a>
                 </li>
@@ -577,6 +578,9 @@ const Dashboard = () => {
         <Switch>
           <Route path={`${path}/myquestions`}>
             <MyQuestion></MyQuestion>
+          </Route>
+          <Route path={`${path}/scholarquestions`}>
+            <ScholarQuestion></ScholarQuestion>
           </Route>
           {/* <Route path={`${path}/viewquestion/questionId`}>
             <ViewQuestion></ViewQuestion>

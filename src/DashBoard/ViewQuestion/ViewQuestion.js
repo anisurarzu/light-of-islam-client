@@ -33,8 +33,8 @@ const ViewQuestion = () => {
               <table class="text-left w-full border-collapse">
                 <thead>
                   <tr>
-                    <th class="py-4 xl:px-6 bg-grey-lightest text-2xl  text-grey-dark border-b border-grey-light">
-                      {question.question}
+                    <th class="py-4 heading-text xl:px-6 bg-grey-lightest text-xl  text-grey-dark border-b border-grey-light">
+                      প্রশ্ন: {question.question}
                     </th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
                       Actions
@@ -44,7 +44,18 @@ const ViewQuestion = () => {
                 <tbody>
                   <tr class="hover:bg-grey-lighter">
                     <td class="py-4 px-6 border-b border-grey-light">
-                      Answer:
+                      উত্তর:
+                      {question?.answer ? (
+                        <div>
+                          <p>{question?.answer}</p>
+                          <span>[{question?.answeredBy}]</span>
+                        </div>
+                      ) : (
+                        <p style={{ color: "#00BBE2" }}>
+                          আসসালামু আলাইকুম! আগামী ২৪ ঘন্টার মধ্যে আপনি আপনার
+                          প্রশ্নের উত্তর পেয়ে যাবেন ইং শা আল্লাহ!
+                        </p>
+                      )}
                     </td>
                   </tr>
                 </tbody>

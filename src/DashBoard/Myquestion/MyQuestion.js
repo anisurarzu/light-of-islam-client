@@ -42,7 +42,7 @@ const MyQuestion = () => {
   return (
     <div className="question-container">
       <h1 className="text-2xl heading-text  py-2">
-        My Questions:{questions?.length}
+        আমার প্রশ্নগুলো:{questions?.length}
       </h1>
       <span>{message}</span>
 
@@ -72,7 +72,14 @@ const MyQuestion = () => {
                     >
                       View
                     </Link>
-
+                    {/* <button
+                      type="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      className="text-white font-bold py-1 px-3  rounded text-xs bg-red-500 hover:bg-red-600"
+                    >
+                      <i class="far fa-trash-alt"></i>
+                    </button> */}
                     <button
                       className="text-white font-bold py-1 px-3  rounded text-xs bg-red-500 hover:bg-red-600"
                       onClick={() => handleDeleteQuestion(question._id)}
@@ -85,6 +92,10 @@ const MyQuestion = () => {
             </tbody>
           </table>
         </div>
+
+        {/* modal */}
+
+        {/* modal */}
       </div>
     </div>
   );
