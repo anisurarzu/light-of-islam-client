@@ -14,6 +14,7 @@ import Question from "./Pages/Question/Question";
 import Dashboard from "./DashBoard/Dashboard";
 import DashboardHome from "./DashBoard/DasboardHome/DashboardHome";
 import Profile from "./DashBoard/Profile/Profile";
+import ViewQuestion from "./DashBoard/ViewQuestion/ViewQuestion";
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/viewquestion/:questionId">
+              <ViewQuestion></ViewQuestion>
             </PrivateRoute>
           </Switch>
           <Footer></Footer>

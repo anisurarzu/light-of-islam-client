@@ -4,6 +4,9 @@
 
 .send-container h5 {
   font-family: "Nunito Sans", sans-serif;
-  color: rgb(90, 113, 1);
+  color: #029ca5;
   font-weight: 600;
+}
+.question-icon {
+  color: #029ca5;
 }

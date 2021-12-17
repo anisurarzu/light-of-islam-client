@@ -19,7 +19,7 @@ const HeroSection = () => {
               And the holy Quran!
             </p>
             <div className="xl:flex xl:pl-20 pt-2 lg:pl-20">
-              <Link to="/question">
+              <Link to="/dashboard/sendquestions">
                 <button className="btn-design   p-2 text-white rounded-full px-4">
                   Ask Question?
                 </button>

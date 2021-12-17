@@ -22,7 +22,9 @@ const useFirebase = () => {
 
   const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
+  const [scholar, setScholar] = useState(false);
   const [token, setToken] = useState("");
+  const [userInfo, setUserInfo] = useState("");
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
@@ -96,9 +98,21 @@ const useFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    fetch(`https://obscure-journey-77099.herokuapp.com/users/${user.email}`)
+    fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
+  }, [user.email]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.scholar));
+  }, [user.email]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/profile/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setUserInfo(data));
   }, [user.email]);
 
   const logOut = () => {
@@ -116,7 +130,7 @@ const useFirebase = () => {
   const saveUser = (email, displayName, method) => {
     console.log(displayName);
     const user = { email, displayName };
-    fetch("https://obscure-journey-77099.herokuapp.com/users", {
+    fetch("http://localhost:5000/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -127,7 +141,9 @@ const useFirebase = () => {
 
   return {
     user,
+    userInfo,
     admin,
+    scholar,
     token,
     loading,
     authError,

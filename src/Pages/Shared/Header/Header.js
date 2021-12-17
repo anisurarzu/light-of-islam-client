@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Header = () => {
-  const { user, logOut } = useAuth();
+  const { user, userInfo, logOut } = useAuth();
   return (
     <nav class=" container navbar-container navbar navbar-expand-lg navbar-light bg-white shadow-md rounded-xl ">
       <div class="container-fluid">
@@ -87,7 +87,11 @@ const Header = () => {
               >
                 <img
                   className="w-8 h-8  rounded-full"
-                  src={user?.photoURL || "https://i.ibb.co/PFkN0mF/user.png"}
+                  src={
+                    user?.photoURL ||
+                    userInfo?.image ||
+                    "https://i.ibb.co/PFkN0mF/user.png"
+                  }
                   alt=""
                 />
               </button>

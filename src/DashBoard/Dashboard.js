@@ -12,10 +12,17 @@ import useAuth from "../hooks/useAuth";
 import SendQuestion from "./Sendquestion/SendQuestion";
 import DashboardHome from "./DasboardHome/DashboardHome";
 import Profile from "./Profile/Profile";
+import MakeAdmin from "./MakeAdmin/MakeAdmin";
+import MyQuestion from "./Myquestion/MyQuestion";
+import AddScholar from "./AddScholar/AddScholar";
+
+// import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
 const Dashboard = () => {
   let { path, url } = useRouteMatch();
-  const { user, admin, logOut } = useAuth();
+  const { user, userInfo, admin, logOut } = useAuth();
+  console.log(userInfo);
+
   return (
     <div className="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1  pt-8 container">
       <div className="col-span-1  shadow-lg rounded xl:mx-4 lg:mx-4 pb-8">
@@ -25,12 +32,17 @@ const Dashboard = () => {
               className="rounded-full w-16 ml-28 xl:ml-4 lg:ml-4"
               src={
                 user.photoURL ||
+                userInfo?.image ||
                 "https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png"
               }
               alt=""
             />
             {admin ? (
               <h3 className="text-center pt-4 pl-2 text-xl font-bold">Admin</h3>
+            ) : userInfo?.role === "scholar" ? (
+              <h3 className="text-center pt-4 pl-2 text-xl font-bold">
+                Scholars House
+              </h3>
             ) : (
               <h3 className="text-center pt-4 pl-2 text-xl font-bold">
                 My account
@@ -39,7 +51,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {admin ? (
+        {userInfo?.role === "admin" ? (
           <div class=" flex items-center justify-center  ">
             <div class="flex w-full max-w-xs p-4 bg-white">
               <ul class="flex flex-col w-full">
@@ -135,8 +147,8 @@ const Dashboard = () => {
                   </a>
                 </li>
                 <li class="my-px">
-                  <a
-                    href="/"
+                  <Link
+                    to={`${url}/makeadmin`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                   >
                     <span class="flex items-center justify-center text-lg text-green-400">
@@ -153,7 +165,164 @@ const Dashboard = () => {
                       </svg>
                     </span>
                     <span class="ml-3">Make Admin</span>
+                  </Link>
+                </li>
+                <li class="my-px">
+                  <Link
+                    to={`${url}/addscholar`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-green-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">Add Scholar</span>
+                  </Link>
+                </li>
+                <li class="my-px">
+                  <span class="flex font-medium text-sm text-gray-400 px-4 my-4 uppercase">
+                    Account
+                  </span>
+                </li>
+                <li class="my-px">
+                  <Link
+                    to={`${url}/profile`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-gray-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">Profile</span>
+                  </Link>
+                </li>
+
+                <li class="my-px">
+                  <a
+                    href="/"
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-red-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
+                      </svg>
+                    </span>
+                    <button class="ml-3" onClick={logOut}>
+                      Logout
+                    </button>
                   </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        ) : userInfo?.role === "scholar" ? (
+          <div class=" flex items-center justify-center  ">
+            <div class="flex w-full max-w-xs p-4 bg-white">
+              <ul class="flex flex-col w-full">
+                <li class="">
+                  <Link
+                    to={`${url}/dashboard`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-gray-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">Dashboard</span>
+                    <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
+                      3
+                    </span>
+                  </Link>
+                </li>
+
+                <li class="my-px">
+                  <a
+                    href="/"
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-gray-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">Q&A(Questions)</span>
+                  </a>
+                </li>
+
+                <li class="my-px">
+                  <Link
+                    to={`${url}/makeadmin`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-green-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">Create Event</span>
+                  </Link>
+                </li>
+                <li class="my-px">
+                  <Link
+                    to={`${url}/addscholar`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-green-400">
+                      <i class="far fa-clock text-xl pl-1"></i>
+                    </span>
+                    <span class="ml-3">Check Schedule</span>
+                  </Link>
                 </li>
                 <li class="my-px">
                   <span class="flex font-medium text-sm text-gray-400 px-4 my-4 uppercase">
@@ -238,8 +407,8 @@ const Dashboard = () => {
                 </li>
 
                 <li class="my-px">
-                  <a
-                    href="/"
+                  <Link
+                    to={`${url}/myquestions`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                   >
                     <span class="flex items-center justify-center text-lg text-gray-400">
@@ -255,12 +424,12 @@ const Dashboard = () => {
                         <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">My question</span>
-                  </a>
+                    <span class="ml-3">আমার প্রশ্নগুলো</span>
+                  </Link>
                 </li>
                 <li class="my-px">
                   <Link
-                    to={`${url}/sendquestion`}
+                    to={`${url}/sendquestions`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                   >
                     <span class="flex items-center justify-center text-lg text-gray-400">
@@ -276,7 +445,7 @@ const Dashboard = () => {
                         <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Send question</span>
+                    <span class="ml-3">প্রশ্ন পাঠান</span>
                   </Link>
                 </li>
                 <li class="my-px">
@@ -297,7 +466,7 @@ const Dashboard = () => {
                         <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Take schedule</span>
+                    <span class="ml-3">সময়সূচী নিন</span>
                     {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
                       1k
                     </span> */}
@@ -394,9 +563,9 @@ const Dashboard = () => {
                         <path d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3" onClick={logOut}>
+                    <button class="ml-3" onClick={logOut}>
                       Logout
-                    </span>
+                    </button>
                   </a>
                 </li>
               </ul>
@@ -406,15 +575,24 @@ const Dashboard = () => {
       </div>
       <div className="dashboard-second col-span-3">
         <Switch>
-          <Route path={`${path}/makeAdmin`}></Route>
-          <Route path={`${path}/addProducts`}></Route>
-          <Route path={`${path}/sendquestion`}>
+          <Route path={`${path}/myquestions`}>
+            <MyQuestion></MyQuestion>
+          </Route>
+          {/* <Route path={`${path}/viewquestion/questionId`}>
+            <ViewQuestion></ViewQuestion>
+          </Route> */}
+          <Route path={`${path}/sendquestions`}>
             <SendQuestion></SendQuestion>
           </Route>
           <Route path={`${path}/profile`}>
             <Profile></Profile>
           </Route>
-
+          <Route path={`${path}/makeadmin`}>
+            <MakeAdmin></MakeAdmin>
+          </Route>
+          <Route path={`${path}/addscholar`}>
+            <AddScholar></AddScholar>
+          </Route>
           <Route path={`${path}/manageProducts`}></Route>
           <Route path={`${path}/reviews`}></Route>
           <Route path={`${path}`}>
