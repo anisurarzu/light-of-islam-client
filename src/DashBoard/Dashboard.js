@@ -16,17 +16,18 @@ import MakeAdmin from "./MakeAdmin/MakeAdmin";
 import MyQuestion from "./Myquestion/MyQuestion";
 import AddScholar from "./AddScholar/AddScholar";
 import ScholarQuestion from "./ScholarHouse/ScholarQuestion/ScholarQuestion";
+import TakeSchedule from "./TakeSchedule/TakeSchedule";
 
 // import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
 const Dashboard = () => {
   let { path, url } = useRouteMatch();
   const { user, userInfo, admin, logOut } = useAuth();
-  console.log(userInfo);
+  // console.log(userInfo);
 
   return (
     <div className="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1  pt-8 container">
-      <div className="col-span-1  shadow-lg rounded xl:mx-4 lg:mx-4 pb-8">
+      <div className="col-span-1  shadow-sm rounded xl:mx-4 lg:mx-4 pb-8">
         <div className="grid grid-cols-1 ">
           <div className="xl:flex justify-left profile pt-2 ">
             <img
@@ -450,8 +451,8 @@ const Dashboard = () => {
                   </Link>
                 </li>
                 <li class="my-px">
-                  <a
-                    href="/"
+                  <Link
+                    to={`${url}/takeschedule`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                   >
                     <span class="flex items-center justify-center text-lg text-gray-400">
@@ -471,7 +472,7 @@ const Dashboard = () => {
                     {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
                       1k
                     </span> */}
-                  </a>
+                  </Link>
                 </li>
 
                 <li class="my-px">
@@ -574,13 +575,16 @@ const Dashboard = () => {
           </div>
         )}
       </div>
-      <div className="dashboard-second col-span-3">
+      <div className="dashboard-second col-span-3 container shadow-sm rounded">
         <Switch>
           <Route path={`${path}/myquestions`}>
             <MyQuestion></MyQuestion>
           </Route>
           <Route path={`${path}/scholarquestions`}>
             <ScholarQuestion></ScholarQuestion>
+          </Route>
+          <Route path={`${path}/takeschedule`}>
+            <TakeSchedule></TakeSchedule>
           </Route>
           {/* <Route path={`${path}/viewquestion/questionId`}>
             <ViewQuestion></ViewQuestion>

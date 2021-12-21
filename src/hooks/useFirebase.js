@@ -26,6 +26,8 @@ const useFirebase = () => {
   const [token, setToken] = useState("");
   const [userInfo, setUserInfo] = useState("");
 
+  const [scholars, setScholars] = useState();
+
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
@@ -106,7 +108,7 @@ const useFirebase = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
-      .then((data) => setAdmin(data.scholar));
+      .then((data) => setScholar(data.scholar));
   }, [user.email]);
 
   useEffect(() => {
@@ -139,11 +141,22 @@ const useFirebase = () => {
     }).then();
   };
 
+  // scholar finding
+  useEffect(() => {
+    fetch("http://localhost:5000/users")
+      .then((res) => res.json())
+      .then((data) => {
+        const collectedScholar = data.filter((data) => data.role === "scholar");
+        setScholars(collectedScholar);
+      });
+  }, []);
+
   return {
     user,
     userInfo,
     admin,
     scholar,
+    scholars,
     token,
     loading,
     authError,

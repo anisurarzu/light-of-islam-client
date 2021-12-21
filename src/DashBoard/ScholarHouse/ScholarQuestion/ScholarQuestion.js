@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const ScholarQuestion = () => {
-  const { userInfo } = useAuth();
+  const { user, userInfo } = useAuth();
   const [scholarQuestions, setScholarQuestions] = useState();
   console.log(scholarQuestions);
   const [message, setMessage] = useState("");
@@ -13,7 +13,7 @@ const ScholarQuestion = () => {
 
   const [answer, setAnswer] = useState("");
 
-  console.log(currentQuestion);
+  // console.log(currentQuestion);
   //   const { register, reset, handleSubmit } = useForm();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const ScholarQuestion = () => {
         window.location.reload();
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
@@ -44,7 +44,7 @@ const ScholarQuestion = () => {
       .then((res) => res.json())
       .then((data) => {
         setScholarQuestions(data);
-        console.log(data);
+        // console.log(data);
       });
   }, []);
 
@@ -71,17 +71,32 @@ const ScholarQuestion = () => {
                   <td className="py-4 xl:px-6 border-b border-grey-light">
                     {question.question}
                   </td>
-                  <td className="py-4 xl:px-6 border-b border-grey-light flex">
-                    <button
-                      onClick={() => setCurrentQuestion(question)}
-                      type="button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                      className="text-white font-bold py-1 px-3 mr-1 rounded text-xs bg-green-500 hover:bg-green-600"
-                    >
-                      Answer
-                    </button>
-                  </td>
+                  {/* <td>{question?.name}</td> */}
+                  {question?.answer ? (
+                    <td className="py-4 xl:px-6 border-b border-grey-light flex">
+                      <button
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        onClick={() => setCurrentQuestion(question)}
+                        type="button"
+                        className="text-white font-bold py-1 px-3 mr-1 rounded text-xs bg-yellow-500 hover:bg-yellow-600"
+                      >
+                        Done
+                      </button>
+                    </td>
+                  ) : (
+                    <td className="py-4 xl:px-6 border-b border-grey-light flex">
+                      <button
+                        onClick={() => setCurrentQuestion(question)}
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        className="text-white font-bold py-1 px-3 mr-1 rounded text-xs bg-green-500 hover:bg-green-600"
+                      >
+                        Answer
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
@@ -113,27 +128,25 @@ const ScholarQuestion = () => {
                     <h2 class="text-sm  font-bold pb-2 ">
                       {currentQuestion?.question}
                     </h2>
-                    <form onSubmit={handleSubmit}>
-                      {/* <input
-                        className="pb-2 text-green-600"
-                        // defaultValue={currentQuestion?._id}
-                        // {...register("current")}
-                        onChange={(e) => setCId(e.target.value)}
-                      /> */}
-                      <textarea
-                        type="text"
-                        className="border-dashed border-2 p-4 rounded border-blue-500"
-                        placeholder="আপনার উত্তর এখানে লিখুন"
-                        // {...register("answer")}
-                        required
-                        onChange={(e) => setAnswer(e.target.value)}
-                      />
-                      <input
-                        className="mt-2 bg-purple-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-600"
-                        type="submit"
-                        value="Submit"
-                      />
-                    </form>
+                    {currentQuestion?.answer ? (
+                      <p>Answer: {currentQuestion?.answer}</p>
+                    ) : (
+                      <form onSubmit={handleSubmit}>
+                        <textarea
+                          type="text"
+                          className="border-dashed border-2 p-4 rounded border-blue-500"
+                          placeholder="আপনার উত্তর এখানে লিখুন"
+                          // {...register("answer")}
+                          required
+                          onChange={(e) => setAnswer(e.target.value)}
+                        />
+                        <input
+                          className="mt-2 bg-purple-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-600"
+                          type="submit"
+                          value="Submit"
+                        />
+                      </form>
+                    )}
                   </div>
 
                   <div class=" text-center md:block">

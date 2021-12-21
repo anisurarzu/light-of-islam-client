@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./TopHeader.css";
 
 const TopHeader = () => {
@@ -15,9 +16,11 @@ const TopHeader = () => {
           </p>
         </div>
         <div>
-          <button className="btn-donate text-white px-2 rounded-xl">
-            <i class="fas fa-donate pr-2"></i>Donate Now
-          </button>
+          <Link to="/donation">
+            <button className="btn-donate text-white px-2 rounded-xl">
+              <i class="fas fa-donate pr-2"></i>Donate Now
+            </button>
+          </Link>
         </div>
       </nav>
     </div>

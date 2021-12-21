@@ -12,9 +12,10 @@ import Register from "./Pages/Register/Register";
 import GetSchedule from "./Pages/GetSchedule/GetSchedule";
 import Question from "./Pages/Question/Question";
 import Dashboard from "./DashBoard/Dashboard";
-import DashboardHome from "./DashBoard/DasboardHome/DashboardHome";
+
 import Profile from "./DashBoard/Profile/Profile";
 import ViewQuestion from "./DashBoard/ViewQuestion/ViewQuestion";
+import Payment from "./Pages/Payment/Payment";
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
             <Route path="/profile">
               <Profile></Profile>
             </Route>
-            <PrivateRoute path="/getschedule">
+            <PrivateRoute path="/takeschedule/:scholarId">
               <GetSchedule></GetSchedule>
             </PrivateRoute>
             <PrivateRoute path="/question">
@@ -50,6 +51,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/donation">
+              <Payment></Payment>
             </PrivateRoute>
             <PrivateRoute path="/viewquestion/:questionId">
               <ViewQuestion></ViewQuestion>

@@ -1,0 +1,19 @@
+.text-design {
+  color: #242f6c;
+  line-height: 30px;
+}
+small {
+  background: #00ced7;
+  border-radius: 3px;
+}
+.icon {
+  color: #003b77;
+  font-size: 17px;
+}
+.scholar-btn {
+  background: #00ced7;
+}
+
+.scholar-btn:hover {
+  background: #0fa5ad;
+}

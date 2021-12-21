@@ -3,8 +3,8 @@ import "./DashboardHome.css";
 
 const DashboardHome = () => {
   return (
-    <div>
-      <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+    <div className="">
+      <main class="flex-1 overflow-x-hidden overflow-y-auto ">
         <div class="container mx-auto px-6 py-8">
           <div class="mt-2">
             <div class="flex flex-wrap -mx-6">

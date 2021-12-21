@@ -40,7 +40,7 @@ const SendQuestion = () => {
           Name
         </label>
         <input
-          className="p-2 border-2 border-green-800 rounded"
+          className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
           {...register("name")}
           defaultValue={user.displayName}
           placeholder="enter your name"
@@ -50,7 +50,7 @@ const SendQuestion = () => {
           Email
         </label>
         <input
-          className="p-2 border-2 border-green-800 rounded"
+          className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
           defaultValue={user.email}
           {...register("email")}
           required
@@ -59,7 +59,7 @@ const SendQuestion = () => {
           Write your question here
         </label>
         <textarea
-          className="p-2 border-2 border-green-800 rounded"
+          className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
           {...register("question")}
           required
           placeholder="enter your text here"
@@ -68,7 +68,7 @@ const SendQuestion = () => {
           Gender
         </label>
         <select
-          className="p-2 border-2 border-green-800 rounded"
+          className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
           {...register("gender")}
           required
         >

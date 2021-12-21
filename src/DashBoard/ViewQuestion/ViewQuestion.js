@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 
+import "./ViewQuestion.css";
+
 const ViewQuestion = () => {
   const [question, setQuestion] = useState({});
   const [message, setMessage] = useState("");
@@ -18,14 +20,12 @@ const ViewQuestion = () => {
   return (
     <div className="px-24 py-12 " style={{ background: "#ECFBF9" }}>
       <div className="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-4">
-        <div className="xl:col-span-1">
-          <Link to="/dashboard">
-            <img
-              className="w-1/4"
-              src="https://i.ibb.co/XJMCHYz/7214473.png"
-              alt=""
-            />
-          </Link>
+        <div className="xl:col-span-1 pl-4 view-div">
+          <img
+            className="w-full mt-32 "
+            src="https://i.ibb.co/CwLgyBp/Pngtree-muslim-man-arabic-show-you-6826188.png"
+            alt=""
+          />
         </div>
         <div className="xl:col-span-3">
           <div class="w-full mx-auto">

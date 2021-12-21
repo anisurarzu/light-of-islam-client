@@ -7,7 +7,7 @@ const HeroSection = () => {
     <div className="hero-container ">
       <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 gap-4 ">
         <div className="py-12 first-width pt-28">
-          <button className="p-2 xl:mr-96 lg:mr-96 xl:ml-12 lg:ml-12 btn-text px-4 bg-white rounded-full">
+          <button className="p-2 animate-pulse xl:mr-96 lg:mr-96 xl:ml-12 lg:ml-12 btn-text px-4 bg-white rounded-full">
             Let’s Know Islam
           </button>
           <div className="p-text xl:py-16 lg:py-16 py-8">
@@ -27,11 +27,16 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-        <div className="xl:py-16 xl:mt-8 lg:mt-8 lg:py-16 px-20 img-design  relative">
-          <img className="hero " src={hero} alt="Mother with his child" />
+        <div className="xl:py-16 xl:mt-8 lg:mt-8 lg:py-16 px-20 img-design relative">
+          <div className="absolute img-border" />
+          <img
+            className="hero hero-img "
+            src={hero}
+            alt="Mother with his child"
+          />
           <div className="hero-thumb shadow-md rounded-full  ">
             <img
-              className="xl:p-2 lg:p-2 "
+              className="xl:p-2 lg:p-2  "
               src="https://i.ibb.co/yf4WjRZ/quran.png"
               alt=""
             />

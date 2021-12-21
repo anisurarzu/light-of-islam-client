@@ -6,6 +6,9 @@
   height: 40vmin;
   pointer-events: none;
 }
+p {
+  font-family: "Nunito Sans", sans-serif;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

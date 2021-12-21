@@ -27,12 +27,62 @@
   background-repeat: no-repeat;
   background-position: left;
 }
-
-.img-design {
-  border-top: 1px dashed #088ba5;
-  border-radius: 100%;
-  transform: rotate(360deg);
+.hero-img {
+  position: absolute;
+  width: 600px;
+  top: 105px;
 }
+
+.img-border {
+  border: 1px dashed #088ba5;
+  border-radius: 100%;
+  animation: rotation infinite;
+  animation-duration: 70s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  width: 650px;
+  height: 650px;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(36deg);
+  }
+  20% {
+    transform: rotate(72deg);
+  }
+  30% {
+    transform: rotate(108deg);
+  }
+  40% {
+    transform: rotate(144deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  60% {
+    transform: rotate(216deg);
+  }
+  70% {
+    transform: rotate(252deg);
+  }
+  80% {
+    transform: rotate(288deg);
+  }
+  90% {
+    transform: rotate(324deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .hero-thumb {
   position: absolute;
   top: 271px;
@@ -92,7 +142,7 @@
 .hero-thumb-4 {
   position: absolute;
   top: 120px;
-  left: 563px;
+  left: 562px;
   background: white;
   width: 85px !important;
   height: 50px;
@@ -112,6 +162,9 @@
     border-top: 1px dashed #088ba5;
     border-radius: 100%;
   }
+  .img-border {
+    display: none;
+  }
 
   .hero {
     margin-top: 15px;
@@ -128,6 +181,9 @@
     height: 43px;
     text-align: center;
     padding-top: 4px;
+  }
+  .hero-thumb-img {
+    position: absolute;
   }
   .hero-thumb-1 {
     position: absolute;
@@ -165,7 +221,7 @@
   }
   .hero-thumb-3 {
     position: absolute;
-    top: -29px;
+    top: -21px;
     left: 148px;
     background: white;
     width: 43px !important;
@@ -181,24 +237,30 @@
     padding-top: 3px;
   }
   .hero-thumb-4 {
-    position: absolute;
-    top: -12px;
-    left: 62px;
-    background: white;
-    width: 43px !important;
-    height: 50px;
-    background-size: cover;
-    width: 60px;
-    height: 43px;
-    text-align: center;
-    padding-top: 4px;
+    display: none;
   }
   .hero-thumb-4 img {
-    padding-left: 5px;
-    padding-top: 5px;
+    display: none;
   }
   .hero-thumb img {
     padding-left: 5px;
     padding-top: 3px;
+  }
+}
+
+@media (max-width: 1530px) {
+  .hero-thumb-4 {
+    position: absolute;
+    top: 120px;
+    left: 563px;
+    background: white;
+    width: 85px !important;
+    height: 50px;
+    background-size: cover;
+    width: 60px;
+    height: 85px;
+    text-align: center;
+    padding-top: 4px;
+    padding-right: 8px;
   }
 }
