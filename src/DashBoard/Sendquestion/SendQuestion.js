@@ -59,10 +59,11 @@ const SendQuestion = () => {
           Write your question here
         </label>
         <textarea
-          className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+          className="w-full focus:ring-blue-400 px-2 py-2 text-gray-700 bg-gray-200 rounded"
           {...register("question")}
           required
           placeholder="enter your text here"
+          rows="6"
         />
         <label className="py-2" htmlFor="name">
           Gender
