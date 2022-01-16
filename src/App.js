@@ -16,7 +16,9 @@ import Dashboard from "./DashBoard/Dashboard";
 import Profile from "./DashBoard/Profile/Profile";
 import ViewQuestion from "./DashBoard/ViewQuestion/ViewQuestion";
 import Payment from "./Pages/Payment/Payment";
-
+import Service from "./Pages/Service/Service";
+import Event from "./Pages/Home/Event/Event";
+import EventDeatils from "./DashBoard/ScholarHouse/AllEvents/EventDeatils/EventDeatils";
 function App() {
   return (
     <div className="App">
@@ -42,6 +44,15 @@ function App() {
             </Route>
             <Route path="/profile">
               <Profile></Profile>
+            </Route>
+            <Route path="/service">
+              <Service></Service>
+            </Route>
+            <PrivateRoute path="/event">
+              <Event></Event>
+            </PrivateRoute>
+            <Route path="/eventDetails">
+              <EventDeatils></EventDeatils>
             </Route>
             <PrivateRoute path="/takeschedule/:scholarId">
               <GetSchedule></GetSchedule>

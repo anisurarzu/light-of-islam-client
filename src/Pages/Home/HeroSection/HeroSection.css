@@ -154,6 +154,12 @@
   padding-right: 8px;
 }
 @media (max-width: 660px) {
+  .hero-img {
+    position: absolute;
+    width: 549px !important;
+    top: 39px;
+    left: 19px;
+  }
   .img-design {
     padding-left: 40px;
     padding-right: 40px;

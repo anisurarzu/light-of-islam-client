@@ -53,6 +53,16 @@ const Header = () => {
             <li class="nav-item">
               <Link
                 class="nav-link"
+                to="/event"
+                tabindex="-1"
+                aria-disabled="true"
+              >
+                Event
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link
+                class="nav-link"
                 to="/service"
                 tabindex="-1"
                 aria-disabled="true"

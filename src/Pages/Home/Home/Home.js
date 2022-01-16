@@ -6,7 +6,6 @@ import Pillers from "../Pillers/Pillers";
 
 import PrayerTime from "../PrayerTime/PrayerTime";
 import Learn from "./Learn/Learn";
-import Event from "../Event/Event";
 
 const Home = () => {
   return (
@@ -17,7 +16,6 @@ const Home = () => {
       <Learn></Learn>
       <Pillers></Pillers>
       <Donation></Donation>
-      <Event></Event>
     </div>
   );
 };

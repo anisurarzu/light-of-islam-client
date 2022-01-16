@@ -43,12 +43,12 @@ const MyQuestion = () => {
   return (
     <div className="question-container">
       <h1 className="text-2xl heading-text  py-2">
-        আমার প্রশ্নগুলো:{questions?.length}
+        Questions: {questions?.length}
       </h1>
       <span>{message}</span>
 
       <div className="w-4/5 mx-auto">
-        <div className="bg-white shadow-md rounded my-2">
+        <div className="bg-white  rounded my-2">
           <table className="text-left w-full border-collapse">
             <thead>
               <tr>

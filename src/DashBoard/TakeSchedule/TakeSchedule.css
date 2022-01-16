@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani&display=swap");
 .text-design {
   color: #242f6c;
   line-height: 30px;
@@ -11,9 +12,37 @@ small {
   font-size: 17px;
 }
 .scholar-btn {
-  background: #00ced7;
+  border: 1px solid #00c8d7;
+  color: #00ced7;
+  font-family: "Rajdhani", sans-serif;
 }
 
 .scholar-btn:hover {
-  background: #0fa5ad;
+  background: #00c8d7;
+  color: white;
+}
+
+.social {
+  background: #00c8d7;
+  color: white;
+  width: 30px;
+  border-radius: 40%;
+}
+.social:hover {
+  border: 1px solid #00c8d7;
+  background: white;
+  color: #00ced7;
+}
+
+.scholar-container h3 {
+  font-family: "Berkshire Swash", cursive;
+  color: rgb(15, 165, 173);
+}
+.scholar-container h2 {
+  font-family: "Berkshire Swash", cursive;
+  color: rgb(15, 165, 173);
+}
+.name {
+  font-family: "Rajdhani", sans-serif;
+  color: #0fa5ad;
 }

@@ -8,8 +8,10 @@ const TakeSchedule = () => {
   const { scholars } = useAuth();
   console.log("scholar", scholars);
   return (
-    <div>
-      <p className="my-2 pb-8 px-4 text-design">
+    <div className="scholar-container">
+      <h3 className="text-xl ">Our Expert </h3>
+      <h2 className="text-2xl pb-4">Islamic Scholars</h2>
+      <p className="my-4 pb-8 px-4 ">
         "আলহামদুলিল্লাহ!! দেশের শ্রেষ্ঠ আলেমসমাজ এখন আমাদের প্ল্যাটফর্ম এ একসাথে
         !!" আপনারা যারা ইসলামিক কনফারেন্স বা ওয়াজ-মাহফিল এর জন্য আলেমদের শিডিউল
         নিতে চান তারা "Take Schedule" বাটনটি চাপুন এবং আপনার শিডিউল এর জন্য
@@ -22,8 +24,8 @@ const TakeSchedule = () => {
 
             <div
               data-aos="fade-down"
-              className="grid justify-center items-center xl:shadow lg:shadow
-          sm:shadow-lg "
+              className="grid justify-center items-center xl:shadow-lg  lg:shadow
+          sm:shadow-lg rounded card-scholar"
             >
               <div className="flex items-center justify-center pt-4">
                 <img
@@ -32,33 +34,38 @@ const TakeSchedule = () => {
                   alt="wise scholars"
                 />
               </div>
-              <h3 className="text-xl xl:text-xl lg:text-xl md:text-2xl font-bold text-gray-700 pt-2">
+              <h4 className="text-xl xl:text-xl lg:text-xl md:text-2xl name text-gray-600 pt-2 font-smibold">
                 {scholar.displayName}
-              </h3>
-              <small className="xl:shadow text-white mx-24 xl:mx-0 xl:px-2  mb-4">
-                Our Scholar
-              </small>
-              <p className="text-gray-600 px-8 ">
+              </h4>
+
+              <p className="text-gray-600 px-8 text-sm py-3">
                 আমারা দিচ্ছি শতভাগ কুরান এবং সহীহ্ হাদিস দিয়ে দাওয়াহ পরিচালনার
-                প্রতিশ্রুতি। ইন শা আল্লাহ, এই দেশকে একদিন শিরক এবং বি'দাত মুক্ত
-                করবো ইন শা আল্লাহ।
+                প্রতিশ্রুতি।
               </p>
               <div>
                 <Link to={`/takeschedule/${scholar?.email}`}>
                   <button
                     type="button"
-                    className="text-white font-bold py-1 px-3  mr-1 mb-4 rounded text-xs scholar-btn"
+                    className="font-bold py-1 px-3  mr-1 mb-4 rounded text-xs scholar-btn"
                   >
                     Take Schedule
                   </button>
                 </Link>
               </div>
 
-              <div className="grid grid-cols-4 gap-1 px-20 pb-12 icon">
-                <i className="fab fa-facebook-f"></i>
-                <i className="fab fa-twitter"></i>
-                <i className="fab fa-linkedin-in"></i>
-                <i className="fab fa-instagram"></i>
+              <div className="grid grid-cols-4 gap-2  px-20 pb-12 icon">
+                <div className="social ">
+                  <i className="fab fa-facebook-f"></i>
+                </div>
+                <div className="social ">
+                  <i className="fab fa-twitter"></i>
+                </div>
+                <div className="social">
+                  <i className="fab fa-linkedin-in"></i>
+                </div>
+                <div className="social ">
+                  <i className="fab fa-instagram"></i>
+                </div>
               </div>
             </div>
           </div>

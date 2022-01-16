@@ -1,0 +1,46 @@
+.service-card {
+  padding: 50px;
+  background: url("https://i.ibb.co/dkm9dRn/service-shape.png ");
+  background-repeat: no-repeat;
+  background-size: 50%;
+
+  background-color: #fefafa;
+}
+.service-card img {
+  vertical-align: middle;
+}
+
+.service-card h3 {
+  font-family: "Berkshire Swash", cursive;
+  color: #242f6c;
+}
+.service-card p {
+  font-family: "Rajdhani", sans-serif;
+}
+.service-btn {
+  background: #00bcd6;
+  color: white;
+  padding: 10px;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+.service-btn-2 {
+  background: #db9e30;
+  color: white;
+  padding: 10px;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+.service-btn-3 {
+  background: #ff8484;
+  color: white;
+  padding: 10px;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 20px;
+}

@@ -102,20 +102,20 @@ const useFirebase = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
-      .then((data) => setAdmin(data.admin));
-  }, [user.email]);
+      .then((data) => setAdmin(data?.admin));
+  }, [user?.email]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
-      .then((data) => setScholar(data.scholar));
-  }, [user.email]);
+      .then((data) => setScholar(data?.scholar));
+  }, [user?.email]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/users/profile/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
-  }, [user.email]);
+  }, [user?.email]);
 
   const logOut = () => {
     signOut(auth)

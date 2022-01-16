@@ -17,6 +17,8 @@ import MyQuestion from "./Myquestion/MyQuestion";
 import AddScholar from "./AddScholar/AddScholar";
 import ScholarQuestion from "./ScholarHouse/ScholarQuestion/ScholarQuestion";
 import TakeSchedule from "./TakeSchedule/TakeSchedule";
+import CreateEvent from "./CreateEvent/CreateEvent";
+import AllEvents from "./ScholarHouse/AllEvents/AllEvents";
 
 // import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
@@ -60,7 +62,7 @@ const Dashboard = () => {
                 <li class="">
                   <Link
                     to={`${url}/dashboard`}
-                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 bg-gray-100"
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 b"
                   >
                     <span class="flex items-center justify-center text-lg text-gray-400">
                       <svg
@@ -250,7 +252,7 @@ const Dashboard = () => {
                 <li class="">
                   <Link
                     to={`${url}/dashboard`}
-                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 bg-gray-100"
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 "
                   >
                     <span class="flex items-center justify-center text-lg text-gray-400">
                       <svg
@@ -313,6 +315,27 @@ const Dashboard = () => {
                       </svg>
                     </span>
                     <span class="ml-3">ইভেন্ট তৈরী করুন</span>
+                  </Link>
+                </li>
+                <li class="my-px">
+                  <Link
+                    to={`${url}/allevents`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-green-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">ইভেন্ট</span>
                   </Link>
                 </li>
                 <li class="my-px">
@@ -380,13 +403,13 @@ const Dashboard = () => {
             </div>
           </div>
         ) : (
-          <div class=" flex items-center justify-center bg-gray-100 py-6">
+          <div class=" flex items-center justify-center  py-6">
             <div class="flex w-full max-w-xs p-4 bg-white">
               <ul class="flex flex-col w-full">
                 <li class="my-px">
                   <Link
                     to={`${url}/dashboard`}
-                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 bg-gray-100"
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 "
                   >
                     <span class="flex items-center justify-center text-lg text-gray-400">
                       <svg
@@ -585,6 +608,12 @@ const Dashboard = () => {
           </Route>
           <Route path={`${path}/takeschedule`}>
             <TakeSchedule></TakeSchedule>
+          </Route>
+          <Route path={`${path}/createevent`}>
+            <CreateEvent></CreateEvent>
+          </Route>
+          <Route path={`${path}/allevents`}>
+            <AllEvents></AllEvents>
           </Route>
           {/* <Route path={`${path}/viewquestion/questionId`}>
             <ViewQuestion></ViewQuestion>
