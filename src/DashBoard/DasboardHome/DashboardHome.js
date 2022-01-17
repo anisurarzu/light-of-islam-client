@@ -20,7 +20,7 @@ const DashboardHome = () => {
                     </div>
 
                     <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
-                    <div class="text-gray-500">Total Questions</div>
+                    <div class="text-gray-500">Questions</div>
                   </div>
                 </div>
               </div>
@@ -38,7 +38,7 @@ const DashboardHome = () => {
                     <h4 class="text-2xl font-semibold text-gray-700">
                       200,521
                     </h4>
-                    <div class="text-gray-500">Total Answers</div>
+                    <div class="text-gray-500">Answers</div>
                   </div>
                 </div>
               </div>
@@ -57,7 +57,7 @@ const DashboardHome = () => {
                     <h4 class="text-2xl font-semibold text-gray-700">
                       215,542
                     </h4>
-                    <div class="text-gray-500">Available Products</div>
+                    <div class="text-gray-500">Events</div>
                   </div>
                 </div>
               </div>

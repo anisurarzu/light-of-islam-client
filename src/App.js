@@ -51,7 +51,7 @@ function App() {
             <PrivateRoute path="/event">
               <Event></Event>
             </PrivateRoute>
-            <Route path="/eventDetails">
+            <Route path="/eventDetails/:eventId">
               <EventDeatils></EventDeatils>
             </Route>
             <PrivateRoute path="/takeschedule/:scholarId">

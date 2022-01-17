@@ -7,14 +7,18 @@ import "./Event.css";
 const Event = () => {
   const [event, setEvent] = useState();
   const [currentEvent, setCurrentEvent] = useState();
-  const { user } = useAuth();
-  // console.log("c-e", currentEvent?._id);
+  const [isBooked, setIsBooked] = useState(false);
+  const { user, userInfo } = useAuth();
 
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
     let currentEventId = currentEvent?._id;
+
+    let userPhotoURL = user?.photoURL || userInfo.image;
     data.eventId = currentEventId;
+    data.photoURL = userPhotoURL;
     console.log("b-data", data);
+    setIsBooked(true);
     fetch("http://localhost:5000/events/booking", {
       method: "PUT",
       headers: { "content-Type": "application/json" },
@@ -24,7 +28,9 @@ const Event = () => {
         // console.log(res);
         // alert("image uploaded done");
         // reset();
+
         reset();
+
         window.location.reload();
       })
       .catch((error) => {
@@ -80,15 +86,21 @@ const Event = () => {
                 Organized by: {event.name}
               </p>
               <div className="flex justify-start pt-2">
-                <button
-                  onClick={() => setCurrentEvent(event)}
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                  className="btn-design rounded-full text-white px-3"
-                >
-                  Booking
-                </button>
+                {!isBooked ? (
+                  <button
+                    onClick={() => setCurrentEvent(event)}
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    className="btn-design rounded-full text-white px-3"
+                  >
+                    Booking
+                  </button>
+                ) : (
+                  <button className="btn-design rounded-full text-white px-3">
+                    Booked
+                  </button>
+                )}
               </div>
             </div>
           </div>

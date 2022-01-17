@@ -9,7 +9,7 @@ import "./Service.css";
 
 const Service = () => {
   return (
-    <div>
+    <div className="service-container">
       <h1 className="text-4xl py-4">Services</h1>
       {/* card section */}
       <section>

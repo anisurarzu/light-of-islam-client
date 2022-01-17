@@ -19,6 +19,8 @@ import ScholarQuestion from "./ScholarHouse/ScholarQuestion/ScholarQuestion";
 import TakeSchedule from "./TakeSchedule/TakeSchedule";
 import CreateEvent from "./CreateEvent/CreateEvent";
 import AllEvents from "./ScholarHouse/AllEvents/AllEvents";
+import ScheduleList from "./ScheduleList/ScheduleList";
+import Schedule from "./ScholarHouse/Schedule/Schedule";
 
 // import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
@@ -29,11 +31,11 @@ const Dashboard = () => {
 
   return (
     <div className="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1  pt-8 container">
-      <div className="col-span-1  shadow-sm rounded xl:mx-4 lg:mx-4 pb-8">
+      <div className="col-span-1  shadow-sm rounded xl:mx-8 lg:mx-4 pb-8">
         <div className="grid grid-cols-1 ">
           <div className="xl:flex justify-left profile pt-2 ">
             <img
-              className="rounded-full w-16 ml-28 xl:ml-4 lg:ml-4"
+              className="rounded-full w-12 h-12 ml-28 xl:ml-4 lg:ml-4"
               src={
                 user.photoURL ||
                 userInfo?.image ||
@@ -48,7 +50,7 @@ const Dashboard = () => {
                 Scholars House
               </h3>
             ) : (
-              <h3 className="text-center pt-4 pl-2 text-xl font-bold">
+              <h3 className="text-center pt-2 pl-2 text-xl font-bold">
                 My account
               </h3>
             )}
@@ -340,7 +342,7 @@ const Dashboard = () => {
                 </li>
                 <li class="my-px">
                   <Link
-                    to={`${url}/addscholar`}
+                    to={`${url}/schedule`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                   >
                     <span class="flex items-center justify-center text-lg text-green-400">
@@ -497,6 +499,30 @@ const Dashboard = () => {
                     </span> */}
                   </Link>
                 </li>
+                <li class="my-px">
+                  <Link
+                    to={`${url}/schedulelist`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-gray-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">সময়সূচী</span>
+                    {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
+                      1k
+                    </span> */}
+                  </Link>
+                </li>
 
                 <li class="my-px">
                   <span class="flex font-medium text-sm text-gray-400 px-4 my-4 uppercase">
@@ -614,6 +640,12 @@ const Dashboard = () => {
           </Route>
           <Route path={`${path}/allevents`}>
             <AllEvents></AllEvents>
+          </Route>
+          <Route path={`${path}/schedulelist`}>
+            <ScheduleList></ScheduleList>
+          </Route>
+          <Route path={`${path}/schedule`}>
+            <Schedule></Schedule>
           </Route>
           {/* <Route path={`${path}/viewquestion/questionId`}>
             <ViewQuestion></ViewQuestion>

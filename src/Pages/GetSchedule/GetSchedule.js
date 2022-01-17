@@ -9,11 +9,11 @@ import NewForm from "./Form/NewForm";
 import dayjs from "dayjs";
 
 const GetSchedule = () => {
-  const { user } = useAuth();
+  const { user, userInfo } = useAuth();
   const [date, setDate] = useState(new Date());
   const [isFree, setIsFree] = useState(false);
   const [message, setMessage] = useState("");
-  const { register, handleSubmit, reset } = useForm();
+  const { register, reset, handleSubmit } = useForm();
   const [scholar, setScholar] = useState();
   const { scholarId } = useParams();
 
@@ -23,14 +23,16 @@ const GetSchedule = () => {
     const sDate = dayjs(date).format("DD-MM-YYYY");
     setDate(date);
 
-    console.log(scholar.bookedDates, sDate);
+    console.log("new-dates", sDate);
 
-    if (scholar.bookedDates.includes(sDate)) {
+    if (scholar?.bookedDates?.includes(sDate)) {
       setIsFree(false);
     } else {
       setIsFree(true);
     }
   };
+
+  // get scholar information
 
   useEffect(() => {
     fetch(`http://localhost:5000/users/scholar/${scholarId}`)
@@ -41,10 +43,22 @@ const GetSchedule = () => {
       });
   }, []);
 
+  //  sending schedule information
+
   const onSubmit = (data) => {
     let orderStatus = "pending";
     data.status = orderStatus;
-    fetch("", {
+    data.scholarName = scholar?.displayName;
+    data.scholarId = scholar?._id;
+    data.scholarEmail = scholar?.email;
+    data.scholarImage = scholar?.image;
+    data.userName = user?.displayName;
+    data.userEmail = user?.email;
+    data.userImage = user?.photoURL || userInfo?.image;
+    data.bookingDate = dayjs(date).format("DD-MM-YYYY");
+
+    console.log("schedule", data);
+    fetch("http://localhost:5000/schedule", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -54,8 +68,8 @@ const GetSchedule = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          setMessage("Order placed Successfully!");
           reset();
+          window.location.replace("/dashboard/schedulelist");
         }
       });
   };
@@ -249,26 +263,14 @@ const GetSchedule = () => {
                 </div> */}
                 <div className="modal-body">
                   <div className="leading-loose">
-                    <form className="max-w-xl m-4 p-10 bg-white rounded s">
+                    <form
+                      onSubmit={handleSubmit(onSubmit)}
+                      className="max-w-xl m-4 p-10 bg-white rounded s"
+                    >
                       <p className="text-gray-800 font-medium">
                         Customer information
                       </p>
-                      <div className="">
-                        <label
-                          className="block text-sm text-gray-00 text-left pb-2"
-                          for="cus_name"
-                        >
-                          Name
-                        </label>
-                        <input
-                          className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                          defaultValue={user.displayName}
-                          type="text"
-                          required=""
-                          placeholder="Your Name"
-                          aria-label="Name"
-                        />
-                      </div>
+
                       <div className="mt-2">
                         <label
                           className="block text-sm text-gray-600 text-left pb-2"
@@ -277,6 +279,10 @@ const GetSchedule = () => {
                           Phone
                         </label>
                         <input
+                          {...register("phone", {
+                            required: true,
+                            maxLength: 20,
+                          })}
                           className="w-full px-2  py-2 text-gray-700 bg-gray-200 rounded"
                           type="number"
                           required=""
@@ -292,6 +298,9 @@ const GetSchedule = () => {
                           NID
                         </label>
                         <input
+                          {...register("nid", {
+                            required: true,
+                          })}
                           className="w-full px-2  py-2 text-gray-700 bg-gray-200 rounded"
                           type="text"
                           required
@@ -307,6 +316,9 @@ const GetSchedule = () => {
                           Address
                         </label>
                         <input
+                          {...register("area", {
+                            required: true,
+                          })}
                           className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                           type="text"
                           placeholder="Area"
@@ -314,6 +326,9 @@ const GetSchedule = () => {
                       </div>
                       <div className="mt-2">
                         <input
+                          {...register("city", {
+                            required: true,
+                          })}
                           className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                           type="text"
                           required=""
@@ -323,6 +338,7 @@ const GetSchedule = () => {
                       <div className="flex">
                         <div className=" mr-2 mt-2 w-1/2 pr-1">
                           <input
+                            {...register("upazila", {})}
                             className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                             type="text"
                             required=""
@@ -331,6 +347,7 @@ const GetSchedule = () => {
                         </div>
                         <div className=" mt-2 pl-1 w-1/2">
                           <input
+                            {...register("postCode", {})}
                             className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                             type="text"
                             required=""
@@ -338,6 +355,10 @@ const GetSchedule = () => {
                           />
                         </div>
                       </div>
+                      <input
+                        type="submit"
+                        className="border service-btn mt-4 text-green-500 rounded-md px-4 py-1 m-2 transition duration-500 ease select-none hover:text-white hover:bg-green-600 focus:outline-none focus:shadow-outline"
+                      />
                     </form>
                   </div>
                 </div>
@@ -348,12 +369,6 @@ const GetSchedule = () => {
                     data-bs-dismiss="modal"
                   >
                     Close
-                  </button>
-                  <button
-                    type="button"
-                    className="border border-green-500 text-green-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-green-600 focus:outline-none focus:shadow-outline"
-                  >
-                    Submit
                   </button>
                 </div>
               </div>

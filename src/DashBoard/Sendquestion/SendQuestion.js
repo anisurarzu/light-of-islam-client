@@ -78,7 +78,7 @@ const SendQuestion = () => {
           <option value="other">other</option>
         </select>
         <input
-          className="py-2 rounded mt-4 login-registration-btn text-white"
+          className="py-2 rounded mt-4 service-btn text-white"
           type="submit"
         />
       </form>

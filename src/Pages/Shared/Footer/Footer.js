@@ -4,222 +4,50 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <div className="pt-8">
-      <footer className="footer-1  py-8 sm:py-12">
-        <div className="container mx-auto px-4">
-          <div className="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
-            <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
-              <h5 className="text-xl font-bold mb-6">Features</h5>
-              <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Cool stuff
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Random feature
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Team feature
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Stuff for developers
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Another one
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Last time
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
-              <h5 className="text-xl font-bold mb-6">Resources</h5>
-              <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Resource
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Resource name
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Another resource
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Final resource
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-              <h5 className="text-xl font-bold mb-6">About</h5>
-              <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Team
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Locations
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Privacy
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Terms
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-              <h5 className="text-xl font-bold mb-6">Help</h5>
-              <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Support
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Help Center
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="px-4 mt-4 sm:w-1/3 xl:w-1/6 sm:mx-auto xl:mt-0 xl:ml-auto">
-              <h5 className="text-xl font-bold mb-6 sm:text-center xl:text-left">
-                Stay connected
-              </h5>
-              <div className="flex sm:justify-center xl:justify-start">
-                <a
-                  href=""
-                  className="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 text-gray-600 hover:text-white hover:bg-blue-600 hover:border-blue-600"
-                >
-                  <i className="fab fa-facebook"></i>
-                </a>
-                <a
-                  href=""
-                  className="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-blue-400 hover:border-blue-400"
-                >
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a
-                  href=""
-                  className="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-red-600 hover:border-red-600"
-                >
-                  <i className="fab fa-google-plus-g"></i>
-                </a>
+      <div className="footer-container ">
+        <div className="max-w-2xl mx-auto text-white py-2">
+          <div className="text-center">
+            <h3 className="text-2xl my-3 text-white">
+              {" "}
+              Download our mobile app{" "}
+            </h3>
+            <p> Stay fit. All day, every day. </p>
+            <div className="flex justify-center my-10">
+              <div className="flex items-center border w-auto rounded-lg px-4 py-2 mx-2">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/888/888857.png"
+                  className="w-7 md:w-8"
+                />
+                <div className="text-left ml-3">
+                  <p className="text-xs text-gray-200">Download on </p>
+                  <p className="text-sm md:text-base"> Google Play Store </p>
+                </div>
+              </div>
+              <div className="flex items-center border w-auto rounded-lg px-4 py-2  mx-2">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/888/888841.png"
+                  className="w-7 md:w-8"
+                />
+                <div className="text-left ml-3">
+                  <p className="text-xs text-gray-200">Download on </p>
+                  <p className="text-sm md:text-base"> Apple Store </p>
+                </div>
               </div>
             </div>
           </div>
-
-          <div className="sm:flex sm:flex-wrap sm:-mx-4 mt-6 pt-6 sm:mt-12 sm:pt-12 border-t">
-            <div className="sm:w-full px-4 md:w-1/6">
-              <img
-                className="animate-pulse"
-                src="https://i.ibb.co/mTdNW94/logo.png"
-                alt=""
-              />
-              <p className="title ">Light OF Islam</p>
-            </div>
-            <div className="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
-              <h6 className="font-bold mb-2">Address</h6>
-              <address className="not-italic mb-4 text-sm">
-                Adi Tangail
-                <br />
-                Dhaka,Bangladesh
-              </address>
-            </div>
-            <div className="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
-              <p className="mb-4 text-sm">
-                © 2021 Light Of Islam. All rights reserved
-              </p>
-            </div>
-            <div className="px-4 md:w-1/4 md:ml-auto mt-6 sm:mt-4 md:mt-0">
-              <button className="px-4 py-2 btn-design rounded-full text-white">
-                Get Started
-              </button>
+          <div className="mt-16 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
+            <p className="order-2 md:order-1 mt-8 md:mt-0">
+              {" "}
+              &copy; Light Of Islam, 2021.{" "}
+            </p>
+            <div className="order-1 md:order-2">
+              <span className="px-2">About us</span>
+              <span className="px-2 border-l">Contact us</span>
+              <span className="px-2 border-l">Privacy Policy</span>
             </div>
           </div>
         </div>
-      </footer>
+      </div>
     </div>
   );
 };

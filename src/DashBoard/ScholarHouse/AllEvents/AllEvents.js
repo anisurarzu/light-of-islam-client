@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import "./AllEvent.css";
 import { Spin } from "antd";
 const AllEvents = () => {
   const [events, setEvents] = useState();
-  const [currentEvent, setCurrentEvent] = useState();
+
   const { user } = useAuth();
-  console.log("created events", events);
+
   let email = user?.email;
   useEffect(() => {
     fetch("http://localhost:5000/events")
@@ -58,14 +59,17 @@ const AllEvents = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit...
               </p>
               <div className="flex justify-between pt-2 px-2 text-xl">
-                <button
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                  className=" "
-                >
-                  <i class="fas fa-info-circle text-blue-500"></i>
-                </button>
+                <Link to={`/eventDetails/${event._id}`}>
+                  <button
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    className=" "
+                  >
+                    <i class="fas fa-info-circle text-yellow-500"> details</i>
+                  </button>
+                </Link>
+
                 <button
                 // onClick={() => setCurrentEvent(event)}
                 >
@@ -76,9 +80,6 @@ const AllEvents = () => {
           </div>
         ))}
       </div>
-      {/* modal start */}
-
-      {/* modal end */}
     </div>
   );
 };

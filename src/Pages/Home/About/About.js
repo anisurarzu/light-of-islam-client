@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./About.css";
 import about from "../../../images/about.png";
 
@@ -24,9 +25,11 @@ const About = () => {
             education, observation.
           </p>
           <div className="xl:flex xl:pl-12 pt-2 lg:pl-12">
-            <button className="btn-design rounded-full text-white p-2 px-2">
-              Get Schedule
-            </button>
+            <Link to="/dashboard/takeschedule">
+              <button className="btn-design rounded-full text-white p-2 px-2">
+                Get Schedule
+              </button>
+            </Link>
           </div>
         </div>
       </div>
