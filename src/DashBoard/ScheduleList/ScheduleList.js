@@ -21,9 +21,53 @@ const ScheduleList = () => {
         // console.log(event);
       });
   }, []);
+
+  // searching method
+  const handleSearch = (event) => {
+    const searchText = event.target.value;
+
+    const matchedDetails = scheduleList.filter((details) =>
+      details.scholarName.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    setScheduleList(matchedDetails);
+  };
+
   return (
     <div>
       <div class="inline-block min-w-full  rounded-lg overflow-hidden">
+        <div class=" flex items-center justify-between pb-6">
+          <div>
+            <h2 class="text-gray-600 font-semibold">
+              Schedule Booking Details
+            </h2>
+            <span class="text-xs">All Schedule List</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex bg-gray-50 items-center p-2 rounded-md">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-gray-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <input
+                onChange={handleSearch}
+                class="bg-gray-50 outline-none ml-1 block "
+                type="text"
+                name=""
+                id=""
+                placeholder="search...by user name"
+              />
+            </div>
+          </div>
+        </div>
         <table class="min-w-full leading-normal">
           <thead>
             <tr>
@@ -93,7 +137,13 @@ const ScheduleList = () => {
                   <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                     <span
                       aria-hidden
-                      class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                      className={`${
+                        schedule?.status === "Accept"
+                          ? "absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                          : schedule?.status === "Reject"
+                          ? "absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                          : "absolute inset-0 bg-yellow-200 opacity-50 rounded-full"
+                      }`}
                     ></span>
                     <span class="relative">{schedule?.status}</span>
                   </span>
@@ -110,13 +160,22 @@ const ScheduleList = () => {
                       Details
                     </button>
                   </td>
+                ) : schedule?.status === "Reject" ? (
+                  <td>
+                    <button
+                      type="button"
+                      class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-red-500 hover:bg-green-dark"
+                    >
+                      Reject.
+                    </button>
+                  </td>
                 ) : (
                   <td>
                     <button
                       type="button"
                       class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-yellow-500 hover:bg-green-dark"
                     >
-                      Wait
+                      Wait <span className="animate-pulse">...</span>
                     </button>
                   </td>
                 )}

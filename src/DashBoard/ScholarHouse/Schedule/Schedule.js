@@ -23,6 +23,18 @@ const Schedule = () => {
         // console.log(event);
       });
   }, []);
+
+  // searching method
+
+  const handleSearch = (event) => {
+    const searchText = event.target.value;
+
+    const matchedDetails = scheduleList.filter((details) =>
+      details.userName.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    setScheduleList(matchedDetails);
+  };
   // send scheduleBooking date and  change schedule status
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
@@ -30,46 +42,98 @@ const Schedule = () => {
     data.scholarId = currentSchedule?.scholarId;
     data.scheduleId = currentSchedule?._id;
     console.log("bookedDates", data);
-
-    fetch("http://localhost:5000/schedule/bookingInfo", {
-      method: "PUT",
-      headers: { "content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        // console.log(res);
-        // alert("image uploaded done");
-        // reset();
-
-        reset();
-
-        // window.location.reload();
+    if (data?.status === "Accept") {
+      fetch("http://localhost:5000/schedule/bookingInfo", {
+        method: "PUT",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(data),
       })
-      .catch((error) => {
-        // console.log(error);
-      });
-    //   send status to database
-    fetch("http://localhost:5000/schedule/bookingStatus", {
-      method: "PUT",
-      headers: { "content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        // console.log(res);
-        // alert("image uploaded done");
-        // reset();
+        .then((res) => {
+          // console.log(res);
+          // alert("image uploaded done");
+          // reset();
 
-        reset();
+          reset();
 
-        window.location.reload();
+          // window.location.reload();
+        })
+        .catch((error) => {
+          // console.log(error);
+        });
+
+      //   send status to database
+      fetch("http://localhost:5000/schedule/bookingStatus", {
+        method: "PUT",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(data),
       })
-      .catch((error) => {
-        // console.log(error);
-      });
+        .then((res) => {
+          // console.log(res);
+          // alert("image uploaded done");
+          // reset();
+
+          reset();
+
+          window.location.reload();
+        })
+        .catch((error) => {
+          // console.log(error);
+        });
+    } else {
+      fetch("http://localhost:5000/schedule/bookingStatus", {
+        method: "PUT",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((res) => {
+          // console.log(res);
+          // alert("image uploaded done");
+          // reset();
+
+          reset();
+
+          window.location.reload();
+        })
+        .catch((error) => {
+          // console.log(error);
+        });
+    }
   };
   return (
     <div>
       <div class="inline-block min-w-full  rounded-lg overflow-hidden">
+        <div class=" flex items-center justify-between pb-6">
+          <div>
+            <h2 class="text-gray-600 font-semibold">
+              Schedule Booking Details
+            </h2>
+            <span class="text-xs">All Schedule List</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex bg-gray-50 items-center p-2 rounded-md">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-gray-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <input
+                onChange={handleSearch}
+                class="bg-gray-50 outline-none ml-1 block "
+                type="text"
+                name=""
+                id=""
+                placeholder="search...by user name"
+              />
+            </div>
+          </div>
+        </div>
         <table class="min-w-full leading-normal">
           <thead>
             <tr>
@@ -140,7 +204,13 @@ const Schedule = () => {
                   <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                     <span
                       aria-hidden
-                      class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                      className={`${
+                        schedule?.status === "Accept"
+                          ? "absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                          : schedule?.status === "Reject"
+                          ? "absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                          : "absolute inset-0 bg-yellow-200 opacity-50 rounded-full"
+                      }`}
                     ></span>
                     <span class="relative">{schedule?.status}</span>
                   </span>
@@ -192,24 +262,34 @@ const Schedule = () => {
                   <p>Schedule Status: {currentSchedule?.status}</p>
                 </div>
                 <div class="">
-                  <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="flex justify-center py-4"
-                  >
-                    <input
-                      {...register("status", {
-                        required: true,
-                      })}
-                      type="text"
-                      class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                      placeholder="Status"
-                    />
+                  {currentSchedule?.status === "pending" ? (
+                    <form
+                      onSubmit={handleSubmit(onSubmit)}
+                      className="flex justify-center py-4"
+                    >
+                      {/* <input
+                        class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                        placeholder="Status"
+                      /> */}
 
-                    <input
-                      type="submit"
-                      class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-green-500 hover:bg-green-dark"
-                    />
-                  </form>
+                      <select
+                        class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                        placeholder="Status"
+                        {...register("status")}
+                      >
+                        <option value="pending">pending</option>
+                        <option value="Accept">Accept</option>
+                        <option value="Reject">Reject</option>
+                      </select>
+                      <input
+                        type="submit"
+                        class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-green-500 hover:bg-green-dark"
+                      />
+                    </form>
+                  ) : (
+                    <p>Status Submitted</p>
+                  )}
+
                   <div class=" text-center md:block">
                     <button
                       type="button"

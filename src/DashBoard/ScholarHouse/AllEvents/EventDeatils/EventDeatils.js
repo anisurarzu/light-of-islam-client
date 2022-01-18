@@ -6,7 +6,7 @@ import "./EventDetails.css";
 import axios from "axios";
 const EventDeatils = () => {
   const { eventId } = useParams();
-  const [bookingDetails, setBookingDetails] = useState();
+  const [bookingDetails, setBookingDetails] = useState([]);
   /* const [bookingStatus, setBookingStatus] = useState(); */
   const [currentDetails, setCurrentDetails] = useState();
 
@@ -52,6 +52,16 @@ const EventDeatils = () => {
       });
   }, []);
 
+  const handleSearch = (event) => {
+    const searchText = event.target.value;
+
+    const matchedDetails = bookingDetails.filter((details) =>
+      details.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    setBookingDetails(matchedDetails);
+  };
+
   return (
     <div className="eventDetailsContainer px-24">
       <div class="bg-white p-8 rounded-md w-full">
@@ -75,6 +85,7 @@ const EventDeatils = () => {
                 />
               </svg>
               <input
+                onChange={handleSearch}
                 class="bg-gray-50 outline-none ml-1 block "
                 type="text"
                 name=""

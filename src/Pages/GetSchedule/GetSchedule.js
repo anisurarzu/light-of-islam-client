@@ -290,7 +290,7 @@ const GetSchedule = () => {
                           aria-label="Email"
                         />
                       </div>
-                      <div className="mt-2">
+                      {/* <div className="mt-2">
                         <label
                           className="block text-sm text-gray-600 text-left pb-2"
                           for="cus_email"
@@ -307,7 +307,7 @@ const GetSchedule = () => {
                           placeholder="Your NID Number"
                           aria-label="Email"
                         />
-                      </div>
+                      </div> */}
                       <div className="mt-2">
                         <label
                           className=" block text-sm text-left pb-2 text-gray-600"
