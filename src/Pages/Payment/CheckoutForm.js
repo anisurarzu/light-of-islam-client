@@ -97,7 +97,7 @@ const CheckoutForm = ({ price }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          window.location.replace("dashboard/mypaymentInfo");
         })
         .catch((error) => {
           console.log(error);

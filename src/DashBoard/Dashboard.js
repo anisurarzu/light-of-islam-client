@@ -24,6 +24,8 @@ import Schedule from "./ScholarHouse/Schedule/Schedule";
 import MyEvent from "../Pages/Home/Event/MyEvent";
 import UserList from "./UserLIst/UserList";
 import UserNormal from "./UserLIst/UserNormal";
+import PaymentInfo from "./PaymentInfo/PaymentInfo";
+import MyPayment from "./PaymentInfo/MyPayment";
 
 // import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
@@ -91,7 +93,7 @@ const Dashboard = () => {
                   </Link>
                 </li>
 
-                <li class="my-px">
+                {/* <li class="my-px">
                   <a
                     href="/"
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
@@ -111,8 +113,8 @@ const Dashboard = () => {
                     </span>
                     <span class="ml-3">প্রশ্নগুলি দেখুন</span>
                   </a>
-                </li>
-                <li class="my-px">
+                </li> */}
+                {/* <li class="my-px">
                   <Link
                     to={`${url}/answer`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
@@ -132,7 +134,7 @@ const Dashboard = () => {
                     </span>
                     <span class="ml-3">উত্তরগুলি দেখুন</span>
                   </Link>
-                </li>
+                </li> */}
                 <li class="my-px">
                   <Link
                     to={`${url}/userlist`}
@@ -221,6 +223,27 @@ const Dashboard = () => {
                       </svg>
                     </span>
                     <span class="ml-3">স্কলার সংযুক্ত করুন</span>
+                  </Link>
+                </li>
+                <li class="my-px">
+                  <Link
+                    to={`${url}/paymentinfo`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-green-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">পেমেন্ট তথ্য</span>
                   </Link>
                 </li>
                 <li class="my-px">
@@ -576,6 +599,30 @@ const Dashboard = () => {
                     </span> */}
                   </Link>
                 </li>
+                <li class="my-px">
+                  <Link
+                    to={`${url}/mypaymentInfo`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-gray-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">পেমেন্ট তথ্য</span>
+                    {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
+                      1k
+                    </span> */}
+                  </Link>
+                </li>
 
                 <li class="my-px">
                   <span class="flex font-medium text-sm text-gray-400 px-4 my-4 uppercase">
@@ -723,6 +770,12 @@ const Dashboard = () => {
           </Route>
           <Route path={`${path}/scholarlist`}>
             <UserNormal></UserNormal>
+          </Route>
+          <Route path={`${path}/paymentInfo`}>
+            <PaymentInfo></PaymentInfo>
+          </Route>
+          <Route path={`${path}/mypaymentInfo`}>
+            <MyPayment></MyPayment>
           </Route>
           <Route path={`${path}/manageProducts`}></Route>
           <Route path={`${path}/reviews`}></Route>
