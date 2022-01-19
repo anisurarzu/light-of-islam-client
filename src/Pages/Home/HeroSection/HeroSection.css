@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&family=Rajdhani&display=swap");
 .hero-container {
   background: #ecfbf9;
+}
+.bangla-text {
+  font-family: "Hind Siliguri", sans-serif !important;
 }
 .hero-container h2 {
   color: #062265;

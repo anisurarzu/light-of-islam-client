@@ -7,21 +7,21 @@ const HeroSection = () => {
     <div className="hero-container ">
       <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 gap-4 ">
         <div className="py-12 first-width pt-28">
-          <button className="p-2 animate-pulse xl:mr-96 lg:mr-96 xl:ml-12 lg:ml-12 btn-text px-4 bg-white rounded-full">
-            Let’s Know Islam
+          <button className="p-2 bangla-text animate-pulse xl:mr-96 lg:mr-96 xl:ml-12 lg:ml-12 btn-text px-4 bg-white rounded-full">
+            ইসলামকে জানুন
           </button>
           <div className="p-text xl:py-16 lg:py-16 py-8">
             <h2 className=" text-left pl-6 text-2xl xl:text-5xl lg:text-5xl font-bold xl:pl-20 lg:pl-20">
               Read! In the Name of Almighty Allah, Who has created
             </h2>
-            <p className="text-xl px-6 xl:px-20 lg:px-20 py-4 text-left">
-              We are the best Educational Organization.Let’s know about Islam
-              And the holy Quran!
+            <p className="text-xl bangla-text px-6 xl:px-20 lg:px-20 py-4 text-left">
+              আমরা দিচ্ছি কোরান এবং সহীহ্ হাদিস শিহ্মার নিশ্চয়তা। আসুন সঠিক
+              ইসলাম সম্পর্কে জেনে নেই।
             </p>
             <div className="xl:flex xl:pl-20 pt-2 lg:pl-20">
               <Link to="/dashboard/sendquestions">
-                <button className="btn-design   p-2 text-white rounded-full px-4">
-                  Ask Question?
+                <button className="btn-design bangla-text  p-2 text-white rounded-full px-4">
+                  প্রশ্ন করুন?
                 </button>
               </Link>
             </div>

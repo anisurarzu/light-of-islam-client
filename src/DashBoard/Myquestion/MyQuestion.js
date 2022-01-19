@@ -21,7 +21,9 @@ const MyQuestion = () => {
   }, []);
 
   const handleDeleteQuestion = (id) => {
-    const check = window.confirm("Are you sure,you want to cancel this order?");
+    const check = window.confirm(
+      "Are you sure,you want to delete this question?"
+    );
 
     if (check) {
       const url = `http://localhost:5000/questions/${id}`;

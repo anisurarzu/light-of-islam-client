@@ -6,17 +6,24 @@ import "./Event.css";
 
 const Event = () => {
   const [event, setEvent] = useState();
+  const [message, setMessage] = useState("");
   const [currentEvent, setCurrentEvent] = useState();
   const [isBooked, setIsBooked] = useState(false);
   const { user, userInfo } = useAuth();
+  // console.log("ce", currentEvent);
 
+  console.log(user);
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
     let currentEventId = currentEvent?._id;
 
     let userPhotoURL = user?.photoURL || userInfo.image;
     data.eventId = currentEventId;
+    data.name = user?.displayName;
+    data.email = user?.email;
     data.photoURL = userPhotoURL;
+    data.eventName = currentEvent?.title;
+    data.eventTime = currentEvent?.time;
     console.log("b-data", data);
     setIsBooked(true);
     fetch("http://localhost:5000/events/booking", {
@@ -30,6 +37,7 @@ const Event = () => {
         // reset();
 
         reset();
+        setMessage("Event Booked successfully");
 
         window.location.reload();
       })
@@ -132,72 +140,6 @@ const Event = () => {
                   <p className="text-gray-800 font-medium">
                     Booking Information
                   </p>
-                  <div className="">
-                    <label
-                      className="block text-sm text-gray-00 text-left pb-2"
-                      for="cus_name"
-                    >
-                      Event Name
-                    </label>
-                    <input
-                      className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      defaultValue={currentEvent?.title}
-                      type="text"
-                      required=""
-                      placeholder="Event Name"
-                      aria-label="Event Name"
-                      {...register("eventName")}
-                    />
-                  </div>
-                  <div className="">
-                    <label
-                      className="block text-sm text-gray-00 text-left pb-2"
-                      for="cus_name"
-                    >
-                      Event Id
-                    </label>
-                    <input
-                      className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      defaultValue={currentEvent?._id}
-                      type="text"
-                      aria-label="eventId"
-                      {...register("eventId")}
-                    />
-                  </div>
-                  <div className="">
-                    <label
-                      className="block text-sm text-gray-00 text-left pb-2"
-                      for="cus_name"
-                    >
-                      Name
-                    </label>
-                    <input
-                      className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      defaultValue={user?.displayName}
-                      type="text"
-                      required=""
-                      placeholder="Your Name"
-                      aria-label="Name"
-                      {...register("name")}
-                    />
-                  </div>
-                  <div className="mt-2">
-                    <label
-                      className="block text-sm text-gray-600 text-left pb-2"
-                      for="cus_email"
-                    >
-                      Email
-                    </label>
-                    <input
-                      className="w-full px-2  py-2 text-gray-700 bg-gray-200 rounded"
-                      type="email"
-                      required=""
-                      placeholder="Your Email"
-                      aria-label="Email"
-                      defaultValue={user?.email}
-                      {...register("email")}
-                    />
-                  </div>
 
                   <div className="mt-2">
                     <label
@@ -248,6 +190,7 @@ const Event = () => {
                   />
                 </form>
               </div>
+              <p className="text-green-400 text-xl">{message}!</p>
             </div>
             <div className="modal-footer">
               <button

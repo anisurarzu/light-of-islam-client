@@ -1,69 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
-import "./EventDetails.css";
-import axios from "axios";
-const EventDeatils = () => {
-  const { eventId } = useParams();
-  const [bookingDetails, setBookingDetails] = useState([]);
+const UserNormal = () => {
+  const { scholars } = useAuth();
+  const [bookingDates, setBookingDates] = useState();
 
-  const [currentDetails, setCurrentDetails] = useState();
-
-  console.log("c-d", bookingDetails);
-
-  //  sending accept status to db
-  const { register, reset, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    let userEmail = currentDetails?.email;
-    let currentEventId = eventId;
-    data.email = userEmail;
-    data.eventId = currentEventId;
-    data.eventName = currentDetails?.eventName;
-    data.eveTime = currentDetails?.eventTime;
-    // console.log("details-booking", data);
-    axios.post("http://localhost:5000/bookingStatus", data).then((res) => {
-      if (res.data.insertedId) {
-        // setMessage("Your event created SuccessFully!");
-        reset();
-
-        window.location.replace("/dashboard/eventDetails");
-      }
-    });
-  };
-  //
-
-  // getting booking data form db
-  useEffect(() => {
-    fetch(`http://localhost:5000/event/${eventId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data, "single");
-        setBookingDetails(data.booking);
-      });
-  }, []);
+  console.log(bookingDates);
+  /*  const [scholarList, setScholarList] = useState();
+  setScholarList(scholar);
 
   const handleSearch = (event) => {
     const searchText = event.target.value;
 
-    const matchedDetails = bookingDetails.filter((details) =>
+    const matchedDetails = scholar.filter((details) =>
       details.name.toLowerCase().includes(searchText.toLowerCase())
     );
 
-    setBookingDetails(matchedDetails);
-  };
-
+    setScholarList(matchedDetails);
+  }; */
   return (
-    <div className="eventDetailsContainer px-24">
+    <div className="eventDetailsContainer px-8">
       <div class="bg-white p-8 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
           <div>
-            <h2 class="text-gray-600 font-semibold">Event Booking Details</h2>
-            <span class="text-xs">All Booking Users</span>
+            <h2 class="text-gray-600 font-semibold">Scholar Details</h2>
+            <span class="text-xs">All Registered Scholars</span>
           </div>
           <div class="flex items-center justify-between">
             <div class="flex bg-gray-50 items-center p-2 rounded-md">
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-gray-400"
                 viewBox="0 0 20 20"
@@ -74,20 +40,22 @@ const EventDeatils = () => {
                   d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                   clip-rule="evenodd"
                 />
-              </svg>
-              <input
-                onChange={handleSearch}
+              </svg> */}
+              {/* <input
+                  onChange={handleSearch}
                 class="bg-gray-50 outline-none ml-1 block "
                 type="text"
                 name=""
                 id=""
                 placeholder="search..."
-              />
+              /> */}
             </div>
             <div class="lg:ml-40 ml-10 space-x-8">
-              <button class="service-btn px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
-                Create
-              </button>
+              <Link to="/dashboard/addscholar">
+                <button class="service-btn px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
+                  Create
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -104,19 +72,16 @@ const EventDeatils = () => {
                       Email
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      Form
+                      Scholar ID
                     </th>
 
                     <th class=" py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      Status
-                    </th>
-                    <th class=" py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      Zoom/Meet Link
+                      Booking Dates
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {bookingDetails?.map((details) => (
+                  {scholars?.map((scholar) => (
                     <tr>
                       <td class="px-5  border-b border-gray-200 bg-white text-sm">
                         <div class="flex items-center">
@@ -124,7 +89,7 @@ const EventDeatils = () => {
                             <img
                               class="w-full h-full rounded-full"
                               src={
-                                details?.photoURL ||
+                                scholar?.image ||
                                 "https://i.ibb.co/PFkN0mF/user.png"
                               }
                               alt=""
@@ -132,40 +97,35 @@ const EventDeatils = () => {
                           </div>
                           <div class="ml-3">
                             <p class="text-gray-900 whitespace-no-wrap pt-3 justify-center">
-                              {details?.name}
+                              {scholar?.displayName}
                             </p>
                           </div>
                         </div>
                       </td>
                       <td class="pt-3 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                          {details?.email}
+                          {scholar?.email}
                         </p>
                       </td>
-                      <td class="pt-3 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">
-                          {details?.city}
-                        </p>
-                      </td>
-
                       <td class="  border-b border-gray-200 bg-white text-sm">
                         <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                           <span
                             aria-hidden
                             class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                           ></span>
-                          <span class="relative">Active</span>
+                          <span class="relative">{scholar?._id}</span>
                         </span>
                       </td>
+
                       <td className="border-b border-gray-200">
                         <button
-                          onClick={() => setCurrentDetails(details)}
+                          onClick={() => setBookingDates(scholar)}
                           type="button"
                           data-bs-toggle="modal"
                           data-bs-target="#exampleModal"
                           class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-green-500 hover:bg-green-dark"
                         >
-                          Accept
+                          Dates
                         </button>
                       </td>
                     </tr>
@@ -173,6 +133,7 @@ const EventDeatils = () => {
                 </tbody>
               </table>
             </div>
+
             {/* modal start */}
             {/* modal */}
             <div
@@ -187,39 +148,39 @@ const EventDeatils = () => {
                   <div>
                     <div class="absolute bg-white rounded opacity-80 inset-0 z-0"></div>
                     <div class="w-full   max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
+                      <div class="flex items-center">
+                        <div class=" w-10 h-10">
+                          <img
+                            class="w-full h-full rounded-full"
+                            src={
+                              bookingDates?.image ||
+                              "https://i.ibb.co/PFkN0mF/user.png"
+                            }
+                            alt=""
+                          />
+                        </div>
+                        <div class="ml-3">
+                          <p class="text-gray-900 whitespace-no-wrap pt-3 justify-center">
+                            {bookingDates?.displayName}
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <h2 className="bangla-text py-2">শিডিউল তারিখ সমূহ</h2>
+                        {bookingDates?.bookedDates?.map((date) => (
+                          <ul>
+                            <ol className=" bg-green-200 mx-32 rounded-full">
+                              {date}
+                            </ol>
+                          </ul>
+                        ))}
+                      </div>
                       <div class="">
-                        <form
-                          className="flex justify-center py-4"
-                          onSubmit={handleSubmit(onSubmit)}
-                        >
-                          {/*   <input
-                            {...register("eventJoiningLink")}
-                            class="bg-gray-50 rounded py-1 px-2 outline-none ml-1 block "
-                            type="text"
-                            name="joinLink"
-                            id=""
-                            placeholder="meet/zoom link..."
-                            required
-                          /> */}
-                          <input
-                            {...register("eventLink", {
-                              required: true,
-                            })}
-                            type="text"
-                            class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                            placeholder="Enter Meet Link"
-                          />
-
-                          <input
-                            type="submit"
-                            class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-green-500 hover:bg-green-dark"
-                          />
-                        </form>
                         <div class=" text-center md:block">
                           <button
                             type="button"
                             data-bs-dismiss="modal"
-                            className="mb-2 md:mb-0 bg-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-red-500"
+                            className="service-btn px-4 py-2"
                           >
                             Cancel
                           </button>
@@ -232,7 +193,7 @@ const EventDeatils = () => {
             </div>
             {/* Modal end */}
             <div className="py-4 flex align-items-baseline">
-              <Link to="/dashboard/allevents">
+              <Link to="/dashboard">
                 <button
                   type="button"
                   className="border service-btn rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline"
@@ -249,4 +210,4 @@ const EventDeatils = () => {
   );
 };
 
-export default EventDeatils;
+export default UserNormal;

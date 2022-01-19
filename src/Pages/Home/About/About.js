@@ -17,17 +17,15 @@ const About = () => {
           <h2 className="text-left pl-6 text-2xl xl:text-5xl lg:text-5xl font-bold xl:pl-12 lg:pl-12">
             Seeking of knowledge is a duty of every Muslim
           </h2>
-          <p className="text-xl pl-6 xl:pl-12 lg:pl-12 py-4 text-left">
-            The rise of Muslims to the zenith of civilization in a period of
-            four decades was based on lslam's emphasis on learning. This is
-            obvious when one takes a look at the Qur'an and the traditions of
-            Prophet Muhammad which are filled with references to learning,
-            education, observation.
+          <p className="text-xl bangla-text pl-6 xl:pl-12 lg:pl-12 py-4 text-left">
+            চার দশকের ব্যবধানে সভ্যতার শীর্ষে মুসলমানদের উত্থান ইসলামের শিক্ষার
+            উপর জোর দেওয়ার উপর ভিত্তি করে। এটি সুস্পষ্ট হয় যখন কেউ কুরআন এবং
+            নবী মুহাম্মদের (সঃ) ঐতিহ্যের দিকে নজর দেয়।
           </p>
           <div className="xl:flex xl:pl-12 pt-2 lg:pl-12">
             <Link to="/dashboard/takeschedule">
-              <button className="btn-design rounded-full text-white p-2 px-2">
-                Get Schedule
+              <button className="btn-design bangla-text rounded-full text-white p-2 px-4">
+                শিডিউল নিন
               </button>
             </Link>
           </div>

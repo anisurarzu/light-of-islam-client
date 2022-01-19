@@ -15,10 +15,10 @@ const TopHeader = () => {
             <i class="far fa-envelope pr-2"></i>lightofislam@gmail.com
           </p>
         </div>
-        <div>
+        <div className="mt-1">
           <Link to="/donation">
-            <button className="btn-donate text-white px-2 rounded-xl">
-              <i class="fas fa-donate pr-2"></i>Donate Now
+            <button className="btn-donate text-white px-4 pt-1 rounded-xl">
+              <i class="fas fa-donate pr-2"></i>দান করুন
             </button>
           </Link>
         </div>

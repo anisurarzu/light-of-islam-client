@@ -14,7 +14,7 @@ const Header = () => {
           </Link>
         </div>
         <Link to="/home">
-          <p className="title ">Light OF Islam</p>
+          <p className="title ">লাইট অফ ইসলাম</p>
         </Link>
         <button
           class="navbar-toggler"
@@ -28,15 +28,15 @@ const Header = () => {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 bangla-text">
             <li class="nav-item">
               <Link class="nav-link active " aria-current="page" to="/home">
-                Home
+                হোম
               </Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" to="/about">
-                About
+                আমাদের সম্পর্কে
               </Link>
             </li>
 
@@ -47,7 +47,7 @@ const Header = () => {
                 tabindex="-1"
                 aria-disabled="true"
               >
-                Dashboard
+                ড্যাশবোর্ড
               </Link>
             </li>
             <li class="nav-item">
@@ -57,7 +57,7 @@ const Header = () => {
                 tabindex="-1"
                 aria-disabled="true"
               >
-                Event
+                ইভেন্ট
               </Link>
             </li>
             <li class="nav-item">
@@ -67,7 +67,7 @@ const Header = () => {
                 tabindex="-1"
                 aria-disabled="true"
               >
-                Service
+                সেবা সমূহ
               </Link>
             </li>
             <li class="nav-item">
@@ -77,12 +77,12 @@ const Header = () => {
                 tabindex="-1"
                 aria-disabled="true"
               >
-                Contact
+                যোগাযোগ
               </Link>
             </li>
           </ul>
           {user?.email && (
-            <span className="user-details pl-8 text-gray-800">
+            <span className="user-details pl-8 text-gray-600">
               {user?.displayName}
             </span>
           )}
@@ -116,11 +116,6 @@ const Header = () => {
                     Dashboard
                   </Link>
                 </li>
-                <li>
-                  <Link class="dropdown-item form-text" to="#">
-                    Your Answers
-                  </Link>
-                </li>
               </ul>
             </div>
           )}
@@ -130,15 +125,15 @@ const Header = () => {
           <div>
             {user?.email ? (
               <button
-                className="ml-8 text-sm pb-2 btn-donate text-white rounded-full  p-2 "
+                className="ml-8 text-sm pb-2 btn-donate text-white rounded-full  px-4 p-2 "
                 onClick={logOut}
               >
-                Log out
+                লগ আউট
               </button>
             ) : (
               <Link to="/login">
-                <span className=" text-sm btn-donate text-white rounded-full  p-2 px-2">
-                  Login
+                <span className=" text-sm btn-donate text-white rounded-full  p-2 px-4">
+                  লগ ইন
                 </span>
               </Link>
             )}

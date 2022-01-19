@@ -11,7 +11,7 @@ const TakeSchedule = () => {
     <div className="scholar-container">
       <h3 className="text-xl ">Our Expert </h3>
       <h2 className="text-2xl pb-4">Islamic Scholars</h2>
-      <p className="my-4 pb-8 px-4 ">
+      <p className="my-4 pb-8 bangla-text px-4 ">
         "আলহামদুলিল্লাহ!! দেশের শ্রেষ্ঠ আলেমসমাজ এখন আমাদের প্ল্যাটফর্ম এ একসাথে
         !!" আপনারা যারা ইসলামিক কনফারেন্স বা ওয়াজ-মাহফিল এর জন্য আলেমদের শিডিউল
         নিতে চান তারা "Take Schedule" বাটনটি চাপুন এবং আপনার শিডিউল এর জন্য
@@ -38,7 +38,7 @@ const TakeSchedule = () => {
                 {scholar.displayName}
               </h4>
 
-              <p className="text-gray-600 px-8 text-sm py-3">
+              <p className="text-gray-600 bangla-text px-8 text-sm py-3">
                 আমারা দিচ্ছি শতভাগ কুরান এবং সহীহ্ হাদিস দিয়ে দাওয়াহ পরিচালনার
                 প্রতিশ্রুতি।
               </p>

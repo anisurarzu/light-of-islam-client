@@ -5,6 +5,7 @@ import "./AllEvent.css";
 import { Spin } from "antd";
 const AllEvents = () => {
   const [events, setEvents] = useState();
+  const [message, setMessage] = useState("");
 
   const { user } = useAuth();
 
@@ -19,6 +20,26 @@ const AllEvents = () => {
         // console.log(event);
       });
   }, []);
+
+  // delete an event
+  const handleDeleteEvent = (id) => {
+    const check = window.confirm("Are you sure,you want to delete this event?");
+
+    if (check) {
+      const url = `http://localhost:5000/event/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.deletedCount > 0) {
+            const restEvent = events.filter((event) => event._id !== id);
+            setEvents(restEvent);
+            setMessage("Your question deleted Successfully!");
+          }
+        });
+    }
+  };
   return (
     <div className="event-container pt-12">
       <h2 className="text-xl xl:text-2xl lg:text-2xl ">My Events</h2>
@@ -66,13 +87,10 @@ const AllEvents = () => {
                     data-bs-target="#staticBackdrop"
                     className=" "
                   >
-                    <i class="fas fa-info-circle text-yellow-500"> details</i>
+                    <i class="fas fa-info-circle "></i>
                   </button>
                 </Link>
-
-                <button
-                // onClick={() => setCurrentEvent(event)}
-                >
+                <button onClick={() => handleDeleteEvent(event._id)}>
                   <i class="fas fa-trash-alt text-red-600"></i>
                 </button>
               </div>

@@ -1,22 +1,14 @@
 [
   {
     "id": 1,
-    "name": "Learn About Hajj",
-    "img": "https://i.ibb.co/BCKPvvW/img-1-a762be6c.jpg",
-    "time": "8.00-9.00",
-    "location": "Bangladesh",
-    "platform": "Zoom",
-    "day": "25",
-    "month": "JAN"
+    "islaimcFoundationId": "ifb1234"
   },
   {
     "id": 2,
-    "name": "Islamic Teaching Event",
-    "img": "https://i.ibb.co/zngzn7n/img-2-10d1a624.jpg",
-    "time": "4.00-5.00",
-    "location": "Bangladesh",
-    "platform": "Google Meet",
-    "day": "12",
-    "month": "FEB"
+    "islaimcFoundationId": "ifb12345"
+  },
+  {
+    "id": 3,
+    "islaimcFoundationId": "ifb123456"
   }
 ]

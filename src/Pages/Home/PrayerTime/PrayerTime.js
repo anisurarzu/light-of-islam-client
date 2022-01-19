@@ -40,9 +40,9 @@ const PrayerTime = () => {
             Today’s Prayer Times
           </h2>
 
-          <h4 className="pl-4 text-2xl text-left xl:pl-32 lg:pl-32 pt-4 text-gray-500">
-            “O you who have believed, seek help through patience and prayer.
-            Indeed, Allah is with the patient.” (2:153)
+          <h4 className="pl-4 bangla-text text-2xl text-left xl:pl-32 lg:pl-32 pt-4 text-gray-500">
+            “হে ঈমানদারগণ, ধৈর্য ও সালাতের মাধ্যমে সাহায্য প্রার্থনা কর।
+            নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।" (2:153)
           </h4>
           <form className="px-2 pt-12" onSubmit={handleSubmit(onSubmit)}>
             <input

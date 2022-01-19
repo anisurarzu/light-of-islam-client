@@ -21,6 +21,9 @@ import CreateEvent from "./CreateEvent/CreateEvent";
 import AllEvents from "./ScholarHouse/AllEvents/AllEvents";
 import ScheduleList from "./ScheduleList/ScheduleList";
 import Schedule from "./ScholarHouse/Schedule/Schedule";
+import MyEvent from "../Pages/Home/Event/MyEvent";
+import UserList from "./UserLIst/UserList";
+import UserNormal from "./UserLIst/UserNormal";
 
 // import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
@@ -33,7 +36,7 @@ const Dashboard = () => {
     <div className="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1  pt-8 container">
       <div className="col-span-1  shadow-sm rounded xl:mx-8 lg:mx-4 pb-8">
         <div className="grid grid-cols-1 ">
-          <div className="xl:flex justify-left profile pt-2 ">
+          <div className="xl:flex justify-left bangla-text profile pt-2 ">
             <img
               className="rounded-full w-12 h-12 ml-28 xl:ml-4 lg:ml-4"
               src={
@@ -44,14 +47,16 @@ const Dashboard = () => {
               alt=""
             />
             {admin ? (
-              <h3 className="text-center pt-4 pl-2 text-xl font-bold">Admin</h3>
+              <h3 className="text-center pt-4 pl-2 text-xl font-bold">
+                এডমিন প্যানেল
+              </h3>
             ) : userInfo?.role === "scholar" ? (
               <h3 className="text-center pt-4 pl-2 text-xl font-bold">
-                Scholars House
+                স্কলার হাউজ
               </h3>
             ) : (
               <h3 className="text-center pt-2 pl-2 text-xl font-bold">
-                My account
+                আমার একাউন্ট
               </h3>
             )}
           </div>
@@ -60,7 +65,7 @@ const Dashboard = () => {
         {userInfo?.role === "admin" ? (
           <div class=" flex items-center justify-center  ">
             <div class="flex w-full max-w-xs p-4 bg-white">
-              <ul class="flex flex-col w-full">
+              <ul class="flex flex-col w-full bangla-text">
                 <li class="">
                   <Link
                     to={`${url}/dashboard`}
@@ -79,7 +84,7 @@ const Dashboard = () => {
                         <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Dashboard</span>
+                    <span class="ml-3">ড্যাশবোর্ড</span>
                     <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
                       3
                     </span>
@@ -129,8 +134,8 @@ const Dashboard = () => {
                   </Link>
                 </li>
                 <li class="my-px">
-                  <a
-                    href="/users"
+                  <Link
+                    to={`${url}/userlist`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                   >
                     <span class="flex items-center justify-center text-lg text-gray-400">
@@ -150,7 +155,31 @@ const Dashboard = () => {
                     {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
                       1k
                     </span> */}
-                  </a>
+                  </Link>
+                </li>
+                <li class="my-px">
+                  <Link
+                    to={`${url}/scholarlist`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-gray-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">স্কলার তালিকা</span>
+                    {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
+                      1k
+                    </span> */}
+                  </Link>
                 </li>
                 <li class="my-px">
                   <Link
@@ -191,7 +220,7 @@ const Dashboard = () => {
                         <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Add Scholar</span>
+                    <span class="ml-3">স্কলার সংযুক্ত করুন</span>
                   </Link>
                 </li>
                 <li class="my-px">
@@ -250,7 +279,7 @@ const Dashboard = () => {
         ) : userInfo?.role === "scholar" ? (
           <div class=" flex items-center justify-center scholar ">
             <div class="flex w-full max-w-xs p-4 ">
-              <ul class="flex flex-col w-full">
+              <ul class="flex flex-col bangla-text w-full">
                 <li class="">
                   <Link
                     to={`${url}/dashboard`}
@@ -269,7 +298,7 @@ const Dashboard = () => {
                         <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Dashboard</span>
+                    <span class="ml-3">ড্যাশবোর্ড</span>
                     <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
                       3
                     </span>
@@ -407,7 +436,7 @@ const Dashboard = () => {
         ) : (
           <div class=" flex items-center justify-center  py-6">
             <div class="flex w-full max-w-xs p-4 bg-white">
-              <ul class="flex flex-col w-full">
+              <ul class="flex flex-col bangla-text w-full">
                 <li class="my-px">
                   <Link
                     to={`${url}/dashboard`}
@@ -426,7 +455,7 @@ const Dashboard = () => {
                         <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                       </svg>
                     </span>
-                    <span class="ml-3">Dashboard</span>
+                    <span class="ml-3">ড্যাশবোর্ড</span>
                     <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
                       3
                     </span>
@@ -518,6 +547,30 @@ const Dashboard = () => {
                       </svg>
                     </span>
                     <span class="ml-3">সময়সূচী</span>
+                    {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
+                      1k
+                    </span> */}
+                  </Link>
+                </li>
+                <li class="my-px">
+                  <Link
+                    to={`${url}/myeventlist`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-gray-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">ইভেন্ট</span>
                     {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
                       1k
                     </span> */}
@@ -641,6 +694,9 @@ const Dashboard = () => {
           <Route path={`${path}/allevents`}>
             <AllEvents></AllEvents>
           </Route>
+          <Route path={`${path}/myeventlist`}>
+            <MyEvent></MyEvent>
+          </Route>
           <Route path={`${path}/schedulelist`}>
             <ScheduleList></ScheduleList>
           </Route>
@@ -661,6 +717,12 @@ const Dashboard = () => {
           </Route>
           <Route path={`${path}/addscholar`}>
             <AddScholar></AddScholar>
+          </Route>
+          <Route path={`${path}/userlist`}>
+            <UserList></UserList>
+          </Route>
+          <Route path={`${path}/scholarlist`}>
+            <UserNormal></UserNormal>
           </Route>
           <Route path={`${path}/manageProducts`}></Route>
           <Route path={`${path}/reviews`}></Route>
