@@ -12,7 +12,9 @@ const ViewQuestion = () => {
   // console.log("orderid", orderId);
   console.log(questionId);
   useEffect(() => {
-    fetch(`http://localhost:5000/questions/${questionId}`)
+    fetch(
+      `https://limitless-lowlands-32082.herokuapp.com/questions/${questionId}`
+    )
       .then((res) => res.json())
       .then((data) => setQuestion(data));
   }, []);

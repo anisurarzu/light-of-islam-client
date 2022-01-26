@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 import Header from "./Pages/Shared/Header/Header";
 import TopHeader from "./Pages/Shared/ToHeader/TopHeader";
 import Home from "./Pages/Home/Home/Home";
@@ -73,6 +74,7 @@ function App() {
           <Footer></Footer>
         </Router>
       </AuthProvider>
+      <MessengerCustomerChat pageId="259964438007932" appId="339672741151658" />
     </div>
   );
 }

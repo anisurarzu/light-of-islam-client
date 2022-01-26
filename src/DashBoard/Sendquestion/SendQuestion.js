@@ -12,13 +12,15 @@ const SendQuestion = () => {
   const onSubmit = (data) => {
     console.log(data, "form");
     setMessage("");
-    axios.post("http://localhost:5000/questions", data).then((res) => {
-      if (res.data.insertedId) {
-        setMessage("Your question submitted SuccessFully!");
-        reset();
-        window.location.replace("/dashboard/myquestions");
-      }
-    });
+    axios
+      .post("https://limitless-lowlands-32082.herokuapp.com/questions", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          setMessage("Your question submitted SuccessFully!");
+          reset();
+          window.location.replace("/dashboard/myquestions");
+        }
+      });
   };
   const { user } = useAuth();
   return (

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Spin } from "antd";
 import "./Schedule.css";
 
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 
 const Schedule = () => {
@@ -14,7 +14,7 @@ const Schedule = () => {
   //   console.log("scheduleCurrent", currentSchedule);
   let email = user?.email;
   useEffect(() => {
-    fetch("http://localhost:5000/schedule")
+    fetch("https://limitless-lowlands-32082.herokuapp.com/schedule")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
@@ -43,11 +43,14 @@ const Schedule = () => {
     data.scheduleId = currentSchedule?._id;
     console.log("bookedDates", data);
     if (data?.status === "Accept") {
-      fetch("http://localhost:5000/schedule/bookingInfo", {
-        method: "PUT",
-        headers: { "content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
+      fetch(
+        "https://limitless-lowlands-32082.herokuapp.com/schedule/bookingInfo",
+        {
+          method: "PUT",
+          headers: { "content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }
+      )
         .then((res) => {
           // console.log(res);
           // alert("image uploaded done");
@@ -62,11 +65,14 @@ const Schedule = () => {
         });
 
       //   send status to database
-      fetch("http://localhost:5000/schedule/bookingStatus", {
-        method: "PUT",
-        headers: { "content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
+      fetch(
+        "https://limitless-lowlands-32082.herokuapp.com/schedule/bookingStatus",
+        {
+          method: "PUT",
+          headers: { "content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }
+      )
         .then((res) => {
           // console.log(res);
           // alert("image uploaded done");
@@ -80,11 +86,14 @@ const Schedule = () => {
           // console.log(error);
         });
     } else {
-      fetch("http://localhost:5000/schedule/bookingStatus", {
-        method: "PUT",
-        headers: { "content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
+      fetch(
+        "https://limitless-lowlands-32082.herokuapp.com/schedule/bookingStatus",
+        {
+          method: "PUT",
+          headers: { "content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }
+      )
         .then((res) => {
           // console.log(res);
           // alert("image uploaded done");

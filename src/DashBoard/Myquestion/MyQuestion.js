@@ -11,7 +11,7 @@ const MyQuestion = () => {
   const { user } = useAuth();
   let email = user?.email;
   useEffect(() => {
-    fetch("http://localhost:5000/questions")
+    fetch("https://limitless-lowlands-32082.herokuapp.com/questions")
       .then((res) => res.json())
       .then((data) => {
         const question = data.filter((data) => data.email === email);
@@ -26,7 +26,7 @@ const MyQuestion = () => {
     );
 
     if (check) {
-      const url = `http://localhost:5000/questions/${id}`;
+      const url = `https://limitless-lowlands-32082.herokuapp.com/questions/${id}`;
       fetch(url, {
         method: "DELETE",
       })

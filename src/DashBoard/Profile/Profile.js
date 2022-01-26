@@ -15,11 +15,14 @@ const Profile = () => {
       image: imageURL,
     };
     console.log({ userInfo });
-    fetch("http://localhost:5000/users/profile/image", {
-      method: "PUT",
-      headers: { "content-Type": "application/json" },
-      body: JSON.stringify(userInfo),
-    })
+    fetch(
+      "https://limitless-lowlands-32082.herokuapp.com/users/profile/image",
+      {
+        method: "PUT",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(userInfo),
+      }
+    )
       .then((res) => {
         console.log(res);
         // alert("image uploaded done");

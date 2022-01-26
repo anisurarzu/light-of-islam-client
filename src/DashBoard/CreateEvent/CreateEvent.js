@@ -9,13 +9,15 @@ const CreateEvent = () => {
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:5000/events", data).then((res) => {
-      if (res.data.insertedId) {
-        setMessage("Your event created SuccessFully!");
-        reset();
-        window.location.replace("/dashboard/allevents");
-      }
-    });
+    axios
+      .post("https://limitless-lowlands-32082.herokuapp.com/events", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          setMessage("Your event created SuccessFully!");
+          reset();
+          window.location.replace("/dashboard/allevents");
+        }
+      });
   };
 
   return (

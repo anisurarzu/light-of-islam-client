@@ -11,7 +11,7 @@ const AllEvents = () => {
 
   let email = user?.email;
   useEffect(() => {
-    fetch("http://localhost:5000/events")
+    fetch("https://limitless-lowlands-32082.herokuapp.com/events")
       .then((res) => res.json())
       .then((data) => {
         console.log("event data", data[0].email);
@@ -26,7 +26,7 @@ const AllEvents = () => {
     const check = window.confirm("Are you sure,you want to delete this event?");
 
     if (check) {
-      const url = `http://localhost:5000/event/${id}`;
+      const url = `https://limitless-lowlands-32082.herokuapp.com/event/${id}`;
       fetch(url, {
         method: "DELETE",
       })

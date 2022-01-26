@@ -9,7 +9,7 @@ const MyPayment = () => {
   //   console.log(payment);
 
   useEffect(() => {
-    fetch("http://localhost:5000/paymentInfo")
+    fetch("https://limitless-lowlands-32082.herokuapp.com/paymentInfo")
       .then((res) => res.json())
       .then((data) => {
         const details = data.filter((data) => data.email === user?.email);

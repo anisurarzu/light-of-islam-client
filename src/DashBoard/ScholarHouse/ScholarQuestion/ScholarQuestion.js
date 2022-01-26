@@ -23,7 +23,7 @@ const ScholarQuestion = () => {
       answeredBy: userInfo?.displayName,
     };
     console.log(data);
-    fetch("http://localhost:5000/questions/answer", {
+    fetch("https://limitless-lowlands-32082.herokuapp.com/questions/answer", {
       method: "PUT",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -40,7 +40,7 @@ const ScholarQuestion = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/questions")
+    fetch("https://limitless-lowlands-32082.herokuapp.com/questions")
       .then((res) => res.json())
       .then((data) => {
         setScholarQuestions(data);

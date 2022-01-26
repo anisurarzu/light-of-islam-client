@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Spin } from "antd";
 import "./ScheduleList.css";
 import useAuth from "../../hooks/useAuth";
-import { useState } from "react/cjs/react.development";
 
 const ScheduleList = () => {
   const { user } = useAuth();
@@ -12,7 +11,7 @@ const ScheduleList = () => {
   //   console.log("scheduleList", scheduleList);
   let email = user?.email;
   useEffect(() => {
-    fetch("http://localhost:5000/schedule")
+    fetch("https://limitless-lowlands-32082.herokuapp.com/schedule")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);

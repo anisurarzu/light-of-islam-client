@@ -7,7 +7,7 @@ const AddScholar = () => {
   const [scholarId, setScholarId] = useState("");
   console.log(scholarId);
   useEffect(() => {
-    fetch("http://localhost:5000/scholarId")
+    fetch("https://limitless-lowlands-32082.herokuapp.com/scholarId")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -18,7 +18,7 @@ const AddScholar = () => {
     console.log(data);
 
     if (data.iFb_id === scholarId) {
-      fetch("http://localhost:5000/users/scholar", {
+      fetch("https://limitless-lowlands-32082.herokuapp.com/users/scholar", {
         method: "PUT",
         headers: {
           "content-type": "application/json",

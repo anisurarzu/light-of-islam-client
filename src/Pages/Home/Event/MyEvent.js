@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
 
 const MyEvent = () => {
@@ -9,7 +9,7 @@ const MyEvent = () => {
   let userEmail = user?.email;
   console.log("br", userEmail);
   useEffect(() => {
-    fetch(`http://localhost:5000/bookingStatus`)
+    fetch(`https://limitless-lowlands-32082.herokuapp.com/bookingStatus`)
       .then((res) => res.json())
       .then((data) => {
         const newBookingStatus = data.filter(
