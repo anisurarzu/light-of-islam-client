@@ -78,7 +78,7 @@ const CheckoutForm = ({ price }) => {
       setSuccess("");
     } else {
       setError("");
-      setSuccess("Your payment processed successfully");
+      setSuccess("Your payment processed successfully!");
       console.log(paymentIntent);
       setProcess(false);
       // save to database
