@@ -14,7 +14,8 @@ const Header = () => {
           </Link>
         </div>
         <Link to="/home">
-          <p className="title ">লাইট অফ ইসলাম</p>
+          <p className="title ">দাওয়াহ টাইম
+</p>
         </Link>
         <button
           class="navbar-toggler"
@@ -78,6 +79,16 @@ const Header = () => {
                 aria-disabled="true"
               >
                 যোগাযোগ
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link
+                class="nav-link"
+                to="/quize"
+                tabindex="-1"
+                aria-disabled="true"
+              >
+                কুইজ
               </Link>
             </li>
           </ul>

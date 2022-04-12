@@ -20,6 +20,7 @@ import Payment from "./Pages/Payment/Payment";
 import Service from "./Pages/Service/Service";
 import Event from "./Pages/Home/Event/Event";
 import EventDeatils from "./DashBoard/ScholarHouse/AllEvents/EventDeatils/EventDeatils";
+import QuizeHome from "./Pages/Quize/QuizeHome/QuizeHome";
 function App() {
   return (
     <div className="App">
@@ -49,6 +50,9 @@ function App() {
             <Route path="/service">
               <Service></Service>
             </Route>
+            <PrivateRoute path="/quize">
+              <QuizeHome></QuizeHome>
+            </PrivateRoute>
             <PrivateRoute path="/event">
               <Event></Event>
             </PrivateRoute>

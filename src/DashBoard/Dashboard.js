@@ -26,6 +26,7 @@ import UserList from "./UserLIst/UserList";
 import UserNormal from "./UserLIst/UserNormal";
 import PaymentInfo from "./PaymentInfo/PaymentInfo";
 import MyPayment from "./PaymentInfo/MyPayment";
+import QuizeHome from "../Pages/Quize/QuizeHome/QuizeHome";
 
 // import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
@@ -577,6 +578,30 @@ const Dashboard = () => {
                 </li>
                 <li class="my-px">
                   <Link
+                    to={`${url}/myquize`}
+                    class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center justify-center text-lg text-gray-400">
+                      <svg
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      </svg>
+                    </span>
+                    <span class="ml-3">কুইজ</span>
+                    {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
+                      1k
+                    </span> */}
+                  </Link>
+                </li>
+                <li class="my-px">
+                  <Link
                     to={`${url}/myeventlist`}
                     class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                   >
@@ -771,6 +796,10 @@ const Dashboard = () => {
           <Route path={`${path}/scholarlist`}>
             <UserNormal></UserNormal>
           </Route>
+          <Route path={`${path}/myquize`}>
+            <QuizeHome></QuizeHome>
+          </Route>
+          myquize
           <Route path={`${path}/paymentInfo`}>
             <PaymentInfo></PaymentInfo>
           </Route>
