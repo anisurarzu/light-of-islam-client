@@ -14,8 +14,7 @@ const Header = () => {
           </Link>
         </div>
         <Link to="/home">
-          <p className="title ">দাওয়াহ টাইম
-</p>
+          <p className="title ">দারুল মুত্তাক্বীন ফাউন্ডেশন</p>
         </Link>
         <button
           class="navbar-toggler"
