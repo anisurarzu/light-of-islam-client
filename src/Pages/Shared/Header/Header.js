@@ -10,7 +10,12 @@ const Header = () => {
       <div class="container-fluid">
         <div>
           <Link to="/home">
-            <img src="https://i.ibb.co/mTdNW94/logo.png" alt="" />
+            <img
+              className="w-14
+              "
+              src="https://i.ibb.co/BC3zhmc/Dmf-Only-Icon.png"
+              alt=""
+            />
           </Link>
         </div>
         <Link to="/home">
@@ -88,6 +93,16 @@ const Header = () => {
                 aria-disabled="true"
               >
                 কুইজ
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link
+                class="nav-link"
+                to="/quize"
+                tabindex="-1"
+                aria-disabled="true"
+              >
+                দোকান
               </Link>
             </li>
           </ul>
