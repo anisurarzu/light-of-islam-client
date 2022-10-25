@@ -8,43 +8,36 @@ import { ImLocation } from "react-icons/im";
 
 const Membership = ({ users }) => {
   return (
-    <div className="our-member-body py-4">
+    <div className=" py-4 bg-gray-50">
       <div className="min-h-screen container pt-4  ">
         <p className="font-bold text-xl our-events-class3">Our Members </p>
-        <h1 className="text-4xl font-bold our-events-class"> আমাদের সদস্য</h1>
+        <h1 className="text-4xl font-bold our-events-class">আমাদের সদস্য গণ</h1>
 
-        <div className="grid md:grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-2">
           {users?.map((user, index) => (
             <div
               key={index}
-              className="grid md:grid-cols-2 flex bg-white shadow-md md:mr-3 mt-5 md:h-60"
+              className="grid md:grid-cols-2 our-member-body flex shadow-sm md:mr-3 mt-5 md:h-60 p-2 rounded"
             >
-              <div className="flex justify-center  p-4">
+              <div className="flex justify-center items-center  p-4 ">
                 <img
-                  className="rounded-full w-48 h-40"
+                  className="rounded-full w-32 h-32 bg-white"
                   src={user?.image}
                   alt=""
                 />
               </div>
-              <div className="text-left m-2">
+              <div className="text-left">
                 <br />
-                <p className="text-2xl mt-2 font-bold our-events-class2 our-events-class2">
+                <h3 className="text-2xl our-events-class font-bold">
                   {user?.displayName}
-                </p>
-                <ul className="flex font-bold">
-                  <ul className="flex">
-                    <BiTimeFive
-                      size={18}
-                      className="mt-1 animate-spin"
-                    ></BiTimeFive>
-                    <li className="ml-4">8.00 - 5.00</li>
-                  </ul>
+                </h3>
+                <ul className="flex ">
                   <ul className="flex">
                     <ImLocation
                       size={18}
-                      className=" ml-3 mt-1 animate animate-bounce location"
+                      className="  mt-1 animate animate-bounce location"
                     ></ImLocation>
-                    <li className="ml-2">Newyork City</li>
+                    <li className="ml-2">{user?.location}</li>
                   </ul>
                 </ul>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>

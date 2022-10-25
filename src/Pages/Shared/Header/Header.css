@@ -3,7 +3,7 @@
   font-family: "Acme", sans-serif;
   font-size: 20px;
   color: #242f6c;
-  padding-top: 22px;
+  /* padding-top: 22px; */
   font-weight: bold;
   font-family: "Hind Siliguri", sans-serif;
 }
@@ -14,6 +14,7 @@ nav a {
   padding-top: 60px;
 }
 .cart {
+  padding-bottom: 30px;
   color: #00bfd6;
 }
 
