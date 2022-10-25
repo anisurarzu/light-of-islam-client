@@ -1,0 +1,29 @@
+.with-modal{
+    width: 360px;
+    margin-left: 780px;
+    margin-top: 140px;
+    background-color: aqua;
+   height: 400px;
+   border: 1px solid gray;
+
+    
+}
+.cloce-botton{
+    margin-top: -25px;
+    
+}
+.total-price{
+    
+}
+
+/* viewCard price conponnets */
+.card-show-class{
+    margin-top: -370px!important;
+}
+
+
+.modal-card-class{
+   
+   z-index: 100px!important;
+  
+}

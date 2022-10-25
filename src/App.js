@@ -21,9 +21,16 @@ import Service from "./Pages/Service/Service";
 import Event from "./Pages/Home/Event/Event";
 import EventDeatils from "./DashBoard/ScholarHouse/AllEvents/EventDeatils/EventDeatils";
 import QuizeHome from "./Pages/Quize/QuizeHome/QuizeHome";
+import { Content } from "antd/lib/layout/layout";
+import Contract from './Pages/Contract/Contract';
+import Shop from './Pages/Shop/Shop';
+import { Provider } from "react-redux";
+import store from './store/store';
+import ViewCartProduct from './Pages/Shared/Header/ViewCartProduct';
 function App() {
   return (
     <div className="App">
+      <Provider store={store}>
       <AuthProvider>
         <Router>
           <TopHeader></TopHeader>
@@ -31,6 +38,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home></Home>
+            </Route>
+            <Route path="/contract">
+              <Contract></Contract>
             </Route>
             <Route path="/home">
               <Home></Home>
@@ -50,6 +60,12 @@ function App() {
             <Route path="/service">
               <Service></Service>
             </Route>
+            <Route path="/shop">
+              <Shop></Shop>
+            </Route>
+            <Route path="/cartView">
+              <ViewCartProduct></ViewCartProduct>
+            </Route>
             <PrivateRoute path="/quize">
               <QuizeHome></QuizeHome>
             </PrivateRoute>
@@ -65,6 +81,9 @@ function App() {
             <PrivateRoute path="/question">
               <Question></Question>
             </PrivateRoute>
+
+         
+
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
@@ -78,6 +97,7 @@ function App() {
           <Footer></Footer>
         </Router>
       </AuthProvider>
+      </Provider>
       <MessengerCustomerChat pageId="259964438007932" appId="339672741151658" />
     </div>
   );

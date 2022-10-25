@@ -8,12 +8,14 @@ const DashboardHome = () => {
         <div class="container mx-auto px-6 py-8">
           <div class="mt-2">
             <div class="flex flex-wrap -mx-6">
+
+
               <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
                 <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                   <div class="mx-5 ">
-                    <div className="flex justify-center">
+                    <div className="flex justify-center mr-auto ml-auto ">
                       <img
-                        className="w-2/4"
+                        className="w-2/3 mr-auto ml-auto"
                         src=" https://i.ibb.co/8KyGhPG/question.png"
                         alt=""
                       />

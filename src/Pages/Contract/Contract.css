@@ -1,0 +1,65 @@
+/* google map section */
+@media only screen and (max-width: 639px) {
+    .google-phone-responsib{
+       margin-top: 50px;
+
+    }
+
+}
+
+
+.from-top-text{
+    color: #242f6c;
+}
+/* card */
+/* card */
+/* card */
+.card-text-top{
+    color: #242f6c;
+   
+  }
+  .icon-class1{
+  color: rgb(38, 201, 212);
+  margin-top: 7px;
+
+  }
+  .icon-class1:hover{
+    color: rgb(57, 242, 255);
+  }
+  .icon-class2{
+    color: #ffc4c4;
+    margin-top: 7px;
+  
+    }
+    .icon-class2:hover{
+        color: #db8d8d;
+    }
+  .icon-class3{
+   color:#c1b3fa;
+   margin-top: 7px;
+  
+    }
+    .icon-class3:hover{
+        color:#9384ce;
+    }
+  .icon{
+    text-align: center;
+    margin-left: 90px;
+  }
+  .office-class{
+    text-align: start;
+    margin-left: -10px;
+  }
+  
+ 
+  @media only screen and (max-width: 639px) {
+
+    .office-class{
+        text-align: start;
+        margin-left: 1px;
+        font-size: 24px;
+      }
+      
+  }
+
+        

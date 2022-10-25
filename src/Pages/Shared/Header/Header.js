@@ -1,11 +1,17 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { useSelector } from "react-redux";
+import CartModal from "./CartModal";
+
 
 const Header = () => {
+  const items = useSelector((state)=>state.cart)
   const { user, userInfo, logOut } = useAuth();
+  const [showModal, setShowModal] = useState(false)
   return (
+  <Fragment>
     <nav class=" container navbar-container navbar navbar-expand-lg navbar-light bg-white shadow-md rounded-xl ">
       <div class="container-fluid">
         <div>
@@ -19,7 +25,7 @@ const Header = () => {
           </Link>
         </div>
         <Link to="/home">
-          <p className="title ">দারুল মুত্তাক্বীন ফাউন্ডেশন</p>
+          <p className="title text-xl ml-2 ">দারুল মুত্তাক্বীন ফাউন্ডেশন</p>
         </Link>
         <button
           class="navbar-toggler"
@@ -78,7 +84,7 @@ const Header = () => {
             <li class="nav-item">
               <Link
                 class="nav-link"
-                to="/contact"
+                to="/contract"
                 tabindex="-1"
                 aria-disabled="true"
               >
@@ -98,7 +104,7 @@ const Header = () => {
             <li class="nav-item">
               <Link
                 class="nav-link"
-                to="/quize"
+                to="/shop"
                 tabindex="-1"
                 aria-disabled="true"
               >
@@ -121,7 +127,7 @@ const Header = () => {
                 aria-expanded="false"
               >
                 <img
-                  className="w-8 h-8  rounded-full"
+                  className="w-8 h-8  rounded-full phone-screen-class"
                   src={
                     user?.photoURL ||
                     userInfo?.image ||
@@ -144,13 +150,23 @@ const Header = () => {
               </ul>
             </div>
           )}
-          <Link to="/cart">
-            <i className="fas fa-shopping-cart text-2xl pr-4  cart "></i>
+          <Link to="/shop">
+            <ul>
+
+              {/* icon k button hisebe use kara hoise */}
+           
+            <i onClick={() => setShowModal(true)} className="shopping-icons fas fa-shopping-cart text-2xl pr-4  cart mr-0  shopping-cart1"> <p className="cart-length">{items.length}</p> </i>
+           
+              {/* <i className=" font-bold ml-1 mt-2">{items.length}</i> */}
+            </ul>
           </Link>
+
+
+        
           <div>
             {user?.email ? (
               <button
-                className="ml-8 text-sm pb-2 btn-donate text-white rounded-full  px-4 p-2 "
+                className="ml-8 text-sm pb-2 btn-donate text-white rounded-full  px-4 p-2 phone-screen-class"
                 onClick={logOut}
               >
                 লগ আউট
@@ -166,6 +182,10 @@ const Header = () => {
         </div>
       </div>
     </nav>
+      {/* card modal pop */}
+      <CartModal isVisible={showModal} onCloce={()=>setShowModal(false)}></CartModal>
+    </Fragment>
+    
   );
 };
 

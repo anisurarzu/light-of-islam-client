@@ -33,3 +33,64 @@
 .sidebar-dashboard {
   background-color: #262b3e;
 }
+
+/* phone screen menu bar */
+@media only screen and (max-width: 639px) {
+  .phone-menu-bar span{
+    font-size: 16px;
+   
+    
+  }
+  .phone-menu-bar-text span{
+    display: flex;
+
+  }
+  .account-class{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .colom-number1 {
+    color: #5a7101;
+    
+  }
+  .notification1{
+    
+    margin-left: 10px;
+  }
+  .menu1{
+    
+    margin-left: -40px;
+  }
+  .menu2{
+    
+    margin-left: -5px;
+  }
+  .menu3{
+  
+    margin-left: 5px;
+
+  }
+  .menu4{
+    margin-left: 21px;
+
+  }
+  .menu6{
+    margin-left: 15px;
+
+  }
+  .menu-box{
+    
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .last-notification{
+    margin-left: 10px;
+  }
+  .account-heder{
+   
+    margin-left: auto;
+    margin-right: auto;
+  
+   
+  }
+}

@@ -1,0 +1,184 @@
+
+.aboutUs{
+    background-color: #ecfbf9!important;
+    height: 55vh;
+    text-align: center;
+}
+.aboutUs .color{
+    color: #242f6c;
+}
+.aboutUs .span-color{
+    color: aqua;
+
+}
+
+/* Abut section */
+@media only screen and (max-width: 639px) {
+  .watch-video{
+    display: none;
+  }
+    .phoneScen{
+        color: white!important;
+       
+    }
+    .midiyaButton{
+       
+      width: 70px;
+      margin-top: 3px;
+         
+}
+.discoverButton{
+    height: 50px;
+}
+   
+  }
+
+
+  /* About prayer time */
+
+  .bg-pray-color{
+    background-color: #ecfbf9!important;
+    height: 81vh;
+
+  }
+  .img-prayer {
+    width: 100%;
+    height: 40%;
+    margin-left: -70px;
+ 
+    margin-top: 156px;
+   
+  }
+  .text-class{
+    text-align: left;
+    margin-left: 30px;
+  }
+  .Prayer-Times-class{
+    color: #242f6c;
+  }
+  .fajor-namaz ul{
+    /* margin-right: 40px !important; */
+    
+  }
+ 
+  @media only screen and (max-width: 639px) {
+
+    .img-prayer {
+      display: none;
+   
+     
+     
+    }
+    .text-class{
+      margin-left: auto;
+      margin-right: auto;
+    }
+     .phone{
+      height: 110vh;
+      
+
+      }
+      .fajor-namaz{
+      
+        
+
+      }
+      .fajor-namaz .li-1{
+/*         
+        margin-left: -190px; */
+        margin-left: -15px;
+        width: 95%;
+      }
+      .fajor-namaz .li-2{
+        /*         
+                margin-left: -190px; */
+                margin-left: 10px;
+                 width: 95%;
+            
+              }
+      
+     
+           
+  }
+
+  /* Top section  */
+  /* Top section  */
+  .top-section{
+    height: 120vh;
+    background-color: #ecfbf9;
+    margin-top: 100px;
+  }
+  .top-color{
+    color: #242f6c;
+    
+
+  }
+  .top-mini{
+    color:#49d6de;
+  }
+  .top-texs{
+    color: #242f6c;
+
+  }
+  
+  @media only screen and (max-width: 639px) {
+    .top-section{
+      height: 280vh;
+      
+      margin-top: 100px;
+    }
+    .top-img{
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .top-texs{
+      text-align: center;
+    }
+
+  }
+  /* our-events- */
+  /* our-events- */
+  /* our-events- */
+  .our-events-body{
+    /* height: 100vh; */
+  }
+  .our-events-class{
+    color: #242f6c;
+
+  }
+  .our-events-class2{
+    color: #242f6c;
+  }
+  .our-events-class3{
+    color:#49d6de;
+  }
+  .animate-bounce{
+    color: #00add5;
+  }
+  .our-events-img{
+    width: 100%; 
+  }
+  /* .logo-img{
+    background-image: url(https://i.ibb.co/C5C2gHX/text-img.png)!important;
+    background-color: #00add5;
+    background-size: cover;
+   
+  } */
+
+
+ 
+  @media only screen and (max-width: 639px) {
+    .our-events-img{
+      width: 100%;
+
+    }
+
+  }
+
+  /* our membership */
+  .our-member-img{
+   
+  }
+  .our-member-body{
+    background-color: #ecfbf9;
+  }

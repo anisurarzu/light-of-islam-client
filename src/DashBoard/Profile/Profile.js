@@ -195,10 +195,10 @@ const Profile = () => {
                 </div>
 
                 <input
-                  className="p-4"
+                
                   type="submit"
                   value="Upload Image"
-                  className="btn-design mt-4 px-2 rounded-full text-white"
+                  className=" p-4 btn-design mt-4 px-2 rounded-full text-white"
                 ></input>
               </form>
             </div>

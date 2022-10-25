@@ -60,7 +60,7 @@ const Login = () => {
 
         <button
           type="submit"
-          className="flex items-center login-registration-btn justify-center py-2 px-6 w-64  mt-8 rounded  text-xl text-white "
+          className=" font-bold flex items-center login-registration-btn justify-center py-2 px-6 w-64  mt-8 rounded  text-xl text-white "
         >
           Login
         </button>

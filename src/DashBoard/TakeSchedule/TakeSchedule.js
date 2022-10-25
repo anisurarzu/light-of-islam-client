@@ -9,6 +9,8 @@ const TakeSchedule = () => {
   console.log("scholar", scholars);
   return (
     <div className="scholar-container">
+      <br />
+      <br />
       <h3 className="text-xl ">Our Expert </h3>
       <h2 className="text-2xl pb-4">Islamic Scholars</h2>
       <p className="my-4 pb-8 bangla-text px-4 ">
@@ -24,8 +26,8 @@ const TakeSchedule = () => {
 
             <div
               data-aos="fade-down"
-              className="grid justify-center items-center xl:shadow-lg  lg:shadow
-          sm:shadow-lg rounded card-scholar"
+              className="grid justify-center items-center xl:shadow-lg  lg:shadow shadow-md
+          sm:shadow-lg rounded-mds card-scholar"
             >
               <div className="flex items-center justify-center pt-4">
                 <img
@@ -53,7 +55,7 @@ const TakeSchedule = () => {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-4 gap-2  px-20 pb-12 icon">
+              <div className="grid grid-cols-4 gap-2 ml-auto mr-auto pb-12  ">
                 <div className="social ">
                   <i className="fab fa-facebook-f"></i>
                 </div>
@@ -71,6 +73,8 @@ const TakeSchedule = () => {
           </div>
         ))}
       </div>
+      <br />
+      <br />
     </div>
   );
 };

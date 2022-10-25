@@ -30,7 +30,8 @@ const HeroSection = () => {
         <div className="xl:py-16 xl:mt-8 lg:mt-8 lg:py-16 px-20 img-design relative">
           <div className="absolute img-border" />
           <img
-            className="hero hero-img "
+            className="hero hero-img transition-all  duration-100  "
+            // animate-bounce
             src={hero}
             alt="Mother with his child"
           />

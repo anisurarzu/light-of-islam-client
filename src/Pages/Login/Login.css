@@ -1,5 +1,6 @@
 .login-registration-btn {
-  background: #029ca5;
+  
+  background-image: linear-gradient(#aee8f0, #00add5);
   font-family: "Nunito Sans", sans-serif;
 }
 

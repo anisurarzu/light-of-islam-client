@@ -10,3 +10,9 @@
 .question-icon {
   color: #029ca5;
 }
+/* question-from */
+@media only screen and (max-width: 639px) {
+  .question-from{
+    width: 100%;
+  }
+}
