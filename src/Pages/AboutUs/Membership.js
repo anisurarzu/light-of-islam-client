@@ -19,13 +19,19 @@ const Membership = ({ users }) => {
               key={index}
               className="grid md:grid-cols-2 our-member-body flex shadow-sm md:mr-3 mt-5 md:h-60 p-2 rounded"
             >
-              <div className="flex justify-center items-center  p-4 ">
-                <img
-                  className="rounded-full w-32 h-32 bg-white"
-                  src={user?.image}
-                  alt=""
-                />
+              <div>
+                <div className="flex justify-center items-center  p-4 ">
+                  <img
+                    className="rounded-full w-32 h-32 bg-white object-cover"
+                    src={user?.image}
+                    alt=""
+                  />
+                </div>
+                <div className=" rounded-md p-1 w-20 mt-3 border-2 bg-blue-900 text-sm text-white">
+                  {user?.role}
+                </div>
               </div>
+
               <div className="text-left">
                 <br />
                 <h3 className="text-2xl our-events-class font-bold">

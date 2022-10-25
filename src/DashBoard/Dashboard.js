@@ -69,7 +69,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {userInfo?.role === "admin" || "Founder" ? (
+        {userInfo?.role === "admin" ? (
           // dashboard menu
           <div class=" flex items-center justify-center  ">
             <div class="flex w-full max-w-xs p-4 bg-white">
