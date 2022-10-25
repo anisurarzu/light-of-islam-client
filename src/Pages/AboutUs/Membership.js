@@ -27,7 +27,7 @@ const Membership = ({ users }) => {
                     alt=""
                   />
                 </div>
-                <div className=" rounded-md p-1 w-20 mt-3 border-2 bg-blue-900 text-sm text-white">
+                <div className=" rounded-md p-1 w-28 shadow mt-3 border-2 bg-blue-900 text-sm text-white">
                   {user?.role}
                 </div>
               </div>
