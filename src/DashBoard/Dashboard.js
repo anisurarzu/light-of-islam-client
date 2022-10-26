@@ -27,6 +27,8 @@ import UserNormal from "./UserLIst/UserNormal";
 import PaymentInfo from "./PaymentInfo/PaymentInfo";
 import MyPayment from "./PaymentInfo/MyPayment";
 import QuizeHome from "../Pages/Quize/QuizeHome/QuizeHome";
+import Finance from "./Finace/Finance";
+import Deposit from "./Deposit/Deposit";
 
 // import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
@@ -498,6 +500,48 @@ const Dashboard = () => {
 
                   <li class="my-px">
                     <Link
+                      to={`${url}/myFinance`}
+                      class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                    >
+                      <span class="flex items-center justify-center text-lg text-gray-400  md:ml-0 menu1">
+                        <svg
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          class="h-6 w-6"
+                        >
+                          <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                        </svg>
+                      </span>
+                      <span class="ml-3">Finance</span>
+                    </Link>
+                  </li>
+                  <li class="my-px">
+                    <Link
+                      to={`${url}/myDeposit`}
+                      class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                    >
+                      <span class="flex items-center justify-center text-lg text-gray-400  md:ml-0 menu1">
+                        <svg
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          class="h-6 w-6"
+                        >
+                          <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                        </svg>
+                      </span>
+                      <span class="ml-3">Deposit</span>
+                    </Link>
+                  </li>
+                  <li class="my-px">
+                    <Link
                       to={`${url}/myquestions`}
                       class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                     >
@@ -521,7 +565,7 @@ const Dashboard = () => {
                 {/*  */}
                 {/*  */}
 
-                <div className="flex md:flex-col colom-number2">
+                {/* <div className="flex md:flex-col colom-number2">
                   <li class="my-px">
                     <Link
                       to={`${url}/sendquestions`}
@@ -562,12 +606,10 @@ const Dashboard = () => {
                         </svg>
                       </span>
                       <span class="ml-3">সময়সূচী নিন</span>
-                      {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
-                      1k
-                    </span> */}
+                     
                     </Link>
                   </li>
-                </div>
+                </div> */}
                 {/*  */}
                 {/*  */}
 
@@ -849,6 +891,12 @@ const Dashboard = () => {
           </Route>
           <Route path={`${path}/mypaymentInfo`}>
             <MyPayment></MyPayment>
+          </Route>
+          <Route path={`${path}/myFinance`}>
+            <Finance />
+          </Route>
+          <Route path={`${path}/myDeposit`}>
+            <Deposit />
           </Route>
           <Route path={`${path}/manageProducts`}></Route>
           <Route path={`${path}/reviews`}></Route>
