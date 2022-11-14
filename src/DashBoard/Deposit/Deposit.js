@@ -26,7 +26,6 @@ export default function Deposit() {
       .then((res) => {
         if (res.data.insertedId) {
           reset();
-
           setMessage("Successfully save! ");
           // toast.success("Wow so easy!");
         }
