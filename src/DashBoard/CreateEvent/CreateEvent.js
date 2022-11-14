@@ -10,7 +10,7 @@ const CreateEvent = () => {
   const onSubmit = (data) => {
     console.log(data);
     axios
-      .post("https://darulmuttaquine-server.vercel.app/events", data)
+      .post("https://dmf-test-server.vercel.app/events", data)
       .then((res) => {
         if (res.data.insertedId) {
           setMessage("Your event created SuccessFully!");

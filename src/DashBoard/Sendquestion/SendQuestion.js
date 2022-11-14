@@ -13,7 +13,7 @@ const SendQuestion = () => {
     console.log(data, "form");
     setMessage("");
     axios
-      .post("https://darulmuttaquine-server.vercel.app/questions", data)
+      .post("https://dmf-test-server.vercel.app/questions", data)
       .then((res) => {
         if (res.data.insertedId) {
           setMessage("Your question submitted SuccessFully!");

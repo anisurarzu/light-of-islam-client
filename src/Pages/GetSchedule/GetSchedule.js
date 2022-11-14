@@ -35,9 +35,7 @@ const GetSchedule = () => {
   // get scholar information
 
   useEffect(() => {
-    fetch(
-      `https://darulmuttaquine-server.vercel.app/users/scholar/${scholarId}`
-    )
+    fetch(`https://dmf-test-server.vercel.app/users/scholar/${scholarId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "single");
@@ -60,7 +58,7 @@ const GetSchedule = () => {
     data.bookingDate = dayjs(date).format("DD-MM-YYYY");
 
     console.log("schedule", data);
-    fetch("https://darulmuttaquine-server.vercel.app/schedule", {
+    fetch("https://dmf-test-server.vercel.app/schedule", {
       method: "POST",
       headers: {
         "content-type": "application/json",

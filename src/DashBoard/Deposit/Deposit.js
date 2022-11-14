@@ -22,7 +22,8 @@ export default function Deposit() {
     data.status = "Pending";
 
     axios
-      .post("https://darulmuttaquine-server.vercel.app/deposit", data)
+      //
+      .post("https://dmf-test-server.vercel.app/deposit", data)
       .then((res) => {
         if (res.data.insertedId) {
           reset();

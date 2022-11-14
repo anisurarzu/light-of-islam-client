@@ -10,7 +10,7 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("https://darulmuttaquine-server.vercel.app/users/admin", {
+    fetch("https://dmf-test-server.vercel.app/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

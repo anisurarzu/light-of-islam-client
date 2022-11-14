@@ -9,7 +9,7 @@ const MyPayment = () => {
   //   console.log(payment);
 
   useEffect(() => {
-    fetch("https://darulmuttaquine-server.vercel.app/paymentInfo")
+    fetch("https://dmf-test-server.vercel.app/paymentInfo")
       .then((res) => res.json())
       .then((data) => {
         const details = data.filter((data) => data.email === user?.email);

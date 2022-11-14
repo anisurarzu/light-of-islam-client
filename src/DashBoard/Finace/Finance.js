@@ -8,8 +8,8 @@ export default function Finance() {
   const { userInfo } = useAuth();
 
   useEffect(() => {
-    //https://darulmuttaquine-server.vercel.app/
-    fetch(`https://darulmuttaquine-server.vercel.app/deposit`)
+    //https://dmf-test-server.vercel.app/
+    fetch(`https://dmf-test-server.vercel.app/deposit`)
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);

@@ -15,7 +15,7 @@ const CheckoutForm = ({ price }) => {
   console.log(price);
 
   useEffect(() => {
-    fetch("https://darulmuttaquine-server.vercel.app/create-payment-intent", {
+    fetch("https://dmf-test-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -88,7 +88,7 @@ const CheckoutForm = ({ price }) => {
         transaction: paymentIntent.client_secret.slice("_secret")[0],
         lastFourDigit: paymentMethod.card.last4,
       };
-      fetch("https://darulmuttaquine-server.vercel.app/paymentInfo", {
+      fetch("https://dmf-test-server.vercel.app/paymentInfo", {
         method: "POST",
         headers: {
           "content-type": "application/json",
