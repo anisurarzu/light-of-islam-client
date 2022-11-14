@@ -11,7 +11,7 @@ const MyQuestion = () => {
   const { user } = useAuth();
   let email = user?.email;
   useEffect(() => {
-    fetch("https://limitless-lowlands-32082.herokuapp.com/questions")
+    fetch("https://darulmuttaquine-server.vercel.app/questions")
       .then((res) => res.json())
       .then((data) => {
         const question = data.filter((data) => data.email === email);
@@ -26,7 +26,7 @@ const MyQuestion = () => {
     );
 
     if (check) {
-      const url = `https://limitless-lowlands-32082.herokuapp.com/questions/${id}`;
+      const url = `https://darulmuttaquine-server.vercel.app/questions/${id}`;
       fetch(url, {
         method: "DELETE",
       })

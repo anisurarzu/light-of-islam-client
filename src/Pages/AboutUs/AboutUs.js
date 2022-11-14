@@ -15,7 +15,7 @@ const AboutUs = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://limitless-lowlands-32082.herokuapp.com/users")
+    fetch("https://darulmuttaquine-server.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);

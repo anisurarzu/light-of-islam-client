@@ -21,14 +21,16 @@ export default function Deposit() {
     data.date = new Date();
     data.status = "Pending";
 
-    axios.post("http://localhost:5000/deposit", data).then((res) => {
-      if (res.data.insertedId) {
-        reset();
+    axios
+      .post("https://darulmuttaquine-server.vercel.app/deposit", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          reset();
 
-        setMessage("Successfully save! ");
-        // toast.success("Wow so easy!");
-      }
-    });
+          setMessage("Successfully save! ");
+          // toast.success("Wow so easy!");
+        }
+      });
   };
   return (
     <div className="mt-4">

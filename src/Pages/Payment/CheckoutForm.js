@@ -15,16 +15,13 @@ const CheckoutForm = ({ price }) => {
   console.log(price);
 
   useEffect(() => {
-    fetch(
-      "https://limitless-lowlands-32082.herokuapp.com/create-payment-intent",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ price }),
-      }
-    )
+    fetch("https://darulmuttaquine-server.vercel.app/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ price }),
+    })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret))
       .catch((error) => {
@@ -91,7 +88,7 @@ const CheckoutForm = ({ price }) => {
         transaction: paymentIntent.client_secret.slice("_secret")[0],
         lastFourDigit: paymentMethod.card.last4,
       };
-      fetch("https://limitless-lowlands-32082.herokuapp.com/paymentInfo", {
+      fetch("https://darulmuttaquine-server.vercel.app/paymentInfo", {
         method: "POST",
         headers: {
           "content-type": "application/json",

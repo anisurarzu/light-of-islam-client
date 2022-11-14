@@ -13,7 +13,7 @@ const SendQuestion = () => {
     console.log(data, "form");
     setMessage("");
     axios
-      .post("https://limitless-lowlands-32082.herokuapp.com/questions", data)
+      .post("https://darulmuttaquine-server.vercel.app/questions", data)
       .then((res) => {
         if (res.data.insertedId) {
           setMessage("Your question submitted SuccessFully!");

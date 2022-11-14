@@ -14,7 +14,7 @@ const Schedule = () => {
   //   console.log("scheduleCurrent", currentSchedule);
   let email = user?.email;
   useEffect(() => {
-    fetch("https://limitless-lowlands-32082.herokuapp.com/schedule")
+    fetch("https://darulmuttaquine-server.vercel.app/schedule")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
@@ -43,14 +43,11 @@ const Schedule = () => {
     data.scheduleId = currentSchedule?._id;
     console.log("bookedDates", data);
     if (data?.status === "Accept") {
-      fetch(
-        "https://limitless-lowlands-32082.herokuapp.com/schedule/bookingInfo",
-        {
-          method: "PUT",
-          headers: { "content-Type": "application/json" },
-          body: JSON.stringify(data),
-        }
-      )
+      fetch("https://darulmuttaquine-server.vercel.app/schedule/bookingInfo", {
+        method: "PUT",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
         .then((res) => {
           // console.log(res);
           // alert("image uploaded done");
@@ -66,7 +63,7 @@ const Schedule = () => {
 
       //   send status to database
       fetch(
-        "https://limitless-lowlands-32082.herokuapp.com/schedule/bookingStatus",
+        "https://darulmuttaquine-server.vercel.app/schedule/bookingStatus",
         {
           method: "PUT",
           headers: { "content-Type": "application/json" },
@@ -87,7 +84,7 @@ const Schedule = () => {
         });
     } else {
       fetch(
-        "https://limitless-lowlands-32082.herokuapp.com/schedule/bookingStatus",
+        "https://darulmuttaquine-server.vercel.app/schedule/bookingStatus",
         {
           method: "PUT",
           headers: { "content-Type": "application/json" },

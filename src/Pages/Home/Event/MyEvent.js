@@ -9,7 +9,7 @@ const MyEvent = () => {
   let userEmail = user?.email;
   console.log("br", userEmail);
   useEffect(() => {
-    fetch(`https://limitless-lowlands-32082.herokuapp.com/bookingStatus`)
+    fetch(`https://darulmuttaquine-server.vercel.app/bookingStatus`)
       .then((res) => res.json())
       .then((data) => {
         const newBookingStatus = data.filter(

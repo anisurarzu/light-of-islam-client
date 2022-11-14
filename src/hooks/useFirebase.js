@@ -100,20 +100,20 @@ const useFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    fetch(`https://limitless-lowlands-32082.herokuapp.com/users/${user?.email}`)
+    fetch(`https://darulmuttaquine-server.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data?.admin));
   }, [user?.email]);
 
   useEffect(() => {
-    fetch(`https://limitless-lowlands-32082.herokuapp.com/users/${user?.email}`)
+    fetch(`https://darulmuttaquine-server.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setScholar(data?.scholar));
   }, [user?.email]);
 
   useEffect(() => {
     fetch(
-      `https://limitless-lowlands-32082.herokuapp.com/users/profile/${user?.email}`
+      `https://darulmuttaquine-server.vercel.app/users/profile/${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
@@ -134,7 +134,7 @@ const useFirebase = () => {
   const saveUser = (email, displayName, method) => {
     console.log(displayName);
     const user = { email, displayName };
-    fetch("https://limitless-lowlands-32082.herokuapp.com/users", {
+    fetch("https://darulmuttaquine-server.vercel.app/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -145,7 +145,7 @@ const useFirebase = () => {
 
   // scholar finding
   useEffect(() => {
-    fetch("https://limitless-lowlands-32082.herokuapp.com/users")
+    fetch("https://darulmuttaquine-server.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
         const collectedScholar = data.filter((data) => data.role === "scholar");

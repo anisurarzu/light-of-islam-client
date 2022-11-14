@@ -23,7 +23,7 @@ const ScholarQuestion = () => {
       answeredBy: userInfo?.displayName,
     };
     console.log(data);
-    fetch("https://limitless-lowlands-32082.herokuapp.com/questions/answer", {
+    fetch("https://darulmuttaquine-server.vercel.app/questions/answer", {
       method: "PUT",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -40,7 +40,7 @@ const ScholarQuestion = () => {
   };
 
   useEffect(() => {
-    fetch("https://limitless-lowlands-32082.herokuapp.com/questions")
+    fetch("https://darulmuttaquine-server.vercel.app/questions")
       .then((res) => res.json())
       .then((data) => {
         setScholarQuestions(data);

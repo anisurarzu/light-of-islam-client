@@ -36,7 +36,7 @@ const GetSchedule = () => {
 
   useEffect(() => {
     fetch(
-      `https://limitless-lowlands-32082.herokuapp.com/users/scholar/${scholarId}`
+      `https://darulmuttaquine-server.vercel.app/users/scholar/${scholarId}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -60,7 +60,7 @@ const GetSchedule = () => {
     data.bookingDate = dayjs(date).format("DD-MM-YYYY");
 
     console.log("schedule", data);
-    fetch("https://limitless-lowlands-32082.herokuapp.com/schedule", {
+    fetch("https://darulmuttaquine-server.vercel.app/schedule", {
       method: "POST",
       headers: {
         "content-type": "application/json",

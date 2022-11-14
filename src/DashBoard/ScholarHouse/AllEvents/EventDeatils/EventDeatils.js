@@ -23,10 +23,7 @@ const EventDeatils = () => {
     data.eveTime = currentDetails?.eventTime;
     // console.log("details-booking", data);
     axios
-      .post(
-        "https://limitless-lowlands-32082.herokuapp.com/bookingStatus",
-        data
-      )
+      .post("https://darulmuttaquine-server.vercel.app/bookingStatus", data)
       .then((res) => {
         if (res.data.insertedId) {
           // setMessage("Your event created SuccessFully!");
@@ -40,7 +37,7 @@ const EventDeatils = () => {
 
   // getting booking data form db
   useEffect(() => {
-    fetch(`https://limitless-lowlands-32082.herokuapp.com/event/${eventId}`)
+    fetch(`https://darulmuttaquine-server.vercel.app/event/${eventId}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data, "single");

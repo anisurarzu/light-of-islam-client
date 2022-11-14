@@ -11,7 +11,7 @@ const ScheduleList = () => {
   //   console.log("scheduleList", scheduleList);
   let email = user?.email;
   useEffect(() => {
-    fetch("https://limitless-lowlands-32082.herokuapp.com/schedule")
+    fetch("https://darulmuttaquine-server.vercel.app/schedule")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
