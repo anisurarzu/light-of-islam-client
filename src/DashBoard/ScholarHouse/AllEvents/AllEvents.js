@@ -11,7 +11,7 @@ const AllEvents = () => {
 
   let email = user?.email;
   useEffect(() => {
-    fetch("https://dmf-test-server.vercel.app/events")
+    fetch("https://dmf-server.vercel.app/events")
       .then((res) => res.json())
       .then((data) => {
         console.log("event data", data[0].email);
@@ -26,7 +26,7 @@ const AllEvents = () => {
     const check = window.confirm("Are you sure,you want to delete this event?");
 
     if (check) {
-      const url = `https://dmf-test-server.vercel.app/event/${id}`;
+      const url = `https://dmf-server.vercel.app/event/${id}`;
       fetch(url, {
         method: "DELETE",
       })

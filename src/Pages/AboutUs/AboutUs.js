@@ -15,7 +15,7 @@ const AboutUs = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://dmf-test-server.vercel.app/users")
+    fetch("https://dmf-server.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);

@@ -23,7 +23,7 @@ export default function Deposit() {
 
     axios
       //
-      .post("https://dmf-test-server.vercel.app/deposit", data)
+      .post("https://dmf-server.vercel.app/deposit", data)
       .then((res) => {
         if (res.data.insertedId) {
           reset();

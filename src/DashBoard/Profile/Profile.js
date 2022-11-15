@@ -15,7 +15,7 @@ const Profile = () => {
       image: imageURL,
     };
     console.log({ userInfo });
-    fetch("https://dmf-test-server.vercel.app/users/profile/image", {
+    fetch("https://dmf-server.vercel.app/users/profile/image", {
       method: "PUT",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(userInfo),

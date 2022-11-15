@@ -14,7 +14,7 @@ const Schedule = () => {
   //   console.log("scheduleCurrent", currentSchedule);
   let email = user?.email;
   useEffect(() => {
-    fetch("https://dmf-test-server.vercel.app/schedule")
+    fetch("https://dmf-server.vercel.app/schedule")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
@@ -43,7 +43,7 @@ const Schedule = () => {
     data.scheduleId = currentSchedule?._id;
     console.log("bookedDates", data);
     if (data?.status === "Accept") {
-      fetch("https://dmf-test-server.vercel.app/schedule/bookingInfo", {
+      fetch("https://dmf-server.vercel.app/schedule/bookingInfo", {
         method: "PUT",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -62,7 +62,7 @@ const Schedule = () => {
         });
 
       //   send status to database
-      fetch("https://dmf-test-server.vercel.app/schedule/bookingStatus", {
+      fetch("https://dmf-server.vercel.app/schedule/bookingStatus", {
         method: "PUT",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -80,7 +80,7 @@ const Schedule = () => {
           // console.log(error);
         });
     } else {
-      fetch("https://dmf-test-server.vercel.app/schedule/bookingStatus", {
+      fetch("https://dmf-server.vercel.app/schedule/bookingStatus", {
         method: "PUT",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(data),

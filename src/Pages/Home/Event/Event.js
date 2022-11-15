@@ -26,7 +26,7 @@ const Event = () => {
     data.eventTime = currentEvent?.time;
     console.log("b-data", data);
     setIsBooked(true);
-    fetch("https://dmf-test-server.vercel.app/events/booking", {
+    fetch("https://dmf-server.vercel.app/events/booking", {
       method: "PUT",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -47,7 +47,7 @@ const Event = () => {
   };
 
   useEffect(() => {
-    fetch("https://dmf-test-server.vercel.app/events")
+    fetch("https://dmf-server.vercel.app/events")
       .then((res) => res.json())
       .then((data) => setEvent(data));
   }, []);

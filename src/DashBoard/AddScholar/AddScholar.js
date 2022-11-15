@@ -7,7 +7,7 @@ const AddScholar = () => {
   const [scholarId, setScholarId] = useState("");
   console.log(scholarId);
   useEffect(() => {
-    fetch("https://dmf-test-server.vercel.app/scholarId")
+    fetch("https://dmf-server.vercel.app/scholarId")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -18,7 +18,7 @@ const AddScholar = () => {
     console.log(data);
 
     if (data.iFb_id === scholarId) {
-      fetch("https://dmf-test-server.vercel.app/users/scholar", {
+      fetch("https://dmf-server.vercel.app/users/scholar", {
         method: "PUT",
         headers: {
           "content-type": "application/json",
