@@ -1,12 +1,11 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { NewAppContext } from "../../App";
 // import { toast, ToastContainer } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import Payment from "../../Pages/Payment/Payment";
 
-export default function Deposit() {
+export default function LoanRequest() {
   const { user, userInfo } = useAuth();
   console.log(userInfo?.dmfID);
   const { register, reset, handleSubmit } = useForm();

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { NewAppContext } from "../../App";
 import useAuth from "../../hooks/useAuth";
 import Payment from "../../Pages/Payment/Payment";
 
 export default function Finance() {
-  const [depositInfo, setDepositInfo] = useState([]);
+  const { depositInfo, setDepositInfo } = useContext(NewAppContext);
+
   const [depositInfo2, setDepositInfo2] = useState([]);
   const { userInfo } = useAuth();
 
