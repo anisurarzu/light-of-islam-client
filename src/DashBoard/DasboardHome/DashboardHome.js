@@ -11,10 +11,10 @@ const DashboardHome = () => {
 
   const depositAmount = [];
 
-  depositInfo?.map((data) => depositAmount.push(data?.depositAmount));
-  const totalDeposit = depositAmount?.reduce(
-    (prev, curr) => parseFloat(prev) + parseFloat(curr)
-  );
+  depositInfo?.map((data) => depositAmount?.push(data?.depositAmount));
+  const totalDeposit =
+    depositAmount.length > 0 &&
+    depositAmount?.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr));
 
   console.log("object", totalDeposit);
   return (
@@ -23,8 +23,8 @@ const DashboardHome = () => {
         <div className="container mx-auto px-6 py-8">
           <div className="mt-2">
             <div className="flex flex-wrap -mx-6">
-              <div className="w-full px-6 sm:w-1/2 xl:w-1/3">
-                <div className="flex items-center px-5 py-6 shadow-sm rounded-md  bg-white">
+              <div className="w-full px-6 sm:w-1/2 xl:w-1/3 ">
+                <div className="flex items-center px-5 py-6 shadow-sm rounded-md  bg-white border-2 border-green-100">
                   <p className="text-gray-700 text-l font-bold">
                     Current Balance
                   </p>
@@ -45,7 +45,7 @@ const DashboardHome = () => {
 
               {/* card 2 */}
               <div className="w-full px-6 sm:w-1/2 xl:w-1/3 ">
-                <div className="flex items-center px-5 py-6 shadow-sm rounded-md  bg-white">
+                <div className="flex items-center px-5 py-6 shadow-sm rounded-md  border-2 border-blue-100 bg-white">
                   <p className="text-gray-700 text-l font-bold">
                     Deposit Balance
                   </p>
@@ -66,7 +66,7 @@ const DashboardHome = () => {
               </div>
               {/* card 3 */}
               <div className="w-full px-6 sm:w-1/2 xl:w-1/3">
-                <div className="flex items-center px-5 py-6 shadow-sm rounded-md  bg-white">
+                <div className="flex items-center px-5 py-6 shadow-sm rounded-md border-2 border-red-100 bg-white">
                   <p className="text-gray-700 text-l font-bold">
                     Withdrawal Balance
                   </p>
