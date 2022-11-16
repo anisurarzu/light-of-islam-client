@@ -75,7 +75,7 @@ const Dashboard = () => {
           // dashboard menu
           <div class=" flex items-center justify-center  ">
             <div class="flex w-full max-w-xs p-4 bg-white">
-              <ul class="flex flex-col w-full bangla-text">
+              <ul class="flex  w-full bangla-text">
                 <li class="">
                   <Link
                     to={`${url}/dashboard`}
@@ -468,11 +468,9 @@ const Dashboard = () => {
           // dashboard menu bar
           // dashboard menu bar
           <div class=" flex items-center justify-center  py-6">
-            <div class="flex md:flex-cols w-full max-w-ys p-4 bg-white phone-menu-bar">
+            <div class="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-1 bg-white phone-menu-bar">
               <ul class=" md:flex-col bangla-text w-full phone-menu-bar-text  w-100 menu-box">
-                {/*  */}
-                {/*  */}
-                <div className="flex md:flex-col colom-number1 ">
+                <div className="grid grid-cols-2 lg:grid-cols1 xl:grid-cols-1">
                   <li class="my-px">
                     <Link
                       to={`${url}/dashboard`}
@@ -519,12 +517,13 @@ const Dashboard = () => {
                       <span class="ml-3">Finance</span>
                     </Link>
                   </li>
+
                   <li class="my-px">
                     <Link
                       to={`${url}/myDeposit`}
-                      class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                      class="flex flex-row items-center h-12 px-16 xl:px-6 lg:px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                     >
-                      <span class="flex items-center justify-center text-lg text-gray-400  md:ml-0 menu1">
+                      <span class="flex  justify-center text-lg text-gray-400  md:ml-0 menu1">
                         <svg
                           fill="none"
                           stroke-linecap="round"
@@ -540,6 +539,7 @@ const Dashboard = () => {
                       <span class="ml-3">Deposit</span>
                     </Link>
                   </li>
+
                   <li class="my-px">
                     <Link
                       to={`${url}/myquestions`}
@@ -562,8 +562,6 @@ const Dashboard = () => {
                     </Link>
                   </li>
                 </div>
-                {/*  */}
-                {/*  */}
 
                 {/* <div className="flex md:flex-col colom-number2">
                   <li class="my-px">
@@ -728,7 +726,7 @@ const Dashboard = () => {
                 {/*  */}
                 {/*  */}
                 {/*  */}
-                <div className="flex md:flex-col colom-number5">
+                <div className="grid grid-cols-2 xl:grid-cols-1 lg:grid-cols-1 md:grid-cols-1">
                   <li class="my-px">
                     <Link
                       to={`${url}/profile`}
@@ -753,7 +751,7 @@ const Dashboard = () => {
                   <li class="my-px">
                     <a
                       href="/"
-                      class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                      class="flex flex-row items-center h-12 xl:px-4 lg:px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                     >
                       <span class="flex items-center justify-center text-lg text-gray-400">
                         <svg
@@ -768,8 +766,8 @@ const Dashboard = () => {
                           <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
                         </svg>
                       </span>
-                      <span class="ml-3">Notifications</span>
-                      <span class=" last-notification flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
+                      <span class="ml-1">Notifications</span>
+                      <span class=" last-notification flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 xl:px-2  lg:px-2 rounded-full ml-auto">
                         10
                       </span>
                     </a>
