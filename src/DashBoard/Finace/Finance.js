@@ -16,8 +16,11 @@ export default function Finance() {
       .then((data) => {
         // console.log("event data", data[0].email);
         const filteredData = data?.filter((d) => d?.email === userInfo?.email);
-        setDepositInfo(filteredData);
-        setDepositInfo2(filteredData);
+        const latestData = filteredData.sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+        setDepositInfo(latestData);
+        setDepositInfo2(latestData);
       });
   }, []);
 
@@ -93,7 +96,7 @@ export default function Finance() {
                     </tr>
                   </thead>
                   <tbody class="text-sm divide-y divide-gray-100">
-                    {depositInfo?.map((data, index) => (
+                    {depositInfo.slice(0, 10)?.map((data, index) => (
                       <tr>
                         <td key={index} class="p-2 whitespace-nowrap">
                           <div class="flex items-center">
