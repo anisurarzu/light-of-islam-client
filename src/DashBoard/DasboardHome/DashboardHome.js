@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NewAppContext } from "../../App";
 import Card from "../../components/Card/Card";
+import Loader from "../../components/Loader/Loader";
 import useAuth from "../../hooks/useAuth";
 import "./DashboardHome.css";
 
@@ -15,9 +16,16 @@ const DashboardHome = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
-        const filteredData = data?.filter((d) => d?.email === userInfo?.email);
-        setDepositInfo(filteredData);
-        setDepositInfo2(filteredData);
+        if (userInfo?.payRole === "finance") {
+          setDepositInfo(data);
+          setDepositInfo2(data);
+        } else {
+          const filteredData = data?.filter(
+            (d) => d?.email === userInfo?.email
+          );
+          setDepositInfo(filteredData);
+          setDepositInfo2(filteredData);
+        }
       });
   }, []);
   // calculate deposit amount
@@ -32,11 +40,15 @@ const DashboardHome = () => {
   console.log("object", totalDeposit);
   return (
     <div className="">
-      <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">
-        <Card title={"Current Balance"} amount={totalDeposit} />
-        <Card title={"Deposit Balance"} amount={totalDeposit} />
-        <Card title={"Withdrawal Balance"} />
-      </div>
+      {!depositInfo2?.length > 0 ? (
+        <Loader />
+      ) : (
+        <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">
+          <Card title={"Current Balance"} amount={totalDeposit} />
+          <Card title={"Deposit Balance"} amount={totalDeposit} />
+          <Card title={"Withdrawal Balance"} />
+        </div>
+      )}
     </div>
   );
 };

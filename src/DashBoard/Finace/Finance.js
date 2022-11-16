@@ -15,12 +15,22 @@ export default function Finance() {
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
-        const filteredData = data?.filter((d) => d?.email === userInfo?.email);
-        const latestData = filteredData.sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        );
-        setDepositInfo(latestData);
-        setDepositInfo2(latestData);
+        if (userInfo?.payRole === "finance") {
+          const latestData = data.sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          );
+          setDepositInfo(latestData);
+          setDepositInfo2(latestData);
+        } else {
+          const filteredData = data?.filter(
+            (d) => d?.email === userInfo?.email
+          );
+          const latestData = filteredData.sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          );
+          setDepositInfo(latestData);
+          setDepositInfo2(latestData);
+        }
       });
   }, []);
 
@@ -28,8 +38,10 @@ export default function Finance() {
   const handleSearch = (event) => {
     const searchText = event.target.value;
     if (searchText) {
-      const matchedDetails = depositInfo.filter((details) =>
-        details.depositAmount.includes(searchText)
+      const matchedDetails = depositInfo?.filter(
+        (details) =>
+          details?.dmfID?.includes(searchText) ||
+          details?.transactionID?.includes(searchText)
       );
       setDepositInfo(matchedDetails);
     } else {
@@ -59,7 +71,7 @@ export default function Finance() {
             type="text"
             name=""
             id=""
-            placeholder="search...by amount"
+            placeholder="search...by dmfID or transactionID"
           />
         </div>
       </div>
@@ -80,7 +92,15 @@ export default function Finance() {
                         <div class="font-semibold text-left">Name</div>
                       </th>
                       <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-left">DMF ID</div>
+                      </th>
+                      <th class="p-2 whitespace-nowrap">
                         <div class="font-semibold text-left">Amount</div>
+                      </th>
+                      <th class="p-2 whitespace-nowrap">
+                        <div class="font-semibold text-left">
+                          Transaction ID
+                        </div>
                       </th>
                       <th class="p-2 whitespace-nowrap">
                         <div class="font-semibold text-left">Date</div>
@@ -114,9 +134,19 @@ export default function Finance() {
                             </div>
                           </div>
                         </td>
+                        <td>
+                          <div class="text-left font-medium text-gray-800">
+                            {data?.dmfID}
+                          </div>
+                        </td>
                         <td class="p-2 whitespace-nowrap">
                           <div class="text-left font-medium text-green-500">
                             ৳ {data?.depositAmount}
+                          </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                          <div class="text-left font-medium text-indigo-500">
+                            {data?.transactionID}
                           </div>
                         </td>
                         <td class="p-2 whitespace-nowrap">
