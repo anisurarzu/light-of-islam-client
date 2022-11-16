@@ -82,7 +82,7 @@ export default function Card({ title, amount }) {
               <h1 class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-4 ">
                 {amount || 0} ৳
               </h1>
-              <div class="flex flex-row justify-between ">
+              <div class="flex flex-row justify-between py-4">
                 <p>{title}</p>
                 <span>
                   <svg
