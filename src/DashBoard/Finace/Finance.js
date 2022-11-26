@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NewAppContext } from "../../App";
+import Progress from "../../components/Progress/Progress";
 import useAuth from "../../hooks/useAuth";
 import Payment from "../../Pages/Payment/Payment";
 
@@ -51,6 +52,7 @@ export default function Finance() {
 
   return (
     <div>
+      {userInfo?.payRole === "member" && <Progress depositInfo={depositInfo} />}
       <div class="flex items-center justify-end">
         <div class="flex bg-gray-50 items-center p-2 rounded-md">
           <svg
@@ -156,7 +158,15 @@ export default function Finance() {
                           <div class=" text-center">{data?.paymentType}</div>
                         </td>
                         <td class="p-2 whitespace-nowrap">
-                          <div class=" text-center">{data?.status}</div>
+                          <div
+                            class={`text-center ${
+                              data?.status === "Accepted"
+                                ? "text-green-500"
+                                : "text-yellow-500"
+                            }`}
+                          >
+                            {data?.status}
+                          </div>
                         </td>
                       </tr>
                     ))}

@@ -41,6 +41,7 @@ const Schedule = () => {
     data.bookedDates = currentSchedule?.bookingDate;
     data.scholarId = currentSchedule?.scholarId;
     data.scheduleId = currentSchedule?._id;
+
     console.log("bookedDates", data);
     if (data?.status === "Accept") {
       fetch("https://dmf-server.vercel.app/schedule/bookingInfo", {

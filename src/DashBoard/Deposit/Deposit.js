@@ -20,6 +20,8 @@ export default function Deposit() {
     data.displayName = userInfo?.displayName;
     data.email = userInfo?.email;
     data.date = new Date();
+    const today = new Date();
+    data.month = today.toLocaleString("default", { month: "long" });
     data.status = "Pending";
 
     axios

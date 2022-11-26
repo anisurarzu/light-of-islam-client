@@ -32,7 +32,11 @@ const DashboardHome = () => {
 
   const depositAmount = [];
 
-  depositInfo2?.map((data) => depositAmount?.push(data?.depositAmount));
+  depositInfo2?.map((data) => {
+    if (data?.status === "Accepted") {
+      depositAmount?.push(data?.depositAmount);
+    }
+  });
   const totalDeposit =
     depositAmount.length > 0 &&
     depositAmount?.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr));
@@ -47,6 +51,8 @@ const DashboardHome = () => {
           <Card title={"Current Balance"} amount={totalDeposit} />
           <Card title={"Deposit Balance"} amount={totalDeposit} />
           <Card title={"Withdrawal Balance"} />
+
+          <div></div>
         </div>
       )}
     </div>

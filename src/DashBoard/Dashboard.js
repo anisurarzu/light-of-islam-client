@@ -29,6 +29,7 @@ import MyPayment from "./PaymentInfo/MyPayment";
 import QuizeHome from "../Pages/Quize/QuizeHome/QuizeHome";
 import Finance from "./Finace/Finance";
 import Deposit from "./Deposit/Deposit";
+import Tnxld from "./Tnxld/Tnxld";
 
 // import ViewQuestion from "./ViewQuestion/ViewQuestion";
 
@@ -545,6 +546,27 @@ const Dashboard = () => {
                     </li>
                     <li class="my-px">
                       <Link
+                        to={`${url}/depositHistory`}
+                        class="flex flex-row items-center h-12 px-16 xl:px-6 lg:px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                      >
+                        <span class="flex  justify-center text-lg text-gray-400  md:ml-0 menu1">
+                          <svg
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            class="h-6 w-6"
+                          >
+                            <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                          </svg>
+                        </span>
+                        <span class="ml-3">Insert D-History</span>
+                      </Link>
+                    </li>
+                    <li class="my-px">
+                      <Link
                         to={`${url}/userlist`}
                         class="flex flex-row items-center h-12 px-16 xl:px-6 lg:px-4 rounded-lg text-gray-600 hover:bg-gray-100"
                       >
@@ -955,56 +977,56 @@ const Dashboard = () => {
                     </li>
                   </div>
 
-                  {/* <div className="flex md:flex-col colom-number2">
-              <li class="my-px">
-                <Link
-                  to={`${url}/sendquestions`}
-                  class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
-                >
-                  <span class="flex items-center justify-center text-lg text-gray-400">
-                    <svg
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      class="h-6 w-6"
-                    >
-                      <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                    </svg>
-                  </span>
-                  <span class="ml-3">প্রশ্ন পাঠান</span>
-                </Link>
-              </li>
-              <li class="my-px">
-                <Link
-                  to={`${url}/takeschedule`}
-                  class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
-                >
-                  <span class="flex items-center justify-center text-lg text-gray-400 menu2">
-                    <svg
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      class="h-6 w-6"
-                    >
-                      <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                    </svg>
-                  </span>
-                  <span class="ml-3">সময়সূচী নিন</span>
-                 
-                </Link>
-              </li>
-            </div> */}
+                  <div className="flex md:flex-col colom-number2">
+                    <li class="my-px">
+                      <Link
+                        to={`${url}/sendquestions`}
+                        class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                      >
+                        <span class="flex items-center justify-center text-lg text-gray-400">
+                          <svg
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            class="h-6 w-6"
+                          >
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                          </svg>
+                        </span>
+                        <span class="ml-3">প্রশ্ন পাঠান</span>
+                      </Link>
+                    </li>
+                    {/* <li class="my-px">
+                      <Link
+                        to={`${url}/takeschedule`}
+                        class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+                      >
+                        <span class="flex items-center justify-center text-lg text-gray-400 menu2">
+                          <svg
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            class="h-6 w-6"
+                          >
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                          </svg>
+                        </span>
+                        <span class="ml-3">সময়সূচী নিন</span>
+                      </Link>
+                    </li> */}
+                  </div>
+
                   {/*  */}
                   {/*  */}
 
                   <div className="flex md:flex-col colom-number3">
-                    <li class="my-px">
+                    {/*  <li class="my-px">
                       <Link
                         to={`${url}/schedulelist`}
                         class="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
@@ -1023,11 +1045,8 @@ const Dashboard = () => {
                           </svg>
                         </span>
                         <span class="ml-3">সময়সূচী</span>
-                        {/* <span class="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">
-                  1k
-                </span> */}
                       </Link>
-                    </li>
+                    </li> */}
                     <li class="my-px">
                       <Link
                         to={`${url}/myquize`}
@@ -1290,6 +1309,9 @@ const Dashboard = () => {
           </Route>
           <Route path={`${path}/myDeposit`}>
             <Deposit />
+          </Route>
+          <Route path={`${path}/depositHistory`}>
+            <Tnxld />
           </Route>
           <Route path={`${path}/manageProducts`}></Route>
           <Route path={`${path}/reviews`}></Route>
