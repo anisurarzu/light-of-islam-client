@@ -17,7 +17,7 @@ export default function Tnxld() {
 
   useEffect(() => {
     //https://dmf-server.vercel.app/
-    fetch(`http://localhost:5000/deposit`)
+    fetch(`https://dmf-server.vercel.app/deposit`)
       .then((res) => res.json())
       .then((data) => {
         const latestData = data.sort(
@@ -36,7 +36,7 @@ export default function Tnxld() {
       data.status = "Accepted";
       console.log("depositInfo", data);
 
-      axios.put("http://localhost:5000/deposit", data).then((res) => {
+      axios.put("https://dmf-server.vercel.app/deposit", data).then((res) => {
         if (res.status === 200) {
           setMessage("Successfully Update!");
           reset();
