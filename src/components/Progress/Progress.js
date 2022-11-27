@@ -20,16 +20,16 @@ export default function Progress({ depositInfo }) {
   return (
     <div>
       <ul class="w-full sm:w-4/5 text-xs sm:text-sm justify-center  grid grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-2 space-x-1 mt-6  mb-4">
-        {depositInfo?.map((data) => (
+        {monthList?.map((data) => (
           <li key={data?.id}>
             <button
               class={`px-4 py-2 ${
-                data?.status === "Accepted"
+                data?.month?.length > 0
                   ? "bg-green-500 text-white hover:bg-green-700"
                   : "bg-gray-200 text-gray-700 hover:bg-indigo-700 hover:text-gray-200"
               } rounded-full text-sm  `}
             >
-              {data?.month}
+              {data?.name}
             </button>
           </li>
         ))}
