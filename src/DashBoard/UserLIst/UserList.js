@@ -8,8 +8,8 @@ export default function UserList() {
   const { userInfo } = useAuth();
 
   useEffect(() => {
-    //https://dmf-server.vercel.app/
-    fetch(`https://dmf-server.vercel.app/users`)
+    //https://light-of-islam-server-production-0204.up.railway.app/
+    fetch(`https://light-of-islam-server-production-0204.up.railway.app/users`)
       .then((res) => res.json())
       .then((data) => {
         // setUserList(data);

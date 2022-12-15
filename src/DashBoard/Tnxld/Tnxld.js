@@ -16,8 +16,8 @@ export default function Tnxld() {
   const [depositInfo, setDepositInfo] = useState([]);
 
   useEffect(() => {
-    //https://dmf-server.vercel.app/
-    fetch(`https://dmf-server.vercel.app/deposit`)
+    //https://light-of-islam-server-production-0204.up.railway.app/
+    fetch(`https://light-of-islam-server-production-0204.up.railway.app/deposit`)
       .then((res) => res.json())
       .then((data) => {
         const latestData = data.sort(
@@ -36,7 +36,7 @@ export default function Tnxld() {
       data.status = "Accepted";
       console.log("depositInfo", data);
 
-      axios.put("https://dmf-server.vercel.app/deposit", data).then((res) => {
+      axios.put("https://light-of-islam-server-production-0204.up.railway.app/deposit", data).then((res) => {
         if (res.status === 200) {
           setMessage("Successfully Update!");
           reset();

@@ -9,7 +9,9 @@ const MyEvent = () => {
   let userEmail = user?.email;
   console.log("br", userEmail);
   useEffect(() => {
-    fetch(`https://dmf-server.vercel.app/bookingStatus`)
+    fetch(
+      `https://light-of-islam-server-production-0204.up.railway.app/bookingStatus`
+    )
       .then((res) => res.json())
       .then((data) => {
         const newBookingStatus = data.filter(

@@ -12,7 +12,9 @@ const ViewQuestion = () => {
   // console.log("orderid", orderId);
   console.log(questionId);
   useEffect(() => {
-    fetch(`https://dmf-server.vercel.app/questions/${questionId}`)
+    fetch(
+      `https://light-of-islam-server-production-0204.up.railway.app/questions/${questionId}`
+    )
       .then((res) => res.json())
       .then((data) => setQuestion(data));
   }, []);

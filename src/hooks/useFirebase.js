@@ -100,19 +100,25 @@ const useFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    fetch(`https://dmf-server.vercel.app/users/${user?.email}`)
+    fetch(
+      `https://light-of-islam-server-production-0204.up.railway.app/users/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setAdmin(data?.admin));
   }, [user?.email]);
 
   useEffect(() => {
-    fetch(`https://dmf-server.vercel.app/users/${user?.email}`)
+    fetch(
+      `https://light-of-islam-server-production-0204.up.railway.app/users/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setScholar(data?.scholar));
   }, [user?.email]);
 
   useEffect(() => {
-    fetch(`https://dmf-server.vercel.app/users/profile/${user?.email}`)
+    fetch(
+      `https://light-of-islam-server-production-0204.up.railway.app/users/profile/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, [user?.email]);
@@ -132,18 +138,21 @@ const useFirebase = () => {
   const saveUser = (email, displayName, method) => {
     console.log(displayName);
     const user = { email, displayName };
-    fetch("https://dmf-server.vercel.app/users", {
-      method: method,
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    }).then();
+    fetch(
+      "https://light-of-islam-server-production-0204.up.railway.app/users",
+      {
+        method: method,
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    ).then();
   };
 
   // scholar finding
   useEffect(() => {
-    fetch("https://dmf-server.vercel.app/users")
+    fetch("https://light-of-islam-server-production-0204.up.railway.app/users")
       .then((res) => res.json())
       .then((data) => {
         const collectedScholar = data.filter((data) => data.role === "scholar");

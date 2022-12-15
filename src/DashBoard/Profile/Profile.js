@@ -15,11 +15,14 @@ const Profile = () => {
       image: imageURL,
     };
     console.log({ userInfo });
-    fetch("https://dmf-server.vercel.app/users/profile/image", {
-      method: "PUT",
-      headers: { "content-Type": "application/json" },
-      body: JSON.stringify(userInfo),
-    })
+    fetch(
+      "https://light-of-islam-server-production-0204.up.railway.app/users/profile/image",
+      {
+        method: "PUT",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(userInfo),
+      }
+    )
       .then((res) => {
         console.log(res);
         // alert("image uploaded done");

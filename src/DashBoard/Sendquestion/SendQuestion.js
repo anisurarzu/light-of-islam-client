@@ -12,13 +12,18 @@ const SendQuestion = () => {
   const onSubmit = (data) => {
     console.log(data, "form");
     setMessage("");
-    axios.post("https://dmf-server.vercel.app/questions", data).then((res) => {
-      if (res.data.insertedId) {
-        setMessage("Your question submitted SuccessFully!");
-        reset();
-        window.location.replace("/dashboard/myquestions");
-      }
-    });
+    axios
+      .post(
+        "https://light-of-islam-server-production-0204.up.railway.app/questions",
+        data
+      )
+      .then((res) => {
+        if (res.data.insertedId) {
+          setMessage("Your question submitted SuccessFully!");
+          reset();
+          window.location.replace("/dashboard/myquestions");
+        }
+      });
   };
   const { user } = useAuth();
   return (

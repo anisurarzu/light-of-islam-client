@@ -9,13 +9,18 @@ const CreateEvent = () => {
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("https://dmf-server.vercel.app/events", data).then((res) => {
-      if (res.data.insertedId) {
-        setMessage("Your event created SuccessFully!");
-        reset();
-        window.location.replace("/dashboard/allevents");
-      }
-    });
+    axios
+      .post(
+        "https://light-of-islam-server-production-0204.up.railway.app/events",
+        data
+      )
+      .then((res) => {
+        if (res.data.insertedId) {
+          setMessage("Your event created SuccessFully!");
+          reset();
+          window.location.replace("/dashboard/allevents");
+        }
+      });
   };
 
   return (

@@ -11,7 +11,9 @@ const ScheduleList = () => {
   //   console.log("scheduleList", scheduleList);
   let email = user?.email;
   useEffect(() => {
-    fetch("https://dmf-server.vercel.app/schedule")
+    fetch(
+      "https://light-of-islam-server-production-0204.up.railway.app/schedule"
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);

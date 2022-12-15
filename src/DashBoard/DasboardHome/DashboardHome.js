@@ -11,8 +11,10 @@ const DashboardHome = () => {
   const [depositInfo2, setDepositInfo2] = useState([]);
 
   useEffect(() => {
-    //https://dmf-server.vercel.app/
-    fetch(`https://dmf-server.vercel.app/deposit`)
+    //https://light-of-islam-server-production-0204.up.railway.app/
+    fetch(
+      `https://light-of-islam-server-production-0204.up.railway.app/deposit`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
