@@ -13,7 +13,6 @@ import Register from "./Pages/Register/Register";
 import GetSchedule from "./Pages/GetSchedule/GetSchedule";
 import Question from "./Pages/Question/Question";
 import Dashboard from "./DashBoard/Dashboard";
-
 import Profile from "./DashBoard/Profile/Profile";
 import ViewQuestion from "./DashBoard/ViewQuestion/ViewQuestion";
 import Payment from "./Pages/Payment/Payment";
@@ -28,6 +27,11 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import ViewCartProduct from "./Pages/Shared/Header/ViewCartProduct";
 import { createContext, useState } from "react";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css";
+import { ToastContainer } from "react-toastify";
+
 export const NewAppContext = createContext();
 function App() {
   const [depositInfo, setDepositInfo] = useState([]);
@@ -98,6 +102,9 @@ function App() {
               </Switch>
               <Footer></Footer>
             </NewAppContext.Provider>
+
+            {/* Same as */}
+            <ToastContainer />
           </Router>
         </AuthProvider>
       </Provider>

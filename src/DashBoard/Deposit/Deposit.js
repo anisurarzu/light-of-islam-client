@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { NewAppContext } from "../../App";
 // import { toast, ToastContainer } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
@@ -31,10 +32,10 @@ export default function Deposit() {
         data
       )
       .then((res) => {
-        if (res.data.insertedId) {
+        if (res.status === 200) {
+          toast.success("Successfully Save!");
           reset();
-          setMessage("Successfully save! ");
-          // toast.success("Wow so easy!");
+          // setMessage("Successfully save! ");
         }
       });
   };
