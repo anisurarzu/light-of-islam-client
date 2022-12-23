@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 
 import Payment from "../../Pages/Payment/Payment";
@@ -17,7 +18,9 @@ export default function Tnxld() {
 
   useEffect(() => {
     //https://light-of-islam-server-production-0204.up.railway.app/
-    fetch(`https://light-of-islam-server-production-0204.up.railway.app/deposit`)
+    fetch(
+      `https://light-of-islam-server-production-0204.up.railway.app/deposit`
+    )
       .then((res) => res.json())
       .then((data) => {
         const latestData = data.sort(
@@ -36,14 +39,19 @@ export default function Tnxld() {
       data.status = "Accepted";
       console.log("depositInfo", data);
 
-      axios.put("https://light-of-islam-server-production-0204.up.railway.app/deposit", data).then((res) => {
-        if (res.status === 200) {
-          setMessage("Successfully Update!");
-          reset();
-        }
-      });
+      axios
+        .put(
+          "https://light-of-islam-server-production-0204.up.railway.app/deposit",
+          data
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            toast.success("Successfully Update!");
+            reset();
+          }
+        });
     } else {
-      alert("does not matched or not payment yet");
+      toast.error("does not matched or not payment yet");
     }
   };
 

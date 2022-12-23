@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { NewAppContext } from "../../App";
 import Card from "../../components/Card/Card";
 import Loader from "../../components/Loader/Loader";
@@ -9,26 +10,33 @@ const DashboardHome = () => {
   const { userInfo } = useAuth();
   const { depositInfo, setDepositInfo } = useContext(NewAppContext);
   const [depositInfo2, setDepositInfo2] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    //https://light-of-islam-server-production-0204.up.railway.app/
-    fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/deposit`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("event data", data[0].email);
-        if (userInfo?.payRole === "finance") {
-          setDepositInfo(data);
-          setDepositInfo2(data);
-        } else {
-          const filteredData = data?.filter(
-            (d) => d?.email === userInfo?.email
-          );
-          setDepositInfo(filteredData);
-          setDepositInfo2(filteredData);
-        }
-      });
+    try {
+      setLoading(true);
+      fetch(
+        `https://light-of-islam-server-production-0204.up.railway.app/deposit`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setLoading(false);
+          // console.log("event data", data[0].email);
+          if (userInfo?.payRole === "finance") {
+            setDepositInfo(data);
+            setDepositInfo2(data);
+          } else {
+            const filteredData = data?.filter(
+              (d) => d?.email === userInfo?.email
+            );
+            setDepositInfo(filteredData);
+            setDepositInfo2(filteredData);
+          }
+        });
+    } catch (err) {
+      setLoading(false);
+      toast.error(err);
+    }
   }, []);
   // calculate deposit amount
 
@@ -46,7 +54,7 @@ const DashboardHome = () => {
   console.log("object", totalDeposit);
   return (
     <div className="">
-      {!depositInfo2?.length > 0 ? (
+      {loading ? (
         <Loader />
       ) : (
         <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">

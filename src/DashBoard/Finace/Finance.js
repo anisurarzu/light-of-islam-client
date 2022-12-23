@@ -5,37 +5,51 @@ import Progress from "../../components/Progress/Progress";
 import useAuth from "../../hooks/useAuth";
 import Payment from "../../Pages/Payment/Payment";
 
+import { Column } from "primereact/column";
+import { DataTable } from "primereact/datatable";
+// import { Rating } from "primereact/rating";
+import { Button } from "primereact/button";
+import { toast } from "react-toastify";
+import { splitButtonTemp } from "../../components/SplitButton/SplitButtonTemp";
+
 export default function Finance() {
   const { depositInfo, setDepositInfo } = useContext(NewAppContext);
-
+  const [loading, setLoading] = useState(false);
   const [depositInfo2, setDepositInfo2] = useState([]);
   const { userInfo } = useAuth();
 
   useEffect(() => {
     //https://light-of-islam-server-production-0204.up.railway.app/
-    fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/deposit`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("event data", data[0].email);
-        if (userInfo?.payRole === "finance") {
-          const latestData = data.sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-          );
-          setDepositInfo(latestData);
-          setDepositInfo2(latestData);
-        } else {
-          const filteredData = data?.filter(
-            (d) => d?.email === userInfo?.email
-          );
-          const latestData = filteredData.sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-          );
-          setDepositInfo(latestData);
-          setDepositInfo2(latestData);
-        }
-      });
+    try {
+      setLoading(true);
+      fetch(
+        `https://light-of-islam-server-production-0204.up.railway.app/deposit`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setLoading(false);
+          // console.log("event data", data[0].email);
+          if (userInfo?.payRole === "finance") {
+            const latestData = data.sort(
+              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+            );
+            setDepositInfo(latestData);
+            setDepositInfo2(latestData);
+          } else {
+            const filteredData = data?.filter(
+              (d) => d?.email === userInfo?.email
+            );
+            const latestData = filteredData.sort(
+              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+            );
+            setDepositInfo(latestData);
+            setDepositInfo2(latestData);
+          }
+        });
+    } catch (err) {
+      setLoading(false);
+      toast.error(err);
+    }
   }, []);
 
   // searching method
@@ -52,146 +66,152 @@ export default function Finance() {
       setDepositInfo(depositInfo2);
     }
   };
+  const statusTemplate = (rowData) => {
+    return (
+      <span
+        className={`product-badge status-${
+          rowData.inventoryStatus ? rowData.inventoryStatus.toLowerCase() : ""
+        }`}
+      >
+        {rowData.inventoryStatus}
+      </span>
+    );
+  };
+  const edit = (rowData) => {};
+
+  const actionBodyTemplate = (rowData) => {
+    const buttonTemp = [
+      {
+        label: "Edit",
+        icon: "",
+        command: (e) => {
+          edit(rowData);
+        },
+      },
+    ];
+    return (
+      <>
+        {splitButtonTemp(
+          rowData,
+          {
+            defaultFunc: "",
+            defaultLabel: "Actions",
+            defaultColor: "button",
+            defaultIcon: "",
+          },
+          buttonTemp
+        )}
+      </>
+    );
+  };
+  const paginatorLeft = (
+    <Button type="button" icon="pi pi-refresh" className="p-button-text" />
+  );
+  const paginatorRight = (
+    <Button type="button" icon="pi pi-cloud" className="p-button-text" />
+  );
+  const imageBodyTemplate = (rowData) => {
+    return (
+      <div className="p-multiselect-representative-option flex items-center ">
+        <img
+          className="rounded-full"
+          alt={""}
+          src={rowData.image}
+          onError={(e) =>
+            (e.target.src =
+              "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
+          }
+          width={32}
+          style={{ verticalAlign: "middle" }}
+        />
+        <span className="image-text pl-2">{rowData?.displayName}</span>
+      </div>
+    );
+  };
+  const statusBodyTemplate = (rowData) => {
+    return (
+      <div>
+        <span
+          className={`${
+            rowData?.status === "Accepted"
+              ? "text-green-500"
+              : "text-yellow-500"
+          }`}
+        >
+          {rowData?.status}
+        </span>
+      </div>
+    );
+  };
+  const dateBodyTemplate = (rowData) => {
+    return (
+      <div>
+        <span>{rowData?.date.slice(0, 10)}</span>
+      </div>
+    );
+  };
 
   return (
     <div>
-      {!depositInfo2?.length > 0 ? (
-        <Loader />
-      ) : (
-        <div>
-          {userInfo?.payRole === "member" && (
-            <Progress depositInfo={depositInfo} />
-          )}
-          <div class="flex items-center justify-end">
-            <div class="flex bg-gray-50 items-center p-2 rounded-md">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <input
-                onChange={handleSearch}
-                class="bg-gray-50 outline-none ml-1 block "
-                type="text"
-                name=""
-                id=""
-                placeholder="search...by dmfID or transactionID"
-              />
-            </div>
-          </div>
-          <section class="">
-            <div class="flex flex-col justify-center h-full">
-              <div class="w-full  mx-auto bg-white  rounded-sm ">
-                <header class="px-5 py-4 border-b border-gray-100">
-                  <h2 class="font-semibold text-gray-800">
-                    DMF Interest Free Loan Scheme (Deposit Dashboard)
-                  </h2>
-                </header>
-                <div class="p-3">
-                  <div class="overflow-x-auto">
-                    <table class="table-auto w-full">
-                      <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
-                        <tr>
-                          <th class="p-2 whitespace-nowrap">
-                            <div class="font-semibold text-left">Name</div>
-                          </th>
-                          <th class="p-2 whitespace-nowrap">
-                            <div class="font-semibold text-left">DMF ID</div>
-                          </th>
-                          <th class="p-2 whitespace-nowrap">
-                            <div class="font-semibold text-left">Amount</div>
-                          </th>
-                          <th class="p-2 whitespace-nowrap">
-                            <div class="font-semibold text-left">
-                              Transaction ID
-                            </div>
-                          </th>
-                          <th class="p-2 whitespace-nowrap">
-                            <div class="font-semibold text-left">Date</div>
-                          </th>
-                          <th class="p-2 whitespace-nowrap">
-                            <div class="font-semibold text-center">
-                              Payment Method
-                            </div>
-                          </th>
-                          <th class="p-2 whitespace-nowrap">
-                            <div class="font-semibold text-center">Status</div>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-sm divide-y divide-gray-100">
-                        {depositInfo.slice(0, 10)?.map((data, index) => (
-                          <tr>
-                            <td key={index} class="p-2 whitespace-nowrap">
-                              <div class="flex items-center">
-                                <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                                  <img
-                                    class="rounded-full "
-                                    src={data?.image}
-                                    width="40"
-                                    height="40"
-                                    alt="Alex Shatov"
-                                  />
-                                </div>
-                                <div class="font-medium text-gray-800">
-                                  {data?.displayName}
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="text-left font-medium text-gray-800">
-                                {data?.dmfID}
-                              </div>
-                            </td>
-                            <td class="p-2 whitespace-nowrap">
-                              <div class="text-left font-medium text-green-500">
-                                ৳ {data?.depositAmount}
-                              </div>
-                            </td>
-                            <td class="p-2 whitespace-nowrap">
-                              <div class="text-left font-medium text-indigo-500">
-                                {data?.transactionID}
-                              </div>
-                            </td>
-                            <td class="p-2 whitespace-nowrap">
-                              <div class="text-left">
-                                {data?.date.slice(0, 10)}
-                              </div>
-                            </td>
-                            <td class="p-2 whitespace-nowrap">
-                              <div class=" text-center">
-                                {data?.paymentType}
-                              </div>
-                            </td>
-                            <td class="p-2 whitespace-nowrap">
-                              <div
-                                class={`text-center ${
-                                  data?.status === "Accepted"
-                                    ? "text-green-500"
-                                    : "text-yellow-500"
-                                }`}
-                              >
-                                {data?.status}
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+      <div>
+        {userInfo?.payRole === "member" && (
+          <Progress depositInfo={depositInfo} />
+        )}
+        <div class="flex bg-gray-50 items-center p-2 rounded-md my-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-gray-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <input
+            onChange={handleSearch}
+            className="bg-gray-50 outline-none ml-1 block  w-full"
+            type="text"
+            name=""
+            id=""
+            placeholder="search...by dmfID or transactionID"
+          />
         </div>
-      )}
+
+        <DataTable
+          paginator
+          paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+          rows={10}
+          rowsPerPageOptions={[10, 20, 50]}
+          paginatorLeft={paginatorLeft}
+          paginatorRight={paginatorRight}
+          value={depositInfo}
+          header="Deposit Information"
+          responsiveLayout="scroll"
+          loading={loading}
+          showGridlines
+        >
+          <Column
+            header="User"
+            filterField="representative"
+            showFilterMatchModes={false}
+            filterMenuStyle={{ width: "10rem" }}
+            style={{ minWidth: "0.5rem" }}
+            body={imageBodyTemplate}
+          />
+
+          <Column field="depositAmount" header="Deposit Amount" />
+          <Column field="dmfID" header="DMF ID" />
+          <Column field="transactionID" header="Transaction ID" />
+          <Column field="date" header="Date" body={dateBodyTemplate} />
+          <Column field="paymentType" header="Method" />
+          <Column field="status" header="Status" body={statusBodyTemplate} />
+          {/* <Column field="action" header="Action" body={actionBodyTemplate} /> */}
+        </DataTable>
+      </div>
     </div>
   );
 }
