@@ -15,8 +15,8 @@ const AllEvents = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
-        const event = data.filter((data) => data?.email === email);
-        setEvents(event);
+        // const event = data.filter((data) => data?.email === email);
+        setEvents(data);
         // console.log(event);
       });
   }, []);
@@ -35,11 +35,12 @@ const AllEvents = () => {
           if (result.deletedCount > 0) {
             const restEvent = events.filter((event) => event._id !== id);
             setEvents(restEvent);
-            setMessage("Your question deleted Successfully!");
+            setMessage("Your event deleted Successfully!");
           }
         });
     }
   };
+  console.log(events);
   return (
     <div className="event-container pt-12">
       <h2 className="text-xl xl:text-2xl lg:text-2xl ">My Events</h2>
