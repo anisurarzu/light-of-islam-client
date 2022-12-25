@@ -8,7 +8,7 @@ const CreateEvent = () => {
   const [message, setMessage] = useState("");
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     axios
       .post(
         "https://light-of-islam-server-production-0204.up.railway.app/events",

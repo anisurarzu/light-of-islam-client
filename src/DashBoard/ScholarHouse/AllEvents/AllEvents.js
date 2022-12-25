@@ -14,7 +14,7 @@ const AllEvents = () => {
     fetch("https://light-of-islam-server-production-0204.up.railway.app/events")
       .then((res) => res.json())
       .then((data) => {
-        console.log("event data", data[0].email);
+        // console.log("event data", data[0].email);
         const event = data.filter((data) => data?.email === email);
         setEvents(event);
         // console.log(event);
