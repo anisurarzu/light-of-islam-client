@@ -37,7 +37,7 @@ export default function Card({ title, amount }) {
             </li>
           </ul> */}
           <div class="w-full ">
-            <div class="flex flex-col px-6  overflow-hidden bg-white  rounded-xl shadow-lg duration-300  group">
+            <div class="flex flex-col px-6  overflow-hidden bg-white  rounded-xl shadow duration-300  group">
               <div class="flex flex-row justify-between items-center">
                 <Link to={`${url}/myFinance`} class="">
                   <div class="px-4 py-2 bg-gray-300 mt-2  rounded-xl bg-opacity-30">

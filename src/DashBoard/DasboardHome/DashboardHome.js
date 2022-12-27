@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { NewAppContext } from "../../App";
 import Card from "../../components/Card/Card";
+import Card2 from "../../components/Card2/Card2";
 import Loader from "../../components/Loader/Loader";
 import useAuth from "../../hooks/useAuth";
 import "./DashboardHome.css";
@@ -57,12 +58,15 @@ const DashboardHome = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">
-          <Card title={"Current Balance"} amount={totalDeposit} />
-          <Card title={"Deposit Balance"} amount={totalDeposit} />
-          <Card title={"Withdrawal Balance"} />
+        <div>
+          <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">
+            <Card title={"Current Balance"} amount={totalDeposit} />
+            <Card title={"Deposit Balance"} amount={totalDeposit} />
+            <Card title={"Withdrawal Balance"} />
 
-          <div></div>
+            <div></div>
+          </div>
+          <Card2 amount={totalDeposit} />
         </div>
       )}
     </div>
