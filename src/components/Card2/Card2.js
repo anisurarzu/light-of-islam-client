@@ -7,7 +7,7 @@ export default function Card2({ amount }) {
       <div class="w-full ">
         <div class="flex flex-col px-6  overflow-hidden  bg-green-100  rounded-xl shadow duration-300  group ">
           <div class="flex flex-row justify-between items-center ">
-            <Link to={``} class="">
+            {/* <Link to={``} class="">
               <div class="px-4 py-2 bg-gray-300 mt-2  rounded-xl bg-opacity-30">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ export default function Card2({ amount }) {
                   />
                 </svg>
               </div>
-            </Link>
+            </Link> */}
 
             <div class="inline-flex text-sm text-gray-600 ">
               <svg

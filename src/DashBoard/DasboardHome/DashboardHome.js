@@ -11,6 +11,7 @@ const DashboardHome = () => {
   const { userInfo } = useAuth();
   const { depositInfo, setDepositInfo } = useContext(NewAppContext);
   const [depositInfo2, setDepositInfo2] = useState([]);
+  const [dmfBalance, setDmfBalance] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const DashboardHome = () => {
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
+          setDmfBalance(data);
           // console.log("event data", data[0].email);
           if (userInfo?.payRole === "finance") {
             setDepositInfo(data);
@@ -42,17 +44,29 @@ const DashboardHome = () => {
   // calculate deposit amount
 
   const depositAmount = [];
+  const dmfDepositAmount = [];
 
   depositInfo2?.map((data) => {
     if (data?.status === "Accepted") {
       depositAmount?.push(data?.depositAmount);
     }
   });
+  dmfBalance?.map((data) => {
+    if (data?.status === "Accepted") {
+      dmfDepositAmount?.push(data?.depositAmount);
+    }
+  });
+
   const totalDeposit =
     depositAmount.length > 0 &&
     depositAmount?.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr));
+  const totalDmfDeposit =
+    dmfDepositAmount.length > 0 &&
+    dmfDepositAmount?.reduce(
+      (prev, curr) => parseFloat(prev) + parseFloat(curr)
+    );
+  console.log("totalDmfDeposit", totalDmfDeposit);
 
-  console.log("object", totalDeposit);
   return (
     <div className="">
       {loading ? (
@@ -66,7 +80,7 @@ const DashboardHome = () => {
 
             <div></div>
           </div>
-          <Card2 amount={totalDeposit} />
+          <Card2 amount={totalDmfDeposit} />
         </div>
       )}
     </div>
