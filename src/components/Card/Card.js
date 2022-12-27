@@ -14,30 +14,10 @@ export default function Card({ title, amount }) {
     <div>
       <div class="">
         <div class="">
-          {/* <ul class="w-full sm:w-4/5 text-xs sm:text-sm justify-center lg:justify-end items-center flex flex-row space-x-1 mt-6 overflow-hidden mb-4">
-            <li>
-              <button class="px-4 py-2 bg-indigo-500 rounded-full text-sm text-gray-100 hover:bg-indigo-700 hover:text-gray-200">
-                30 days
-              </button>
-            </li>
-            <li>
-              <button class="px-4 py-2 bg-gray-200 rounded-full text-sm text-gray-700 hover:bg-indigo-700 hover:text-gray-200">
-                90 days
-              </button>
-            </li>
-            <li>
-              <button class="px-4 py-2 bg-gray-200 rounded-full text-sm text-gray-700 hover:bg-indigo-700 hover:text-gray-200">
-                6 months
-              </button>
-            </li>
-            <li>
-              <button class="px-4 py-2 bg-gray-200 rounded-full text-sm text-gray-700 hover:bg-indigo-700 hover:text-gray-200">
-                12 months
-              </button>
-            </li>
-          </ul> */}
           <div class="w-full ">
-            <div class="flex flex-col px-6  overflow-hidden bg-white  rounded-xl shadow duration-300  group">
+            <div
+              class={`flex flex-col px-6  overflow-hidden   rounded-xl shadow duration-300  group`}
+            >
               <div class="flex flex-row justify-between items-center">
                 <Link to={`${url}/myFinance`} class="">
                   <div class="px-4 py-2 bg-gray-300 mt-2  rounded-xl bg-opacity-30">

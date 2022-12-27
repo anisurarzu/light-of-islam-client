@@ -5,7 +5,7 @@ export default function Card2({ amount }) {
   return (
     <div>
       <div class="w-full ">
-        <div class="flex flex-col px-6  overflow-hidden  bg-green-100  rounded-xl shadow duration-300  group ">
+        <div class="flex flex-col px-6 py-2 overflow-hidden  bg-green-100  rounded-xl shadow duration-300  group ">
           <div class="flex flex-row justify-between items-center ">
             {/* <Link to={``} class="">
               <div class="px-4 py-2 bg-gray-300 mt-2  rounded-xl bg-opacity-30">

@@ -69,7 +69,7 @@ const Membership = ({ users }) => {
               <div class="flex flex-col">
                 <div class="bg-white border border-white shadow-lg  rounded-3xl p-3 m-2">
                   <div class="flex-none sm:flex">
-                    <div class=" relative h-32 w-32   sm:mb-0 mb-3">
+                    <div class=" relative h-32 w-32   sm:mb-0 mb-3 border-r-4 border-green-300 rounded-3xl ">
                       <img
                         src={`${
                           user?.image ||
