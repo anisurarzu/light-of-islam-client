@@ -8,12 +8,12 @@ import { ImLocation } from "react-icons/im";
 
 const Membership = ({ users }) => {
   return (
-    <div className=" py-4 bg-gray-50">
+    <div className=" py-4 bg-gray-50 ">
       <div className="min-h-screen container pt-4  ">
         <p className="font-bold text-xl our-events-class3">Our Members </p>
         <h1 className="text-4xl font-bold our-events-class">আমাদের সদস্য গণ</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 rounded ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 rounded mt-8">
           {users?.map((user, index) => (
             /*  <div>
              
