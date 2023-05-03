@@ -11,9 +11,7 @@ const MyQuestion = () => {
   const { user } = useAuth();
   let email = user?.email;
   useEffect(() => {
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/questions"
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/questions")
       .then((res) => res.json())
       .then((data) => {
         const question = data.filter((data) => data.email === email);
@@ -28,7 +26,7 @@ const MyQuestion = () => {
     );
 
     if (check) {
-      const url = `https://light-of-islam-server-production-0204.up.railway.app/questions/${id}`;
+      const url = `https://yellow-sparkly-station.glitch.me/questions/${id}`;
       fetch(url, {
         method: "DELETE",
       })

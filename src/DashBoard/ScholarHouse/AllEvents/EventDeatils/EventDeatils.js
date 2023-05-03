@@ -23,10 +23,7 @@ const EventDeatils = () => {
     data.eveTime = currentDetails?.eventTime;
     // console.log("details-booking", data);
     axios
-      .post(
-        "https://light-of-islam-server-production-0204.up.railway.app/bookingStatus",
-        data
-      )
+      .post("https://yellow-sparkly-station.glitch.me/bookingStatus", data)
       .then((res) => {
         if (res.data.insertedId) {
           // setMessage("Your event created SuccessFully!");
@@ -40,9 +37,7 @@ const EventDeatils = () => {
 
   // getting booking data form db
   useEffect(() => {
-    fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/event/${eventId}`
-    )
+    fetch(`https://yellow-sparkly-station.glitch.me/event/${eventId}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data, "single");

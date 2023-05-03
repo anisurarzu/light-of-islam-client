@@ -28,10 +28,7 @@ export default function Deposit() {
     try {
       setLoading(true);
       axios
-        .post(
-          "https://light-of-islam-server-production-0204.up.railway.app/deposit",
-          data
-        )
+        .post("https://yellow-sparkly-station.glitch.me/deposit", data)
         .then((res) => {
           setLoading(false);
           if (res.status === 200) {

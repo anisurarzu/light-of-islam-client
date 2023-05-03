@@ -11,7 +11,7 @@ const AllEvents = () => {
 
   let email = user?.email;
   useEffect(() => {
-    fetch("https://light-of-islam-server-production-0204.up.railway.app/events")
+    fetch("https://yellow-sparkly-station.glitch.me/events")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
@@ -26,7 +26,7 @@ const AllEvents = () => {
     const check = window.confirm("Are you sure,you want to delete this event?");
 
     if (check) {
-      const url = `https://light-of-islam-server-production-0204.up.railway.app/event/${id}`;
+      const url = `https://yellow-sparkly-station.glitch.me/event/${id}`;
       fetch(url, {
         method: "DELETE",
       })

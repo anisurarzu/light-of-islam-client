@@ -23,10 +23,7 @@ export default function LoanRequest() {
 
     axios
       //
-      .post(
-        "https://light-of-islam-server-production-0204.up.railway.app/deposit",
-        data
-      )
+      .post("https://yellow-sparkly-station.glitch.me/deposit", data)
       .then((res) => {
         if (res.data.insertedId) {
           reset();

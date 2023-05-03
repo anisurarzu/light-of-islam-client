@@ -13,10 +13,7 @@ const SendQuestion = () => {
     console.log(data, "form");
     setMessage("");
     axios
-      .post(
-        "https://light-of-islam-server-production-0204.up.railway.app/questions",
-        data
-      )
+      .post("https://yellow-sparkly-station.glitch.me/questions", data)
       .then((res) => {
         if (res.data.insertedId) {
           setMessage("Your question submitted SuccessFully!");

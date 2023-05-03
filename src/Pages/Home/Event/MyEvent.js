@@ -9,9 +9,7 @@ const MyEvent = () => {
   let userEmail = user?.email;
   console.log("br", userEmail);
   useEffect(() => {
-    fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/bookingStatus`
-    )
+    fetch(`https://yellow-sparkly-station.glitch.me/bookingStatus`)
       .then((res) => res.json())
       .then((data) => {
         const newBookingStatus = data.filter(

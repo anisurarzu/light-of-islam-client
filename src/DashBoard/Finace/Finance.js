@@ -19,12 +19,10 @@ export default function Finance() {
   const { userInfo } = useAuth();
 
   useEffect(() => {
-    //https://light-of-islam-server-production-0204.up.railway.app/
+    //https://yellow-sparkly-station.glitch.me/
     try {
       setLoading(true);
-      fetch(
-        `https://light-of-islam-server-production-0204.up.railway.app/deposit`
-      )
+      fetch(`https://yellow-sparkly-station.glitch.me/deposit`)
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);

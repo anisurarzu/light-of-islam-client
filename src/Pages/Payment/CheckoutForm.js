@@ -15,16 +15,13 @@ const CheckoutForm = ({ price }) => {
   console.log(price);
 
   useEffect(() => {
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/create-payment-intent",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ price }),
-      }
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ price }),
+    })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret))
       .catch((error) => {
@@ -91,16 +88,13 @@ const CheckoutForm = ({ price }) => {
         transaction: paymentIntent.client_secret.slice("_secret")[0],
         lastFourDigit: paymentMethod.card.last4,
       };
-      fetch(
-        "https://light-of-islam-server-production-0204.up.railway.app/paymentInfo",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(payment),
-        }
-      )
+      fetch("https://yellow-sparkly-station.glitch.me/paymentInfo", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payment),
+      })
         .then((res) => res.json())
         .then((data) => {
           window.location.replace("dashboard/mypaymentInfo");

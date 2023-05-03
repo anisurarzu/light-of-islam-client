@@ -16,10 +16,8 @@ export default function Tnxld() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    //https://light-of-islam-server-production-0204.up.railway.app/
-    fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/deposit`
-    )
+    //https://yellow-sparkly-station.glitch.me/
+    fetch(`https://yellow-sparkly-station.glitch.me/deposit`)
       .then((res) => res.json())
       .then((data) => {
         const latestData = data.sort(
@@ -42,10 +40,7 @@ export default function Tnxld() {
         try {
           setLoading(true);
           axios
-            .put(
-              "https://light-of-islam-server-production-0204.up.railway.app/deposit",
-              data
-            )
+            .put("https://yellow-sparkly-station.glitch.me/deposit", data)
             .then((res) => {
               setLoading(false);
               if (res.status === 200) {

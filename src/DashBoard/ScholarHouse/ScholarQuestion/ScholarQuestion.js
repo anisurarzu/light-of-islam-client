@@ -23,14 +23,11 @@ const ScholarQuestion = () => {
       answeredBy: userInfo?.displayName,
     };
     console.log(data);
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/questions/answer",
-      {
-        method: "PUT",
-        headers: { "content-Type": "application/json" },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/questions/answer", {
+      method: "PUT",
+      headers: { "content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         // console.log(res);
         // alert("image uploaded done");
@@ -43,9 +40,7 @@ const ScholarQuestion = () => {
   };
 
   useEffect(() => {
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/questions"
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/questions")
       .then((res) => res.json())
       .then((data) => {
         setScholarQuestions(data);

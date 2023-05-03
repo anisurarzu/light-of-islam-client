@@ -26,14 +26,11 @@ const Event = () => {
     data.eventTime = currentEvent?.time;
     console.log("b-data", data);
     setIsBooked(true);
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/events/booking",
-      {
-        method: "PUT",
-        headers: { "content-Type": "application/json" },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/events/booking", {
+      method: "PUT",
+      headers: { "content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         // console.log(res);
         // alert("image uploaded done");
@@ -50,7 +47,7 @@ const Event = () => {
   };
 
   useEffect(() => {
-    fetch("https://light-of-islam-server-production-0204.up.railway.app/events")
+    fetch("https://yellow-sparkly-station.glitch.me/events")
       .then((res) => res.json())
       .then((data) => setEvent(data));
   }, []);

@@ -100,24 +100,20 @@ const useFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/users/${user?.email}`
-    )
+    fetch(`https://yellow-sparkly-station.glitch.me/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data?.admin));
   }, [user?.email]);
 
   useEffect(() => {
-    fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/users/${user?.email}`
-    )
+    fetch(`https://yellow-sparkly-station.glitch.me/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setScholar(data?.scholar));
   }, [user?.email]);
 
   useEffect(() => {
     fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/users/profile/${user?.email}`
+      `https://yellow-sparkly-station.glitch.me/users/profile/${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
@@ -138,21 +134,18 @@ const useFirebase = () => {
   const saveUser = (email, displayName, method) => {
     console.log(displayName);
     const user = { email, displayName };
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/users",
-      {
-        method: method,
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(user),
-      }
-    ).then();
+    fetch("https://yellow-sparkly-station.glitch.me/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
   };
 
   // scholar finding
   useEffect(() => {
-    fetch("https://light-of-islam-server-production-0204.up.railway.app/users")
+    fetch("https://yellow-sparkly-station.glitch.me/users")
       .then((res) => res.json())
       .then((data) => {
         const collectedScholar = data.filter((data) => data.role === "scholar");

@@ -12,9 +12,7 @@ const ViewQuestion = () => {
   // console.log("orderid", orderId);
   console.log(questionId);
   useEffect(() => {
-    fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/questions/${questionId}`
-    )
+    fetch(`https://yellow-sparkly-station.glitch.me/questions/${questionId}`)
       .then((res) => res.json())
       .then((data) => setQuestion(data));
   }, []);

@@ -14,9 +14,7 @@ const Schedule = () => {
   //   console.log("scheduleCurrent", currentSchedule);
   let email = user?.email;
   useEffect(() => {
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/schedule"
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/schedule")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
@@ -46,14 +44,11 @@ const Schedule = () => {
 
     console.log("bookedDates", data);
     if (data?.status === "Accept") {
-      fetch(
-        "https://light-of-islam-server-production-0204.up.railway.app/schedule/bookingInfo",
-        {
-          method: "PUT",
-          headers: { "content-Type": "application/json" },
-          body: JSON.stringify(data),
-        }
-      )
+      fetch("https://yellow-sparkly-station.glitch.me/schedule/bookingInfo", {
+        method: "PUT",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
         .then((res) => {
           // console.log(res);
           // alert("image uploaded done");
@@ -68,14 +63,11 @@ const Schedule = () => {
         });
 
       //   send status to database
-      fetch(
-        "https://light-of-islam-server-production-0204.up.railway.app/schedule/bookingStatus",
-        {
-          method: "PUT",
-          headers: { "content-Type": "application/json" },
-          body: JSON.stringify(data),
-        }
-      )
+      fetch("https://yellow-sparkly-station.glitch.me/schedule/bookingStatus", {
+        method: "PUT",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
         .then((res) => {
           // console.log(res);
           // alert("image uploaded done");
@@ -89,14 +81,11 @@ const Schedule = () => {
           // console.log(error);
         });
     } else {
-      fetch(
-        "https://light-of-islam-server-production-0204.up.railway.app/schedule/bookingStatus",
-        {
-          method: "PUT",
-          headers: { "content-Type": "application/json" },
-          body: JSON.stringify(data),
-        }
-      )
+      fetch("https://yellow-sparkly-station.glitch.me/schedule/bookingStatus", {
+        method: "PUT",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
         .then((res) => {
           // console.log(res);
           // alert("image uploaded done");

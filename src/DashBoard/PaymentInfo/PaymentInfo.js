@@ -9,9 +9,7 @@ const PaymentInfo = () => {
   //   console.log(payment);
 
   useEffect(() => {
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/paymentInfo"
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/paymentInfo")
       .then((res) => res.json())
       .then((data) => {
         /* const question = data.filter((data) => data.email === user?.email); */

@@ -8,8 +8,8 @@ export default function UserList() {
   const { userInfo } = useAuth();
 
   useEffect(() => {
-    //https://light-of-islam-server-production-0204.up.railway.app/
-    fetch(`https://light-of-islam-server-production-0204.up.railway.app/users`)
+    //https://yellow-sparkly-station.glitch.me/
+    fetch(`https://yellow-sparkly-station.glitch.me/users`)
       .then((res) => res.json())
       .then((data) => {
         // setUserList(data);

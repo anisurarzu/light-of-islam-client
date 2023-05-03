@@ -10,10 +10,7 @@ const CreateEvent = () => {
   const onSubmit = (data) => {
     // console.log(data);
     axios
-      .post(
-        "https://light-of-islam-server-production-0204.up.railway.app/events",
-        data
-      )
+      .post("https://yellow-sparkly-station.glitch.me/events", data)
       .then((res) => {
         if (res.data.insertedId) {
           setMessage("Your event created SuccessFully!");

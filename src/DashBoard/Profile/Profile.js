@@ -15,14 +15,11 @@ const Profile = () => {
       image: imageURL,
     };
     console.log({ userInfo });
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/users/profile/image",
-      {
-        method: "PUT",
-        headers: { "content-Type": "application/json" },
-        body: JSON.stringify(userInfo),
-      }
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/users/profile/image", {
+      method: "PUT",
+      headers: { "content-Type": "application/json" },
+      body: JSON.stringify(userInfo),
+    })
       .then((res) => {
         console.log(res);
         // alert("image uploaded done");

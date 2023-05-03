@@ -7,9 +7,7 @@ const AddScholar = () => {
   const [scholarId, setScholarId] = useState("");
   console.log(scholarId);
   useEffect(() => {
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/scholarId"
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/scholarId")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -20,16 +18,13 @@ const AddScholar = () => {
     console.log(data);
 
     if (data.iFb_id === scholarId) {
-      fetch(
-        "https://light-of-islam-server-production-0204.up.railway.app/users/scholar",
-        {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      )
+      fetch("https://yellow-sparkly-station.glitch.me/users/scholar", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount) {

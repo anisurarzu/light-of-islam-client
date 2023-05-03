@@ -35,9 +35,7 @@ const GetSchedule = () => {
   // get scholar information
 
   useEffect(() => {
-    fetch(
-      `https://light-of-islam-server-production-0204.up.railway.app/users/scholar/${scholarId}`
-    )
+    fetch(`https://yellow-sparkly-station.glitch.me/users/scholar/${scholarId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "single");
@@ -60,16 +58,13 @@ const GetSchedule = () => {
     data.bookingDate = dayjs(date).format("DD-MM-YYYY");
 
     console.log("schedule", data);
-    fetch(
-      "https://light-of-islam-server-production-0204.up.railway.app/schedule",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch("https://yellow-sparkly-station.glitch.me/schedule", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {

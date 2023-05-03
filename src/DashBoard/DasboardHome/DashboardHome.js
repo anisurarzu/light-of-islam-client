@@ -15,10 +15,11 @@ const DashboardHome = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    /* https://yellow-sparkly-station.glitch.me/ */
     try {
       setLoading(true);
       fetch(
-        `https://light-of-islam-server-production-0204.up.railway.app/deposit`
+        `https://yellow-sparkly-station.glitch.me/deposit`
       )
         .then((res) => res.json())
         .then((data) => {
