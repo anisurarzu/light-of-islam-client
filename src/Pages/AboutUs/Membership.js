@@ -7,6 +7,7 @@ import { BiTimeFive } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 
 const Membership = ({ users }) => {
+  console.log("user", users);
   return (
     <div className=" py-4 bg-gray-50 ">
       <div className="min-h-screen container pt-4  ">
@@ -15,57 +16,7 @@ const Membership = ({ users }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 rounded mt-12">
           {users?.map((user, index) => (
-            /*  <div>
-             
-
-              <div
-                data-aos="fade-down"
-                className="grid justify-center items-center xl:shadow-lg  lg:shadow shadow-md
-          sm:shadow-lg rounded-mds card-scholar"
-              >
-                <div className="flex items-center justify-center pt-4">
-                  <img
-                    className="lg:object-cover h-28 w-28 rounded-full"
-                    src={user.image}
-                    alt="wise scholars"
-                  />
-                </div>
-                <h4 className="text-xl xl:text-xl lg:text-xl md:text-2xl name text-gray-600 pt-2 font-smibold">
-                  {user.displayName}
-                </h4>
-
-                <p className="text-gray-600 bangla-text px-8 text-sm py-3">
-                  আমারা দিচ্ছি শতভাগ কুরান এবং সহীহ্ হাদিস দিয়ে দাওয়াহ পরিচালনার
-                  প্রতিশ্রুতি।
-                </p>
-                <div>
-                  <Link to={``}>
-                    <button
-                      type="button"
-                      className="font-bold py-1 px-3  mr-1 mb-4 rounded text-xs scholar-btn"
-                    >
-                      {user?.role}
-                    </button>
-                  </Link>
-                </div>
-
-                <div className="grid grid-cols-4 gap-2 ml-auto mr-auto pb-12  ">
-                  <div className="social ">
-                    <i className="fab fa-facebook-f"></i>
-                  </div>
-                  <div className="social ">
-                    <i className="fab fa-twitter"></i>
-                  </div>
-                  <div className="social">
-                    <i className="fab fa-linkedin-in"></i>
-                  </div>
-                  <div className="social ">
-                    <i className="fab fa-instagram"></i>
-                  </div>
-                </div>
-              </div>
-            </div> */
-            <div class="max-w-3xl w-full mx-auto z-10">
+            <div key={index} class="max-w-3xl w-full mx-auto z-10">
               <div class="flex flex-col">
                 <div class="bg-white border border-white shadow-lg  rounded-3xl p-3 m-2">
                   <div class="flex-none sm:flex">

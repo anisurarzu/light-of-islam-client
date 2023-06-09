@@ -114,7 +114,7 @@ export default function Finance() {
         <img
           className="rounded-full"
           alt={""}
-          src={rowData.image}
+          src={rowData?.image}
           onError={(e) =>
             (e.target.src =
               "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")

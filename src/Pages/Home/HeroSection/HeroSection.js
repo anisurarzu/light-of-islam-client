@@ -7,8 +7,17 @@ const HeroSection = () => {
     <div className="hero-container ">
       <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 gap-4 ">
         <div className="py-12 first-width pt-28">
-          <button className="p-2 bangla-text animate-pulse xl:mr-96 lg:mr-96 xl:ml-12 lg:ml-12 btn-text px-4 bg-white rounded-full">
-            ইসলামকে জানুন
+          <button className="p-2 bangla-text  xl:mr-96 lg:mr-96 xl:ml-12 lg:ml-12 btn-text px-4 bg-white rounded-full">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSeHUBsYEyMHBM7yWn3d6KcpIBMVDUrd4vi2b4_1nqzOueFOAQ/viewform?embedded=true"
+              width="640"
+              height="4941"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+            >
+              Loading…
+            </iframe>
           </button>
           <div className="p-text xl:py-16 lg:py-16 py-8">
             <h2 className=" text-left pl-6 text-2xl xl:text-5xl lg:text-5xl font-bold xl:pl-20 lg:pl-20">

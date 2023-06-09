@@ -18,9 +18,7 @@ const DashboardHome = () => {
     /* https://yellow-sparkly-station.glitch.me/ */
     try {
       setLoading(true);
-      fetch(
-        `https://yellow-sparkly-station.glitch.me/deposit`
-      )
+      fetch(`https://yellow-sparkly-station.glitch.me/deposit`)
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
@@ -75,9 +73,9 @@ const DashboardHome = () => {
       ) : (
         <div>
           <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">
-            <Card title={"Current Balance"} amount={totalDeposit} />
-            <Card title={"Deposit Balance"} amount={totalDeposit} />
-            <Card title={"Withdrawal Balance"} />
+            <Card title={"My Current Balance"} amount={totalDeposit} />
+            <Card title={"Project Budget"} />
+            <Card title={"DMF Total Cost"} />
 
             <div></div>
           </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { toast } from "react-toastify";
 const Profile = () => {
   const { user, userInfo } = useAuth();
   console.log(user);
@@ -47,6 +48,13 @@ const Profile = () => {
       .catch(function (error) {
         console.log(error);
       });
+  };
+  const updateProfile = async () => {
+    const res = await axios.post(``);
+    if (res?.status === 200) {
+      toast.succes("Successfully Update!");
+      window.location.reload();
+    }
   };
 
   return (

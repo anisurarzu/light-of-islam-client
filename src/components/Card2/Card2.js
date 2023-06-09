@@ -44,14 +44,13 @@ export default function Card2({ amount }) {
                   d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              12%
             </div>
           </div>
           <h1 class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-4  ">
             {amount || 0} ৳
           </h1>
           <div class="flex flex-row justify-between py-4">
-            <p>DMF Loan Schema Current Balance</p>
+            <p>DMF Current Balance</p>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
