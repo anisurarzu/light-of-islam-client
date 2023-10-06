@@ -10,9 +10,9 @@
 nav a {
   font-family: "Ubuntu", sans-serif;
 }
-.navbar-container {
+/* .navbar-container {
   padding-top: 60px;
-}
+} */
 .cart {
   padding-bottom: 30px;
   color: #00bfd6;
@@ -98,8 +98,8 @@ nav a {
 }
 @media (max-width: 660px) {
   .navbar-container {
-    padding-top: 15px;
-    padding-bottom: 25px;
+    padding-top: 10px;
+    padding-bottom: 20px;
   }
   .cart {
     padding-bottom: 15px;

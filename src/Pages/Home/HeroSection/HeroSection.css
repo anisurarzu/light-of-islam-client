@@ -32,9 +32,10 @@
   background-position: left;
 }
 .hero-img {
+  left:-69px;
   position: absolute;
-  width: 600px;
-  top: 105px;
+  width: 900px;
+  top: 205px;
 }
 
 .img-border {

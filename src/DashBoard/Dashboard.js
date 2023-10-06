@@ -39,7 +39,7 @@ const Dashboard = () => {
   // console.log(userInfo);
 
   return (
-    <div className="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1  pt-8 container">
+    <div className="grid xl:grid-cols-5 lg:grid-cols-2 grid-cols-1  pt-8 ">
       <div className="col-span-1  shadow-sm rounded xl:mx-8 lg:mx-4 pb-8">
         <div className="grid grid-cols-1 ">
           <div className="xl:flex justify-left bangla-text profile pt-2 ">
@@ -79,8 +79,8 @@ const Dashboard = () => {
 
         {userInfo?.role === "admin" ? (
           // dashboard menu
-          <div class=" flex items-center justify-center  ">
-            <div class="flex w-full max-w-xs p-4 bg-white">
+          <div class="  ">
+            <div class="flex w-full max-w-xs  bg-green-600">
               <ul class="flex  w-full bangla-text">
                 <li class="">
                   <Link
@@ -314,7 +314,7 @@ const Dashboard = () => {
             </div>
           </div>
         ) : userInfo?.role === "scholar" ? (
-          <div class=" flex items-center justify-center scholar ">
+          <div class="  scholar ">
             <div class="flex w-full max-w-xs p-4 ">
               <ul class="flex flex-col bangla-text w-full">
                 <li class="">
@@ -472,7 +472,7 @@ const Dashboard = () => {
           </div>
         ) : userInfo?.payRole === "finance" ? (
           <div>
-            <div class=" flex items-center justify-center  py-6">
+            <div class="py-6">
               <div class="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-1 bg-white phone-menu-bar">
                 <ul class=" md:flex-col bangla-text w-full phone-menu-bar-text  w-100 menu-box">
                   <div className="grid grid-cols-2 lg:grid-cols1 xl:grid-cols-1">
@@ -1289,7 +1289,7 @@ const Dashboard = () => {
           <div></div>
         )}
       </div>
-      <div className="dashboard-second col-span-3 container shadow-sm rounded">
+      <div className="dashboard-second col-span-4  container rounded">
         <Switch>
           <Route path={`${path}/myquestions`}>
             <MyQuestion></MyQuestion>

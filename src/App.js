@@ -41,17 +41,19 @@ function App() {
         <AuthProvider>
           <Router>
             <NewAppContext.Provider value={{ depositInfo, setDepositInfo }}>
-              <TopHeader></TopHeader>
+              {/* <TopHeader></TopHeader> */}
               <Header></Header>
               <Switch>
                 <Route exact path="/">
-                  <Home></Home>
+                  {/* <Dashboard></Dashboard> */}
+                  <Home />
                 </Route>
                 <Route path="/contract">
                   <Contract></Contract>
                 </Route>
                 <Route path="/home">
-                  <Home></Home>
+                  {/* <Dashboard></Dashboard> */}
+                  <Home />
                 </Route>
                 <Route path="/login">
                   <Login></Login>

@@ -3,26 +3,22 @@ import "./Pillers.css";
 const Pillers = () => {
   return (
     <div className="">
-      <div className="px-28 py-4 grid grid-cols-1 xl:grid-cols-5 lg:grid-cols-5 card-container gap-4 container">
+      <div className="px-28 py-4 grid grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 card-container gap-4 container">
         <div className="parent grid justify-center">
           <div className="shadow-md rounded-full box0 child"></div>
-          <h4 className="text-1">Shahadah</h4>
+          <h4 className="text-1">টাকা যোগ করুন</h4>
         </div>
         <div className="parent grid justify-center">
           <div className="shadow-md rounded-full box1 child"></div>
-          <h4 className="text-2">Salah</h4>
+          <h4 className="text-2">তহবিল স্থানান্তর</h4>
         </div>
         <div className="parent grid justify-center">
           <div className="shadow-md rounded-full box2 child "></div>
-          <h4 className="text-3">Sawm</h4>
+          <h4 className="text-3">শেবা অফার</h4>
         </div>
         <div className="parent grid justify-center">
           <div className="shadow-md rounded-full box3  child"></div>
-          <h4 className="text-4">Zakah</h4>
-        </div>
-        <div className="parent grid justify-center">
-          <div className=" shadow-md rounded-full box4 child "></div>
-          <h4 className="text-5">Hajj</h4>
+          <h4 className="text-4">নগদ ফেরত</h4>
         </div>
       </div>
     </div>

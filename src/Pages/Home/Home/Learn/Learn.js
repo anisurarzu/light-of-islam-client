@@ -10,13 +10,13 @@ const Learn = () => {
           </button>
           <div className="p-text xl:py-16 lg:py-16 py-8">
             <h2 className="  px-4 xl:px-24 lg:px-20  text-2xl xl:text-5xl lg:text-5xl font-bold ">
-              Seek knowledge from the cradle to the grave.
+              "নিজের রিচার্জ নিজেই করুন, রেফার করে আয় করুন"
             </h2>
             <p className="text-xl px-6 xl:px-20 lg:px-20 py-4 text-left">
-              The Weekend School of the Islamic Center of Allah is committed to
-              providing quality Islamic Education according to the Quran and the
-              Sunnah of the Prophet Mohammed (Peace Be upon Him) to a diverse
-              student population in the greater area.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum,
+              consequuntur eum. Ut praesentium et deserunt sapiente dolorum
+              maxime, esse asperiores voluptatibus dolorem eveniet temporibus
+              consectetur? Tenetur est quo culpa sed.
             </p>
             <div className="xl:flex xl:pl-20 pt-2 lg:pl-20">
               <button className="btn-design   p-2 text-white rounded-full px-4">

@@ -1,6 +1,6 @@
 import React from "react";
 import "./HeroSection.css";
-import hero from "../../../images/hero.png";
+import hero from "../../../images/test-removebg-preview.png";
 import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
@@ -10,16 +10,19 @@ const HeroSection = () => {
           <button className="p-2 bangla-text  xl:mr-96 lg:mr-96 xl:ml-12 lg:ml-12 btn-text px-4 bg-white rounded-full"></button>
           <div className="p-text xl:py-16 lg:py-16 py-8">
             <h2 className=" text-left pl-6 text-2xl xl:text-5xl lg:text-5xl font-bold xl:pl-20 lg:pl-20">
-              Read! In the Name of Almighty Allah, Who has created
+              "নিজের রিচার্জ নিজেই করুন, রেফার করে আয় করুন"
             </h2>
             <p className="text-xl bangla-text px-6 xl:px-20 lg:px-20 py-4 text-left">
-              আমরা দিচ্ছি কোরান এবং সহীহ্ হাদিস শিহ্মার নিশ্চয়তা। আসুন সঠিক
-              ইসলাম সম্পর্কে জেনে নেই।
+              প্রিয় গ্রাহকবৃন্দ,আসসালামু আলাইকুম। বাংলাদেশে এ প্রথম
+              ব্যাতিক্রমধর্মী অনলাইন মোবাইল রিচার্জ ব্যবসা নিয়ে এলো বিজয়
+              রিচার্জ। আপনি অন্য সকল পেশার পাশাপাশি এই ব্যবসা করে বাড়তি আয় করতে
+              পারবেন। আপনি চাইলে আপনার ইচ্ছেমত ইনকাম বাড়াতে পারবেন হাজার থেকে
+              লক্ষ টাকা পর্যন্ত।
             </p>
             <div className="xl:flex xl:pl-20 pt-2 lg:pl-20">
-              <Link to="/dashboard/sendquestions">
+              <Link to="">
                 <button className="btn-design bangla-text  p-2 text-white rounded-full px-4">
-                  প্রশ্ন করুন?
+                  Try Ii Now!
                 </button>
               </Link>
             </div>
@@ -36,35 +39,35 @@ const HeroSection = () => {
           <div className="hero-thumb shadow-md rounded-full  ">
             <img
               className="xl:p-2 lg:p-2  "
-              src="https://i.ibb.co/yf4WjRZ/quran.png"
+              src="https://i.ibb.co/DGgY1Zf/gp-logo.png"
               alt=""
             />
           </div>
           <div className="hero-thumb-1 shadow-md rounded-full  ">
             <img
               className="xl:p-2 lg:p-2"
-              src="https://i.ibb.co/r0SV0P4/moslem.png"
+              src="https://i.ibb.co/9gLhC43/banglalink-logo-vector.png"
               alt=""
             />
           </div>
           <div className="hero-thumb-2 shadow-md rounded-full  ">
             <img
               className="xl:p-2 lg:p-2"
-              src="https://i.ibb.co/SyxHbk9/allah.png"
+              src="https://i.ibb.co/bKMBS11/Airtel-logo.png"
               alt=""
             />
           </div>
           <div className="hero-thumb-3 shadow-md rounded-full ">
             <img
               className="xl:p-2 lg:p-2"
-              src="https://i.ibb.co/NYrX8hY/prayer.png"
+              src="https://i.ibb.co/pLt4q4c/robi-axiata-logo.png"
               alt=""
             />
           </div>
           <div className="hero-thumb-4 shadow-md rounded-full ">
             <img
               className="xl:p-2 lg:p-2"
-              src="https://i.ibb.co/stkxJ8w/donation.png"
+              src="https://i.ibb.co/z2BXTdG/Teletalk-Bangladesh-Limited-svg.png"
               alt=""
             />
           </div>

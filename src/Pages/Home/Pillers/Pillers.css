@@ -49,28 +49,28 @@
   padding: 5px;
   width: 150px;
   height: 150px;
-  background: url("https://i.ibb.co/M6nT3Fq/img-1-bf62d5d2-1.png");
+  background: url("/src/images/add_funds.png");
   background-size: cover;
 }
 .box1 {
   padding: 5px;
   width: 150px;
   height: 150px;
-  background: url("https://i.ibb.co/XxVJ3Ds/img-2-761f4042-1.png");
+  background: url("/src/images/fund_transfer.png");
   background-size: cover;
 }
 .box2 {
   padding: 5px;
   width: 150px;
   height: 150px;
-  background: url("https://i.ibb.co/nCnTD5R/img-4-0ff0599c.png");
+  background: url("/src/images/duranta_offer.jpeg");
   background-size: cover;
 }
 .box3 {
   padding: 5px;
   width: 150px;
   height: 150px;
-  background: url("https://i.ibb.co/gmLFhnM/img-5-f77f2c4f.png");
+  background: url("/src/images/cashback_offer.png");
   background-size: cover;
 }
 .box4 {

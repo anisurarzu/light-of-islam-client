@@ -11,7 +11,7 @@ const Header = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <Fragment>
-      <nav class=" container navbar-container navbar navbar-expand-lg navbar-light bg-white shadow-md rounded-xl ">
+      <nav class="navbar-container navbar navbar-expand-lg navbar-light bg-white shadow-md rounded-xl ">
         <div class="container-fluid">
           <div className="">
             <Link to="/home">
@@ -24,7 +24,7 @@ const Header = () => {
             </Link>
           </div>
           <Link to="/home">
-            <p className="title text-xl ml-2 ">দারুল মুত্তাক্বীন ফাউন্ডেশন</p>
+            <p className="title text-xl ml-2 ">Sheba Offer</p>
           </Link>
           <button
             class="navbar-toggler"
@@ -88,26 +88,6 @@ const Header = () => {
                   aria-disabled="true"
                 >
                   যোগাযোগ
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link
-                  class="nav-link"
-                  to="/quize"
-                  tabindex="-1"
-                  aria-disabled="true"
-                >
-                  কুইজ
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link
-                  class="nav-link"
-                  to="/shop"
-                  tabindex="-1"
-                  aria-disabled="true"
-                >
-                  দোকান
                 </Link>
               </li>
             </ul>
