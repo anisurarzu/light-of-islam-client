@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
-import "./MyQuestion.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
@@ -11,26 +10,26 @@ import splitButtonTemp from "../../components/SplitButton/SplitButtonTemp";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const MyQuestion = () => {
-  const [questions, setQuestions] = useState();
+const ENameList = () => {
+  const [models, setModels] = useState();
+  const [modelsForFilter, setModelsForFilter] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [brandsForFilter, setBrandsForFilter] = useState([]);
   const { user } = useAuth();
   let email = user?.email;
   useEffect(() => {
-    getQuestions();
+    getmodels();
   }, []);
-  const getQuestions = () => {
+  const getmodels = () => {
     try {
       setLoading(true);
-      fetch("https://yellow-sparkly-station.glitch.me/questions")
+      fetch("https://yellow-sparkly-station.glitch.me/eName")
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
           // const question = data.filter((data) => data.email === email);
-          setQuestions(data);
-          setBrandsForFilter(data);
+          setModels(data);
+          setModelsForFilter(data);
           // console.log(question);
         });
     } catch (err) {}
@@ -40,15 +39,14 @@ const MyQuestion = () => {
   const handleSearch = (event) => {
     const searchText = event.target.value;
     if (searchText) {
-      const matchedDetails = questions?.filter(
+      const matchedDetails = models?.filter(
         (details) =>
-          details?._id?.includes(searchText) ||
-          details?.name?.includes(searchText)
+          details?.modelName?.includes(searchText) ||
+          details?.brandName?.includes(searchText)
       );
-      setQuestions(matchedDetails);
+      setModels(matchedDetails);
     } else {
-      // setQuestions(depositInfo2);
-      setQuestions(brandsForFilter);
+      setModels(modelsForFilter);
     }
   };
   const imageBodyTemplate = (rowData) => {
@@ -73,10 +71,10 @@ const MyQuestion = () => {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `https://yellow-sparkly-station.glitch.me/questions/${rowData?._id}`
+        `https://yellow-sparkly-station.glitch.me/eName/${rowData?._id}`
       );
       if (res?.status === 200) {
-        getQuestions();
+        getmodels();
         toast.success("Successfully Deleted");
         setLoading(false);
       }
@@ -160,7 +158,7 @@ const MyQuestion = () => {
           type="text"
           name=""
           id=""
-          placeholder="search...by _id or name"
+          placeholder="search...by model or brand"
         />
       </div>
 
@@ -173,33 +171,28 @@ const MyQuestion = () => {
         rowsPerPageOptions={[10, 20, 50]}
         paginatorLeft={paginatorLeft}
         paginatorRight={paginatorRight}
-        value={questions}
-        header="Brand Information"
+        value={models}
+        header="Engineers Information"
         responsiveLayout="scroll"
         loading={loading}
         showGridlines
       >
-        {/* <Column
-          header="User"
-          filterField="representative"
-          showFilterMatchModes={false}
-          filterMenuStyle={{ width: "5rem" }}
-          style={{ minWidth: "0.5rem" }}
-          body={imageBodyTemplate}
-        /> */}
+        <Column field="_id" header="Engineer ID" />
+        <Column field="name" header="Engineer Name" />
 
-        <Column field="_id" header="Brand ID" />
-        <Column field="name" header="Brand Name" />
+        <Column field="phoneNumber" header="Phone Number" />
+
         <Column
           header="Action"
           filterField="representative"
           showFilterMatchModes={false}
+          filterMenuStyle={{ width: "5rem" }}
+          style={{ minWidth: "0.1rem" }}
           body={actionBodyTemplate}
-          className="w-4 h-2"
         />
       </DataTable>
     </div>
   );
 };
 
-export default MyQuestion;
+export default ENameList;

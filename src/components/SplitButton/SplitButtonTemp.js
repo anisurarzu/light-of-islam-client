@@ -10,8 +10,7 @@ export const splitButtonTemp = (
   return (
     <div className=" flex justify-center text-center">
       <SplitButton
-        className={`p-button-raised p-button-rounded ${
-          defaultColor || "p-button-success"
+        className={`p-button-success
         }`}
         label={defaultLabel || "Action"}
         icon={defaultIcon}

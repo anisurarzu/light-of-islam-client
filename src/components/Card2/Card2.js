@@ -50,7 +50,7 @@ export default function Card2({ amount }) {
             {amount || 0} ৳
           </h1>
           <div class="flex flex-row justify-between py-4">
-            <p>DMF Current Balance</p>
+            <p>Total Profitable Amount</p>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

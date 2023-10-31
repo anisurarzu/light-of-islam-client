@@ -5,45 +5,48 @@ import "antd/dist/antd.css";
 import { Alert } from "antd";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import "./SendQuestion.css";
+
 import { toast } from "react-toastify";
 import { Button } from "primereact/button";
 import { useEffect } from "react";
-import { checkExistsOrNot, checkExitsOrNot } from "../../utils/checkExistOrNot";
-const SendQuestion = () => {
-  const { user } = useAuth();
+const AddWarranty = () => {
   const { register, reset, handleSubmit } = useForm();
-  const [brandList, setBrandList] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [brandList, setBrandList] = useState([]);
 
+  const { user } = useAuth();
   useEffect(() => {
-    getBrandList();
+    // getBrandDropdownValues();
   }, []);
 
-  const getBrandList = async () => {};
-  //https://yellow-sparkly-station.glitch.me/
+  const getBrandDropdownValues = async () => {
+    try {
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/questions`
+      );
+      if (res?.status === 200) {
+        setBrandList(res?.data);
+      }
+    } catch (err) {}
+  };
 
   const onSubmit = async (data) => {
-    console.log(data, "form");
-    const isBrandExits = await checkExistsOrNot("questions", data?.name);
-    console.log("isBrandExits", isBrandExits);
-    if (isBrandExits) {
-      toast.error("Can not add same brand !");
-    } else {
-      try {
-        setLoading(true);
-        await axios
-          .post("https://yellow-sparkly-station.glitch.me/questions", data)
-          .then((res) => {
-            if (res.data.insertedId) {
-              setLoading(false);
-              toast.success("Successfully Added!");
-              reset();
-            }
-          });
-      } catch (err) {
+    console.log("form", data);
+
+    try {
+      const res = await axios.post(
+        `https://yellow-sparkly-station.glitch.me/warranty`,
+        data
+      );
+
+      if (res?.status === 200) {
         setLoading(false);
+        toast.success("Successfully Added!");
+        reset();
       }
+    } catch (err) {
+      setLoading(false);
     }
   };
 
@@ -68,55 +71,16 @@ const SendQuestion = () => {
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
             for="grid-first-name"
           >
-            Brand Name
+            Warranty
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             {...register("name")}
             defaultValue={""}
-            placeholder="Enter Brand Name"
+            placeholder="Enter Warranty"
             required
           />
-          {/* <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-            htmlFor="name"
-          >
-            Email
-          </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            defaultValue={user.email}
-            {...register("email")}
-            required
-          />
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-            htmlFor="name"
-          >
-            Write your question here
-          </label>
-          <textarea
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            {...register("question")}
-            required
-            placeholder="enter your text here"
-            rows="6"
-          />
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-            htmlFor="name"
-          >
-            Gender
-          </label>
-          <select
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            {...register("gender")}
-            required
-          >
-            <option value="male">male</option>
-            <option value="female">female</option>
-            <option value="other">other</option>
-          </select> */}
+
           <Button type="submit" label="Submit" loading={loading} />
         </form>
       }
@@ -220,4 +184,4 @@ const SendQuestion = () => {
   );
 };
 
-export default SendQuestion;
+export default AddWarranty;

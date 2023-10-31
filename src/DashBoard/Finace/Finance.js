@@ -20,6 +20,7 @@ export default function Finance() {
 
   useEffect(() => {
     //https://yellow-sparkly-station.glitch.me/
+    // https://yellow-sparkly-station.glitch.me
     try {
       setLoading(true);
       fetch(`https://yellow-sparkly-station.glitch.me/deposit`)
@@ -27,22 +28,8 @@ export default function Finance() {
         .then((data) => {
           setLoading(false);
           // console.log("event data", data[0].email);
-          if (userInfo?.payRole === "finance") {
-            const latestData = data.sort(
-              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-            );
-            setDepositInfo(latestData);
-            setDepositInfo2(latestData);
-          } else {
-            const filteredData = data?.filter(
-              (d) => d?.email === userInfo?.email
-            );
-            const latestData = filteredData.sort(
-              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-            );
-            setDepositInfo(latestData);
-            setDepositInfo2(latestData);
-          }
+          setDepositInfo(data);
+          setDepositInfo2(data);
         });
     } catch (err) {
       setLoading(false);
@@ -144,7 +131,14 @@ export default function Finance() {
   const dateBodyTemplate = (rowData) => {
     return (
       <div>
-        <span>{rowData?.date.slice(0, 10)}</span>
+        <span>{rowData?.orderDate?.slice(0, 10)}</span>
+      </div>
+    );
+  };
+  const dateBodyTemplate2 = (rowData) => {
+    return (
+      <div>
+        <span>{rowData?.deliveryDate?.slice(0, 10)}</span>
       </div>
     );
   };
@@ -152,9 +146,9 @@ export default function Finance() {
   return (
     <div>
       <div>
-        {userInfo?.payRole === "member" && (
+        {/*  {userInfo?.payRole === "member" && (
           <Progress depositInfo={depositInfo} />
-        )}
+        )} */}
         <div class="flex bg-gray-50 items-center p-2 rounded-md my-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -187,25 +181,71 @@ export default function Finance() {
           paginatorLeft={paginatorLeft}
           paginatorRight={paginatorRight}
           value={depositInfo}
-          header="Deposit Information"
+          header="Order Information"
           responsiveLayout="scroll"
           loading={loading}
-          showGridlines
+          scrollable
         >
           <Column
-            header="User"
-            filterField="representative"
-            showFilterMatchModes={false}
-            filterMenuStyle={{ width: "10rem" }}
-            style={{ minWidth: "0.5rem" }}
-            body={imageBodyTemplate}
+            field="serialNo"
+            header="SL NO."
+            style={{ minWidth: "100px" }}
+          />
+          <Column
+            field="customerName"
+            header="Customer"
+            className="text-sm"
+            style={{ minWidth: "150px" }}
+          />
+          <Column
+            className="text-sm"
+            field="brandName"
+            header="Brand"
+            style={{ minWidth: "150px" }}
+          />
+          <Column
+            className="text-sm"
+            field="modelName"
+            header="Model"
+            style={{ minWidth: "150px" }}
+          />
+          <Column
+            className="text-sm"
+            field="problemName"
+            header="Problem"
+            style={{ minWidth: "200px" }}
+          />
+          <Column
+            className="text-sm"
+            field="warrantyName"
+            header="Warranty"
+            style={{ minWidth: "100px" }}
+          />
+          <Column
+            className="text-sm"
+            field="serviceCost"
+            header="Service Cost"
+            style={{ minWidth: "150px" }}
           />
 
-          <Column field="depositAmount" header="Deposit Amount" />
-          <Column field="dmfID" header="DMF ID" />
-          <Column field="transactionID" header="Transaction ID" />
-          <Column field="date" header="Date" body={dateBodyTemplate} />
-          <Column field="paymentType" header="Method" />
+          <Column
+            field="engineerName"
+            header="Engineer"
+            style={{ minWidth: "150px" }}
+          />
+          <Column
+            field="orderDate"
+            header="Order Date"
+            body={dateBodyTemplate}
+            style={{ minWidth: "150px" }}
+          />
+          <Column
+            field="deliveryDate"
+            header="Delivery Date"
+            body={dateBodyTemplate2}
+            style={{ minWidth: "150px" }}
+          />
+
           <Column field="status" header="Status" body={statusBodyTemplate} />
           {/* <Column field="action" header="Action" body={actionBodyTemplate} /> */}
         </DataTable>

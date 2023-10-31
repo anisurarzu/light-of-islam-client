@@ -24,16 +24,9 @@ const DashboardHome = () => {
           setLoading(false);
           setDmfBalance(data);
           // console.log("event data", data[0].email);
-          if (userInfo?.payRole === "finance") {
-            setDepositInfo(data);
-            setDepositInfo2(data);
-          } else {
-            const filteredData = data?.filter(
-              (d) => d?.email === userInfo?.email
-            );
-            setDepositInfo(filteredData);
-            setDepositInfo2(filteredData);
-          }
+
+          setDepositInfo(data);
+          setDepositInfo2(data);
         });
     } catch (err) {
       setLoading(false);
@@ -47,12 +40,12 @@ const DashboardHome = () => {
 
   depositInfo2?.map((data) => {
     if (data?.status === "Accepted") {
-      depositAmount?.push(data?.depositAmount);
+      depositAmount?.push(data?.serviceCost);
     }
   });
   dmfBalance?.map((data) => {
     if (data?.status === "Accepted") {
-      dmfDepositAmount?.push(data?.depositAmount);
+      dmfDepositAmount?.push(data?.serviceCost);
     }
   });
 
@@ -73,13 +66,13 @@ const DashboardHome = () => {
       ) : (
         <div>
           <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">
-            <Card title={"My Current Balance"} amount={totalDeposit} />
-            <Card title={"Project Budget"} />
-            <Card title={"DMF Total Cost"} />
+            <Card title={"Total Order"} amount={dmfBalance?.length} />
+            <Card title={"Accepted Order Amount"} amount={totalDeposit} />
+            <Card title={"Total Delivered Amount"} />
 
             <div></div>
           </div>
-          <Card2 amount={totalDmfDeposit} />
+          <Card2 amount={""} />
         </div>
       )}
     </div>

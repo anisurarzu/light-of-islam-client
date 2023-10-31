@@ -5,42 +5,50 @@ import "antd/dist/antd.css";
 import { Alert } from "antd";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import "./SendQuestion.css";
+
 import { toast } from "react-toastify";
 import { Button } from "primereact/button";
 import { useEffect } from "react";
-import { checkExistsOrNot, checkExitsOrNot } from "../../utils/checkExistOrNot";
-const SendQuestion = () => {
-  const { user } = useAuth();
+import { checkExistsOrNot } from "../../utils/checkExistOrNot";
+const AddEName = () => {
   const { register, reset, handleSubmit } = useForm();
-  const [brandList, setBrandList] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [brandList, setBrandList] = useState([]);
 
+  const { user } = useAuth();
   useEffect(() => {
-    getBrandList();
+    // getBrandDropdownValues();
   }, []);
 
-  const getBrandList = async () => {};
-  //https://yellow-sparkly-station.glitch.me/
+  const getBrandDropdownValues = async () => {
+    try {
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/questions`
+      );
+      if (res?.status === 200) {
+        setBrandList(res?.data);
+      }
+    } catch (err) {}
+  };
 
   const onSubmit = async (data) => {
-    console.log(data, "form");
-    const isBrandExits = await checkExistsOrNot("questions", data?.name);
-    console.log("isBrandExits", isBrandExits);
-    if (isBrandExits) {
-      toast.error("Can not add same brand !");
+    const isENameExits = await checkExistsOrNot("eName", data?.name);
+
+    if (isENameExits) {
+      toast.error("Can not add same Name!");
     } else {
       try {
-        setLoading(true);
-        await axios
-          .post("https://yellow-sparkly-station.glitch.me/questions", data)
-          .then((res) => {
-            if (res.data.insertedId) {
-              setLoading(false);
-              toast.success("Successfully Added!");
-              reset();
-            }
-          });
+        const res = await axios.post(
+          `https://yellow-sparkly-station.glitch.me/eName`,
+          data
+        );
+
+        if (res?.status === 200) {
+          setLoading(false);
+          toast.success("Successfully Added!");
+          reset();
+        }
       } catch (err) {
         setLoading(false);
       }
@@ -49,16 +57,6 @@ const SendQuestion = () => {
 
   return (
     <div className="p-4 send-container  xl:ml-12 lg:ml-12">
-      {/* <h5>Send Your Question With Valid Information!</h5>
-      <i class="fas fa-question-circle question-icon text-6xl pt-4 pb-2"></i>
-      {message ? (
-        <div className="mx-8">
-          <Alert message={message} type="success" />
-        </div>
-      ) : (
-        <div />
-      )} */}
-
       {
         <form
           className="w-full max-w-lg flex flex-col justify-center text-center  ml-auto mr-auto"
@@ -68,55 +66,30 @@ const SendQuestion = () => {
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
             for="grid-first-name"
           >
-            Brand Name
+            Engineer Name
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             {...register("name")}
             defaultValue={""}
-            placeholder="Enter Brand Name"
+            placeholder="Enter Engineer Name"
             required
           />
-          {/* <label
+          <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-            htmlFor="name"
+            for="grid-first-name"
           >
-            Email
+            Phone Number
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            defaultValue={user.email}
-            {...register("email")}
+            {...register("phoneNumber")}
+            defaultValue={""}
+            type="number"
+            placeholder="Enter Phone Number"
             required
           />
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-            htmlFor="name"
-          >
-            Write your question here
-          </label>
-          <textarea
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            {...register("question")}
-            required
-            placeholder="enter your text here"
-            rows="6"
-          />
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-            htmlFor="name"
-          >
-            Gender
-          </label>
-          <select
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            {...register("gender")}
-            required
-          >
-            <option value="male">male</option>
-            <option value="female">female</option>
-            <option value="other">other</option>
-          </select> */}
+
           <Button type="submit" label="Submit" loading={loading} />
         </form>
       }
@@ -220,4 +193,4 @@ const SendQuestion = () => {
   );
 };
 
-export default SendQuestion;
+export default AddEName;

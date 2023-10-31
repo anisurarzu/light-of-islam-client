@@ -24,7 +24,7 @@ const Header = () => {
             </Link>
           </div>
           <Link to="/home">
-            <p className="title text-xl ml-2 ">Sheba Offer</p>
+            <p className="title text-xl ml-2 ">Electro Lab</p>
           </Link>
           <button
             class="navbar-toggler"
@@ -38,7 +38,7 @@ const Header = () => {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 bangla-text">
+            {/* <ul class="navbar-nav me-auto mb-2 mb-lg-0 bangla-text">
               <li class="nav-item">
                 <Link class="nav-link active " aria-current="page" to="/home">
                   হোম
@@ -90,7 +90,7 @@ const Header = () => {
                   যোগাযোগ
                 </Link>
               </li>
-            </ul>
+            </ul> */}
             {user?.email && (
               <span className="user-details pl-8 text-gray-600">
                 {user?.displayName}
