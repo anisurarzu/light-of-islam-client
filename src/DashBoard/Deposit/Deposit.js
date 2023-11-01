@@ -379,18 +379,6 @@ export default function FormikDoc() {
               placeholder="Service Cost"
             />
           </div>
-          <div>
-            <InputText
-              id="serviceCost"
-              name="serviceCost"
-              value={formik?.values?.serviceCost}
-              className="w-full"
-              onChange={(e) => {
-                formik?.setFieldValue("serviceCost", e.target.value);
-              }}
-              placeholder="Service Cost"
-            />
-          </div>
 
           <div>
             <Calendar
