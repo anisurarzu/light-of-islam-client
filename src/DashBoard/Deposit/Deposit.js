@@ -356,6 +356,7 @@ export default function FormikDoc() {
 
             <div className="flex justify-end space-x-2">
               <button
+                type="text"
                 className="flex items-center px-3 py-2 text-white bg-blue-500 border rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
                 onClick={showModal}
               >
@@ -390,6 +391,7 @@ export default function FormikDoc() {
                 formik?.setFieldValue("date", e.target.value);
               }}
               placeholder="Delivery Date"
+              required
             />
           </div>
         </div>

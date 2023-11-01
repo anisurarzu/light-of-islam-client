@@ -6,6 +6,7 @@ import Card2 from "../../components/Card2/Card2";
 import Loader from "../../components/Loader/Loader";
 import useAuth from "../../hooks/useAuth";
 import "./DashboardHome.css";
+import Card3 from "../../components/Card3/Card3";
 
 const DashboardHome = () => {
   const { userInfo } = useAuth();
@@ -35,29 +36,38 @@ const DashboardHome = () => {
   }, []);
   // calculate deposit amount
 
-  const depositAmount = [];
-  const dmfDepositAmount = [];
+  // profitable amount
 
-  depositInfo2?.map((data) => {
-    if (data?.status === "Accepted") {
-      depositAmount?.push(data?.serviceCost);
-    }
-  });
-  dmfBalance?.map((data) => {
-    if (data?.status === "Accepted") {
-      dmfDepositAmount?.push(data?.serviceCost);
-    }
-  });
+  const amountCal = (status) => {
+    const amountList = [];
+    dmfBalance?.map((data) => {
+      if (data?.status === status) {
+        amountList?.push(data?.serviceCost);
+      }
+    });
 
-  const totalDeposit =
-    depositAmount.length > 0 &&
-    depositAmount?.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr));
-  const totalDmfDeposit =
-    dmfDepositAmount.length > 0 &&
-    dmfDepositAmount?.reduce(
-      (prev, curr) => parseFloat(prev) + parseFloat(curr)
-    );
-  console.log("totalDmfDeposit", totalDmfDeposit);
+    const finalAmount =
+      amountList.length > 0 &&
+      amountList?.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr));
+    return finalAmount;
+  };
+  const orderCal = (status) => {
+    const amountList = [];
+    dmfBalance?.map((data) => {
+      if (data?.status === status) {
+        amountList?.push(data?.serviceCost);
+      }
+    });
+
+    return amountList?.length;
+  };
+
+  const totalProfitableAmount = amountCal("Completed");
+  const totalRefundableAmount = amountCal("Refund");
+  const totalAcceptedAmount = amountCal("Accepted");
+  const totalRefundableOrder = orderCal("Refund");
+  const totalDeletedOrder = orderCal("Remove");
+  const totalCompletedOrder = orderCal("Completed");
 
   return (
     <div className="">
@@ -66,13 +76,26 @@ const DashboardHome = () => {
       ) : (
         <div>
           <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">
-            <Card title={"Total Order"} amount={dmfBalance?.length} />
-            <Card title={"Accepted Order Amount"} amount={totalDeposit} />
-            <Card title={"Total Delivered Amount"} />
+            <Card3
+              title={"Total Order"}
+              amount={dmfBalance?.length}
+              amount2={1}
+              totalRefundableOrder={totalRefundableOrder}
+              totalDeletedOrder={totalDeletedOrder}
+              totalCompletedOrder={totalCompletedOrder}
+            />
+            <Card
+              title={"Accepted Order Amount"}
+              amount={totalAcceptedAmount}
+            />
+            <Card
+              title={"Total Refund Amount"}
+              amount={totalRefundableAmount}
+            />
 
             <div></div>
           </div>
-          <Card2 amount={""} />
+          <Card2 amount={totalProfitableAmount} />
         </div>
       )}
     </div>

@@ -11,31 +11,46 @@ import { DataTable } from "primereact/datatable";
 import { Button } from "primereact/button";
 import { toast } from "react-toastify";
 import { splitButtonTemp } from "../../components/SplitButton/SplitButtonTemp";
+import UpdateStatus from "./UpdateStatus";
+import axios from "axios";
 
 export default function Finance() {
   const { depositInfo, setDepositInfo } = useContext(NewAppContext);
   const [loading, setLoading] = useState(false);
   const [depositInfo2, setDepositInfo2] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const [updateData, setUpdateData] = useState([]);
   const { userInfo } = useAuth();
 
   useEffect(() => {
+    getOrderList();
     //https://yellow-sparkly-station.glitch.me/
     // https://yellow-sparkly-station.glitch.me
+  }, []);
+  const getOrderList = async () => {
     try {
-      setLoading(true);
-      fetch(`https://yellow-sparkly-station.glitch.me/deposit`)
-        .then((res) => res.json())
-        .then((data) => {
-          setLoading(false);
-          // console.log("event data", data[0].email);
-          setDepositInfo(data);
-          setDepositInfo2(data);
-        });
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/deposit`
+      );
+      if (res?.status === 200) {
+        setLoading(false);
+        const sortedData = res?.data?.sort(
+          (a, b) => new Date(b.orderDate) - new Date(a.orderDate)
+        );
+
+        const filteredDataWithStatus = sortedData.filter(
+          (item) => item.status !== "Remove"
+        );
+        // console.log("event data", data[0].email);
+        setDepositInfo(filteredDataWithStatus);
+        setDepositInfo2(filteredDataWithStatus);
+        setLoading(false);
+      }
     } catch (err) {
       setLoading(false);
       toast.error(err);
     }
-  }, []);
+  };
 
   // searching method
   const handleSearch = (event) => {
@@ -43,8 +58,8 @@ export default function Finance() {
     if (searchText) {
       const matchedDetails = depositInfo?.filter(
         (details) =>
-          details?.dmfID?.includes(searchText) ||
-          details?.transactionID?.includes(searchText)
+          details?.serialNo?.includes(searchText) ||
+          details?.customerName?.includes(searchText)
       );
       setDepositInfo(matchedDetails);
     } else {
@@ -62,33 +77,27 @@ export default function Finance() {
       </span>
     );
   };
-  const edit = (rowData) => {};
+  const edit = (rowData) => {
+    setShowForm(true);
+    setUpdateData(rowData);
+  };
 
-  const actionBodyTemplate = (rowData) => {
-    const buttonTemp = [
-      {
-        label: "Edit",
-        icon: "",
-        command: (e) => {
-          edit(rowData);
-        },
-      },
-    ];
+  const actionButton = (rowData) => {
     return (
-      <>
-        {splitButtonTemp(
-          rowData,
-          {
-            defaultFunc: "",
-            defaultLabel: "Actions",
-            defaultColor: "button",
-            defaultIcon: "",
-          },
-          buttonTemp
-        )}
-      </>
+      <div className="flex justify-center items-center">
+        <Button
+          loading={loading}
+          type="submit"
+          className={`p-button-success w-8 h-4`}
+          title="Return"
+          label="Return"
+          icon="pi pi-pencil"
+          onClick={() => edit(rowData)}
+        />
+      </div>
     );
   };
+
   const paginatorLeft = (
     <Button type="button" icon="pi pi-refresh" className="p-button-text" />
   );
@@ -119,8 +128,12 @@ export default function Finance() {
         <span
           className={`${
             rowData?.status === "Accepted"
-              ? "text-green-500"
-              : "text-yellow-500"
+              ? "text-blue-600"
+              : rowData?.status === "Rejected"
+              ? "text-red-600"
+              : rowData?.status === "Refund"
+              ? "text-yellow-300"
+              : "text-green-600"
           }`}
         >
           {rowData?.status}
@@ -141,6 +154,13 @@ export default function Finance() {
         <span>{rowData?.deliveryDate?.slice(0, 10)}</span>
       </div>
     );
+  };
+
+  const hideModal = async () => {
+    setShowForm(false);
+    getOrderList();
+
+    // setRowData(false);
   };
 
   return (
@@ -168,7 +188,7 @@ export default function Finance() {
             type="text"
             name=""
             id=""
-            placeholder="search...by dmfID or transactionID"
+            placeholder="search...by SL No or Customer Name"
           />
         </div>
 
@@ -219,7 +239,7 @@ export default function Finance() {
             className="text-sm"
             field="warrantyName"
             header="Warranty"
-            style={{ minWidth: "100px" }}
+            style={{ minWidth: "130px" }}
           />
           <Column
             className="text-sm"
@@ -247,8 +267,14 @@ export default function Finance() {
           />
 
           <Column field="status" header="Status" body={statusBodyTemplate} />
-          {/* <Column field="action" header="Action" body={actionBodyTemplate} /> */}
+          <Column field="action" header="Update" body={actionButton} />
         </DataTable>
+
+        <UpdateStatus
+          updateData={updateData}
+          showForm={showForm}
+          hideModal={hideModal}
+        />
       </div>
     </div>
   );
