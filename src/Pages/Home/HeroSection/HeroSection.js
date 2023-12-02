@@ -38,35 +38,35 @@ const HeroSection = () => {
           <div className="hero-thumb shadow-md rounded-full  ">
             <img
               className="xl:p-2 lg:p-2  "
-              src="https://i.ibb.co/DGgY1Zf/gp-logo.png"
+              src="https://i.ibb.co/F3chZX4/samsung9636.jpg"
               alt=""
             />
           </div>
           <div className="hero-thumb-1 shadow-md rounded-full  ">
             <img
               className="xl:p-2 lg:p-2"
-              src="https://i.ibb.co/9gLhC43/banglalink-logo-vector.png"
+              src="https://i.ibb.co/kBy246H/Apple-Logo.png"
               alt=""
             />
           </div>
           <div className="hero-thumb-2 shadow-md rounded-full  ">
             <img
               className="xl:p-2 lg:p-2"
-              src="https://i.ibb.co/bKMBS11/Airtel-logo.png"
+              src="https://i.ibb.co/sVBYBXp/Xiaomi-logo-2021-svg.png"
               alt=""
             />
           </div>
           <div className="hero-thumb-3 shadow-md rounded-full ">
             <img
               className="xl:p-2 lg:p-2"
-              src="https://i.ibb.co/pLt4q4c/robi-axiata-logo.png"
+              src="https://i.ibb.co/FDjQpLN/OPPO-LOGO-2019.png"
               alt=""
             />
           </div>
           <div className="hero-thumb-4 shadow-md rounded-full ">
             <img
               className="xl:p-2 lg:p-2"
-              src="https://i.ibb.co/z2BXTdG/Teletalk-Bangladesh-Limited-svg.png"
+              src="https://i.ibb.co/CKjHY4z/kisspng-vivo-logo-smartphone-branding-5acf57274b6e50-967449261523537703309.jpg"
               alt=""
             />
           </div>

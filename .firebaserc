@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "light-of-islam-b3d23"
-  }
+    "default": "electrolab-496d0",
+    "NO": "electrolab-496d0"
+  },
+  "targets": {},
+  "etags": {}
 }

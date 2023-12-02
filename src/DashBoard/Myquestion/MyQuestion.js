@@ -28,8 +28,9 @@ const MyQuestion = () => {
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
+          const sortedArray = data.sort((a, b) => a.name.localeCompare(b.name));
           // const question = data.filter((data) => data.email === email);
-          setQuestions(data);
+          setQuestions(sortedArray);
           setBrandsForFilter(data);
           // console.log(question);
         });
@@ -116,8 +117,7 @@ const MyQuestion = () => {
             rowData?.status === "Accepted"
               ? "text-green-500"
               : "text-yellow-500"
-          }`}
-        >
+          }`}>
           {rowData?.status}
         </span>
       </div>
@@ -146,8 +146,7 @@ const MyQuestion = () => {
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5 text-gray-400"
           viewBox="0 0 20 20"
-          fill="currentColor"
-        >
+          fill="currentColor">
           <path
             fill-rule="evenodd"
             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -177,8 +176,7 @@ const MyQuestion = () => {
         header="Brand Information"
         responsiveLayout="scroll"
         loading={loading}
-        showGridlines
-      >
+        showGridlines>
         {/* <Column
           header="User"
           filterField="representative"

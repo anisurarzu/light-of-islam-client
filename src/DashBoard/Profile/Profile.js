@@ -98,8 +98,7 @@ const Profile = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+              stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -117,7 +116,7 @@ const Profile = () => {
               <div class="px-4 py-2 text-left">{user.displayName}</div>
             </div>
 
-            <div class="grid grid-cols-2 ">
+            {/*  <div class="grid grid-cols-2 ">
               <div class="px-4 py-2 font-semibold">Contact No.</div>
               <div class="px-4 py-2">+11 998001001</div>
             </div>
@@ -128,17 +127,17 @@ const Profile = () => {
             <div class="grid grid-cols-2">
               <div class="px-4 py-2 font-semibold">Permanant Address</div>
               <div class="px-4 py-2">Arlington Heights, IL, Illinois</div>
-            </div>
+            </div> */}
             <div class="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2">
               <div class="px-4 py-2 font-semibold">Email.</div>
               <div class="px-4 py-2">
                 <span>{user.email}</span>
               </div>
             </div>
-            <div class="grid grid-cols-2">
+            {/*  <div class="grid grid-cols-2">
               <div class="px-4 py-2 font-semibold">Birthday</div>
               <div class="px-4 py-2">Feb 06, 1998</div>
-            </div>
+            </div> */}
           </div>
         </div>
         <button class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
@@ -166,8 +165,7 @@ const Profile = () => {
                       stroke="currentColor"
                       fill="none"
                       viewBox="0 0 48 48"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <path
                         d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
                         stroke-width="2"
@@ -178,8 +176,7 @@ const Profile = () => {
                     <div class="flex text-sm text-gray-600">
                       <label
                         for="file-upload"
-                        class="relative cursor-pointer  rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-                      >
+                        class="relative cursor-pointer  rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                         <span>Upload a file</span>
                         <input
                           onChange={handleImageUpload}
@@ -202,8 +199,7 @@ const Profile = () => {
                 <input
                   type="submit"
                   value="Upload Image"
-                  className=" p-4 btn-design mt-4 px-2 rounded-full text-white"
-                ></input>
+                  className=" p-4 btn-design mt-4 px-2 rounded-full text-white"></input>
               </form>
             </div>
           </div>
