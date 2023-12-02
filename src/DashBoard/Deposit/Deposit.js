@@ -358,8 +358,7 @@ export default function FormikDoc() {
               <button
                 type="text"
                 className="flex items-center px-3 py-2 text-white bg-blue-500 border rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
-                onClick={showModal}
-              >
+                onClick={showModal}>
                 <img
                   className="w-6 h-6 mr-1"
                   src="https://i.ibb.co/kc4hhJ3/scan.jpg"
@@ -378,6 +377,30 @@ export default function FormikDoc() {
                 formik?.setFieldValue("serviceCost", e.target.value);
               }}
               placeholder="Service Cost"
+            />
+          </div>
+          <div>
+            <InputText
+              id="serviceProfit"
+              name="serviceProfit"
+              value={formik?.values?.serviceProfit}
+              className="w-full"
+              onChange={(e) => {
+                formik?.setFieldValue("serviceProfit", e.target.value);
+              }}
+              placeholder="Service Profit"
+            />
+          </div>
+          <div>
+            <InputText
+              id="discount"
+              name="discount"
+              value={formik?.values?.serviceProfit}
+              className="w-full"
+              onChange={(e) => {
+                formik?.setFieldValue("discount", e.target.value);
+              }}
+              placeholder="Discount (%)"
             />
           </div>
 
@@ -414,8 +437,7 @@ export default function FormikDoc() {
         focusOnShow
         resizable
         maximizable
-        loading={true}
-      >
+        loading={true}>
         <div>
           <div>
             <QrReader
