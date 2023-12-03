@@ -9,12 +9,15 @@ import { Button } from "primereact/button";
 import splitButtonTemp from "../../components/SplitButton/SplitButtonTemp";
 import { toast } from "react-toastify";
 import axios from "axios";
+import OrderDetails from "../Myquestion/OrderDetails/OrderDetails";
 
 const ENameList = () => {
   const [models, setModels] = useState();
   const [modelsForFilter, setModelsForFilter] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showForm1, setShowForm1] = useState(false);
+  const [updateData, setUpdateData] = useState(null);
   const { user } = useAuth();
   let email = user?.email;
   useEffect(() => {
@@ -80,13 +83,28 @@ const ENameList = () => {
       }
     } catch (err) {}
   };
+  const getEngineerOrderWiseDetails = async (id) => {
+    console.log("id", id);
+    try {
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/deposit`
+      );
+      if (res?.status === 200) {
+        const details = res?.data?.filter((data) => data.engineerID === id);
+        console.log("details", details);
+
+        setUpdateData(details);
+        setShowForm1(true);
+      }
+    } catch (err) {}
+  };
   const actionBodyTemplate = (rowData) => {
     const buttonTemp = [
       {
         label: "Details",
         icon: "pi pi-file",
         command: (e) => {
-          // deleteById(rowData);
+          getEngineerOrderWiseDetails(rowData?._id);
         },
       },
     ];
@@ -114,8 +132,7 @@ const ENameList = () => {
             rowData?.status === "Accepted"
               ? "text-green-500"
               : "text-yellow-500"
-          }`}
-        >
+          }`}>
           {rowData?.status}
         </span>
       </div>
@@ -134,6 +151,11 @@ const ENameList = () => {
   const paginatorRight = (
     <Button type="button" icon="pi pi-cloud" className="p-button-text" />
   );
+  const hideModal = () => {
+    setShowForm1(false);
+
+    setUpdateData(null);
+  };
   return (
     <div>
       {/*  {userInfo?.payRole === "member" && (
@@ -144,8 +166,7 @@ const ENameList = () => {
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5 text-gray-400"
           viewBox="0 0 20 20"
-          fill="currentColor"
-        >
+          fill="currentColor">
           <path
             fill-rule="evenodd"
             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -175,9 +196,8 @@ const ENameList = () => {
         header="Engineers Information"
         responsiveLayout="scroll"
         loading={loading}
-        showGridlines
-      >
-        <Column field="_id" header="Engineer ID" />
+        showGridlines>
+        {/* <Column field="_id" header="Engineer ID" /> */}
         <Column field="name" header="Engineer Name" />
 
         <Column field="phoneNumber" header="Phone Number" />
@@ -191,6 +211,12 @@ const ENameList = () => {
           body={actionBodyTemplate}
         />
       </DataTable>
+      <OrderDetails
+        showForm1={showForm1}
+        setShowForm1={setShowForm1}
+        updateData={updateData}
+        hideModal={hideModal}
+      />
     </div>
   );
 };

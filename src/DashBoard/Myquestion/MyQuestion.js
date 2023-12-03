@@ -10,12 +10,14 @@ import { Button } from "primereact/button";
 import splitButtonTemp from "../../components/SplitButton/SplitButtonTemp";
 import { toast } from "react-toastify";
 import axios from "axios";
+import OrderDetails from "./OrderDetails/OrderDetails";
 
 const MyQuestion = () => {
   const [questions, setQuestions] = useState();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [brandsForFilter, setBrandsForFilter] = useState([]);
+ 
   const { user } = useAuth();
   let email = user?.email;
   useEffect(() => {
@@ -89,7 +91,7 @@ const MyQuestion = () => {
         label: "Details",
         icon: "pi pi-file",
         command: (e) => {
-          // deleteById(rowData);
+         
         },
       },
     ];
@@ -136,6 +138,7 @@ const MyQuestion = () => {
   const paginatorRight = (
     <Button type="button" icon="pi pi-cloud" className="p-button-text" />
   );
+ 
   return (
     <div>
       {/*  {userInfo?.payRole === "member" && (
@@ -196,6 +199,8 @@ const MyQuestion = () => {
           className="w-4 h-2"
         />
       </DataTable>
+
+     
     </div>
   );
 };
