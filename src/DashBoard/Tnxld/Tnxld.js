@@ -16,8 +16,8 @@ export default function Tnxld() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    //https://yellow-sparkly-station.glitch.me/
-    fetch(`https://yellow-sparkly-station.glitch.me/deposit`)
+    //http://localhost:5000/
+    fetch(`http://localhost:5000/deposit`)
       .then((res) => res.json())
       .then((data) => {
         const latestData = data.sort(
@@ -39,15 +39,13 @@ export default function Tnxld() {
         data.status = "Accepted";
         try {
           setLoading(true);
-          axios
-            .put("https://yellow-sparkly-station.glitch.me/deposit", data)
-            .then((res) => {
-              setLoading(false);
-              if (res.status === 200) {
-                toast.success("Successfully Update!");
-                reset();
-              }
-            });
+          axios.put("http://localhost:5000/deposit", data).then((res) => {
+            setLoading(false);
+            if (res.status === 200) {
+              toast.success("Successfully Update!");
+              reset();
+            }
+          });
         } catch (err) {
           setLoading(false);
           toast.error(err);
@@ -79,12 +77,10 @@ export default function Tnxld() {
 
           <form
             className="w-full max-w-lg flex flex-col justify-center text-center  ml-auto mr-auto"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+            onSubmit={handleSubmit(onSubmit)}>
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-              htmlFor="name"
-            >
+              htmlFor="name">
               Transaction ID
             </label>
             <input

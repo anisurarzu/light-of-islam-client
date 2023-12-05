@@ -100,21 +100,19 @@ const useFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    fetch(`https://yellow-sparkly-station.glitch.me/users/${user?.email}`)
+    fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data?.admin));
   }, [user?.email]);
 
   useEffect(() => {
-    fetch(`https://yellow-sparkly-station.glitch.me/users/${user?.email}`)
+    fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setScholar(data?.scholar));
   }, [user?.email]);
 
   useEffect(() => {
-    fetch(
-      `https://yellow-sparkly-station.glitch.me/users/profile/${user?.email}`
-    )
+    fetch(`http://localhost:5000/users/profile/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, [user?.email]);
@@ -134,7 +132,7 @@ const useFirebase = () => {
   const saveUser = (email, displayName, method) => {
     console.log(displayName);
     const user = { email, displayName };
-    fetch("https://yellow-sparkly-station.glitch.me/users", {
+    fetch("http://localhost:5000/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -145,7 +143,7 @@ const useFirebase = () => {
 
   // scholar finding
   useEffect(() => {
-    fetch("https://yellow-sparkly-station.glitch.me/users")
+    fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => {
         const collectedScholar = data.filter((data) => data.role === "scholar");

@@ -26,7 +26,7 @@ const Event = () => {
     data.eventTime = currentEvent?.time;
     console.log("b-data", data);
     setIsBooked(true);
-    fetch("https://yellow-sparkly-station.glitch.me/events/booking", {
+    fetch("http://localhost:5000/events/booking", {
       method: "PUT",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -47,7 +47,7 @@ const Event = () => {
   };
 
   useEffect(() => {
-    fetch("https://yellow-sparkly-station.glitch.me/events")
+    fetch("http://localhost:5000/events")
       .then((res) => res.json())
       .then((data) => setEvent(data));
   }, []);
@@ -62,8 +62,7 @@ const Event = () => {
         {event?.map((event) => (
           <div
             key={event?._id}
-            className="mt-2 relative grid grid-cols-1 xl:flex lg:flex mx-2  my-4 shadow-md"
-          >
+            className="mt-2 relative grid grid-cols-1 xl:flex lg:flex mx-2  my-4 shadow-md">
             <img
               className="w-full xl:w-2/5 lg:w-2/5 object-cover  "
               src="https://i.ibb.co/BCKPvvW/img-1-a762be6c.jpg"
@@ -100,8 +99,7 @@ const Event = () => {
                     type="button"
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
-                    className="btn-design rounded-full text-white px-3"
-                  >
+                    className="btn-design rounded-full text-white px-3">
                     Booking
                   </button>
                 ) : (
@@ -122,8 +120,7 @@ const Event = () => {
         data-bs-keyboard="false"
         tabindex="-1"
         aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             {/* <div className="modal-header">
@@ -135,8 +132,7 @@ const Event = () => {
               <div className="leading-loose">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
-                  className="max-w-xl m-4 p-10 bg-white rounded s"
-                >
+                  className="max-w-xl m-4 p-10 bg-white rounded s">
                   <p className="text-gray-800 font-medium">
                     Booking Information
                   </p>
@@ -144,8 +140,7 @@ const Event = () => {
                   <div className="mt-2">
                     <label
                       className=" block text-sm text-left pb-2 text-gray-600"
-                      for="cus_email"
-                    >
+                      for="cus_email">
                       Address
                     </label>
                     <input
@@ -196,8 +191,7 @@ const Event = () => {
               <button
                 type="button"
                 className="border border-red-500 text-red-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline"
-                data-bs-dismiss="modal"
-              >
+                data-bs-dismiss="modal">
                 Close
               </button>
             </div>

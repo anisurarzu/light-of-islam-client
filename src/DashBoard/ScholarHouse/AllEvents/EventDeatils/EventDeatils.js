@@ -22,22 +22,20 @@ const EventDeatils = () => {
     data.eventName = currentDetails?.eventName;
     data.eveTime = currentDetails?.eventTime;
     // console.log("details-booking", data);
-    axios
-      .post("https://yellow-sparkly-station.glitch.me/bookingStatus", data)
-      .then((res) => {
-        if (res.data.insertedId) {
-          // setMessage("Your event created SuccessFully!");
-          reset();
+    axios.post("http://localhost:5000/bookingStatus", data).then((res) => {
+      if (res.data.insertedId) {
+        // setMessage("Your event created SuccessFully!");
+        reset();
 
-          window.location.replace("/dashboard/eventDetails");
-        }
-      });
+        window.location.replace("/dashboard/eventDetails");
+      }
+    });
   };
   //
 
   // getting booking data form db
   useEffect(() => {
-    fetch(`https://yellow-sparkly-station.glitch.me/event/${eventId}`)
+    fetch(`http://localhost:5000/event/${eventId}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data, "single");
@@ -69,8 +67,7 @@ const EventDeatils = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-gray-400"
                 viewBox="0 0 20 20"
-                fill="currentColor"
-              >
+                fill="currentColor">
                 <path
                   fill-rule="evenodd"
                   d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -154,8 +151,7 @@ const EventDeatils = () => {
                         <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                           <span
                             aria-hidden
-                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                          ></span>
+                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                           <span class="relative">Active</span>
                         </span>
                       </td>
@@ -165,8 +161,7 @@ const EventDeatils = () => {
                           type="button"
                           data-bs-toggle="modal"
                           data-bs-target="#exampleModal"
-                          class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-green-500 hover:bg-green-dark"
-                        >
+                          class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-green-500 hover:bg-green-dark">
                           Accept
                         </button>
                       </td>
@@ -182,8 +177,7 @@ const EventDeatils = () => {
               id="exampleModal"
               tabindex="-1"
               aria-labelledby="exampleModalLabel"
-              aria-hidden="true"
-            >
+              aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div>
@@ -192,8 +186,7 @@ const EventDeatils = () => {
                       <div class="">
                         <form
                           className="flex justify-center py-4"
-                          onSubmit={handleSubmit(onSubmit)}
-                        >
+                          onSubmit={handleSubmit(onSubmit)}>
                           {/*   <input
                             {...register("eventJoiningLink")}
                             class="bg-gray-50 rounded py-1 px-2 outline-none ml-1 block "
@@ -221,8 +214,7 @@ const EventDeatils = () => {
                           <button
                             type="button"
                             data-bs-dismiss="modal"
-                            className="mb-2 md:mb-0 bg-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-red-500"
-                          >
+                            className="mb-2 md:mb-0 bg-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-red-500">
                             Cancel
                           </button>
                         </div>
@@ -238,8 +230,7 @@ const EventDeatils = () => {
                 <button
                   type="button"
                   className="border service-btn rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline"
-                  data-bs-dismiss="modal"
-                >
+                  data-bs-dismiss="modal">
                   Back
                 </button>
               </Link>

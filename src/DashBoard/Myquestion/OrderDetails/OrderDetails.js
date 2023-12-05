@@ -56,7 +56,7 @@ export default function OrderDetails({
       <Dialog
         visible={showForm1}
         style={{ width: "1200px" }}
-        header={`Project Budget File`}
+        header={`Engineer Order Details`}
         modal
         className="p-fluid"
         onHide={hideModal}
@@ -76,7 +76,6 @@ export default function OrderDetails({
           paginatorLeft={paginatorLeft}
           paginatorRight={paginatorRight}
           value={updateData}
-          header="Order Information"
           responsiveLayout="scroll"
           //   loading={loading}
           scrollable>

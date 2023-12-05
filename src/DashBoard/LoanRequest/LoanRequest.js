@@ -23,7 +23,7 @@ export default function LoanRequest() {
 
     axios
       //
-      .post("https://yellow-sparkly-station.glitch.me/deposit", data)
+      .post("http://localhost:5000/deposit", data)
       .then((res) => {
         if (res.data.insertedId) {
           reset();
@@ -48,19 +48,16 @@ export default function LoanRequest() {
 
       <form
         className="w-full max-w-lg flex flex-col justify-center text-center  ml-auto mr-auto"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+        onSubmit={handleSubmit(onSubmit)}>
         <label
           className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-          for="grid-first-name"
-        >
+          for="grid-first-name">
           Payment Type
         </label>
         <select
           className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
           {...register("paymentType")}
-          required
-        >
+          required>
           <option value="bkash">Bkash</option>
           <option value="rocket">Rocket</option>
           <option value="nagad">Nagad</option>
@@ -68,8 +65,7 @@ export default function LoanRequest() {
         </select>
         <label
           className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-          htmlFor="name"
-        >
+          htmlFor="name">
           Transaction ID
         </label>
         <input
@@ -79,8 +75,7 @@ export default function LoanRequest() {
         />
         <label
           className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-          htmlFor="name"
-        >
+          htmlFor="name">
           Amount
         </label>
         <input
@@ -90,14 +85,12 @@ export default function LoanRequest() {
         />
         <label
           className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-          htmlFor="name"
-        >
+          htmlFor="name">
           Comment
         </label>
         <textarea
           className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-          {...register("comment")}
-        ></textarea>
+          {...register("comment")}></textarea>
         <input
           className="py-2 rounded mt-4 service-btn text-white"
           type="submit"

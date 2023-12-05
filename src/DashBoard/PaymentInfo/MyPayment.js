@@ -9,7 +9,7 @@ const MyPayment = () => {
   //   console.log(payment);
 
   useEffect(() => {
-    fetch("https://yellow-sparkly-station.glitch.me/paymentInfo")
+    fetch("http://localhost:5000/paymentInfo")
       .then((res) => res.json())
       .then((data) => {
         const details = data.filter((data) => data.email === user?.email);
@@ -119,8 +119,7 @@ const MyPayment = () => {
                         <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                           <span
                             aria-hidden
-                            class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"
-                          ></span>
+                            class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"></span>
                           <span class="relative">{details?.lastFourDigit}</span>
                         </span>
                       </td>
@@ -129,8 +128,7 @@ const MyPayment = () => {
                         <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                           <span
                             aria-hidden
-                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                          ></span>
+                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                           <span class="relative">${details?.amount / 100}</span>
                         </span>
                       </td>
@@ -178,8 +176,7 @@ const MyPayment = () => {
                 <button
                   type="button"
                   className="border service-btn rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline"
-                  data-bs-dismiss="modal"
-                >
+                  data-bs-dismiss="modal">
                   Back
                 </button>
               </Link>

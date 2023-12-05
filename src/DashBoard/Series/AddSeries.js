@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { Button } from "primereact/button";
 import { useEffect } from "react";
-const AddModel = () => {
+const AddSeries = () => {
   const { register, reset, handleSubmit } = useForm();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,6 +20,9 @@ const AddModel = () => {
     getBrandDropdownValues();
   }, []);
 
+  //http://localhost:5000/
+  // http://localhost:5000
+  //   https://yellow-sparkly-station.glitch.me
   const getBrandDropdownValues = async () => {
     try {
       const res = await axios.get(`http://localhost:5000/questions`);
@@ -33,10 +36,10 @@ const AddModel = () => {
     console.log("form", data);
 
     try {
-      const res = await axios.post(`http://localhost:5000/model`, data);
+      const res = await axios.post(`http://localhost:5000/series`, data);
       if (res?.status === 200) {
         const res = await axios.put(
-          `http://localhost:5000/brandWiseModel`,
+          `http://localhost:5000/brandWiseSeries`,
           data
         );
         if (res.status === 200) {
@@ -82,13 +85,13 @@ const AddModel = () => {
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
             for="grid-first-name">
-            Model Name
+            Series Name
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             {...register("name")}
             defaultValue={""}
-            placeholder="Enter Model Name"
+            placeholder="Enter Series Name"
             required
           />
           {/* <label
@@ -234,4 +237,4 @@ const AddModel = () => {
   );
 };
 
-export default AddModel;
+export default AddSeries;

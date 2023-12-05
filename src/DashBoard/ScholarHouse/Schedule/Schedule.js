@@ -14,7 +14,7 @@ const Schedule = () => {
   //   console.log("scheduleCurrent", currentSchedule);
   let email = user?.email;
   useEffect(() => {
-    fetch("https://yellow-sparkly-station.glitch.me/schedule")
+    fetch("http://localhost:5000/schedule")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
@@ -44,7 +44,7 @@ const Schedule = () => {
 
     console.log("bookedDates", data);
     if (data?.status === "Accept") {
-      fetch("https://yellow-sparkly-station.glitch.me/schedule/bookingInfo", {
+      fetch("http://localhost:5000/schedule/bookingInfo", {
         method: "PUT",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -63,7 +63,7 @@ const Schedule = () => {
         });
 
       //   send status to database
-      fetch("https://yellow-sparkly-station.glitch.me/schedule/bookingStatus", {
+      fetch("http://localhost:5000/schedule/bookingStatus", {
         method: "PUT",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -81,7 +81,7 @@ const Schedule = () => {
           // console.log(error);
         });
     } else {
-      fetch("https://yellow-sparkly-station.glitch.me/schedule/bookingStatus", {
+      fetch("http://localhost:5000/schedule/bookingStatus", {
         method: "PUT",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -116,8 +116,7 @@ const Schedule = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-gray-400"
                 viewBox="0 0 20 20"
-                fill="currentColor"
-              >
+                fill="currentColor">
                 <path
                   fill-rule="evenodd"
                   d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -195,8 +194,7 @@ const Schedule = () => {
                   <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                     <span
                       aria-hidden
-                      class="absolute inset-0 bg-indigo-200 opacity-50 rounded-full"
-                    ></span>
+                      class="absolute inset-0 bg-indigo-200 opacity-50 rounded-full"></span>
                     <span class="relative">{schedule?.bookingDate}</span>
                   </span>
                 </td>
@@ -211,8 +209,7 @@ const Schedule = () => {
                           : schedule?.status === "Reject"
                           ? "absolute inset-0 bg-red-200 opacity-50 rounded-full"
                           : "absolute inset-0 bg-yellow-200 opacity-50 rounded-full"
-                      }`}
-                    ></span>
+                      }`}></span>
                     <span class="relative">{schedule?.status}</span>
                   </span>
                 </td>
@@ -222,8 +219,7 @@ const Schedule = () => {
                     type="button"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
-                    class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-green-500 hover:bg-green-dark"
-                  >
+                    class="text-white font-bold py-1 px-3 ml-2 rounded text-xs bg-green-500 hover:bg-green-dark">
                     Details
                   </button>
                 </td>
@@ -240,8 +236,7 @@ const Schedule = () => {
         id="exampleModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div>
@@ -266,8 +261,7 @@ const Schedule = () => {
                   {currentSchedule?.status === "pending" ? (
                     <form
                       onSubmit={handleSubmit(onSubmit)}
-                      className="flex justify-center py-4"
-                    >
+                      className="flex justify-center py-4">
                       {/* <input
                         class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                         placeholder="Status"
@@ -276,8 +270,7 @@ const Schedule = () => {
                       <select
                         class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                         placeholder="Status"
-                        {...register("status")}
-                      >
+                        {...register("status")}>
                         <option value="pending">pending</option>
                         <option value="Accept">Accept</option>
                         <option value="Reject">Reject</option>
@@ -295,8 +288,7 @@ const Schedule = () => {
                     <button
                       type="button"
                       data-bs-dismiss="modal"
-                      className="mb-2 md:mb-0 service-btn px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-red-500"
-                    >
+                      className="mb-2 md:mb-0 service-btn px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-red-500">
                       Back
                     </button>
                   </div>

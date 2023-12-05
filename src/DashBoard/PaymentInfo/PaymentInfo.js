@@ -9,7 +9,7 @@ const PaymentInfo = () => {
   //   console.log(payment);
 
   useEffect(() => {
-    fetch("https://yellow-sparkly-station.glitch.me/paymentInfo")
+    fetch("http://localhost:5000/paymentInfo")
       .then((res) => res.json())
       .then((data) => {
         /* const question = data.filter((data) => data.email === user?.email); */
@@ -43,8 +43,7 @@ const PaymentInfo = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-gray-400"
                 viewBox="0 0 20 20"
-                fill="currentColor"
-              >
+                fill="currentColor">
                 <path
                   fill-rule="evenodd"
                   d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -118,8 +117,7 @@ const PaymentInfo = () => {
                         <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                           <span
                             aria-hidden
-                            class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"
-                          ></span>
+                            class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"></span>
                           <span class="relative">{details?.lastFourDigit}</span>
                         </span>
                       </td>
@@ -128,8 +126,7 @@ const PaymentInfo = () => {
                         <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                           <span
                             aria-hidden
-                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                          ></span>
+                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                           <span class="relative">${details?.amount / 100}</span>
                         </span>
                       </td>
@@ -177,8 +174,7 @@ const PaymentInfo = () => {
                 <button
                   type="button"
                   className="border service-btn rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline"
-                  data-bs-dismiss="modal"
-                >
+                  data-bs-dismiss="modal">
                   Back
                 </button>
               </Link>

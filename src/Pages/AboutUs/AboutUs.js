@@ -15,7 +15,7 @@ const AboutUs = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://yellow-sparkly-station.glitch.me/users")
+    fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);

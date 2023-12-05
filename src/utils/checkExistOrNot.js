@@ -2,9 +2,7 @@ import axios from "axios";
 
 export const checkExistsOrNot = async (endPoint, value) => {
   try {
-    const res = await axios.get(
-      `https://yellow-sparkly-station.glitch.me/${endPoint}`
-    );
+    const res = await axios.get(`http://localhost:5000/${endPoint}`);
 
     if (res?.status === 200) {
       const data = res?.data;

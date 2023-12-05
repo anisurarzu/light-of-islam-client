@@ -17,7 +17,7 @@ const MyQuestion = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [brandsForFilter, setBrandsForFilter] = useState([]);
- 
+
   const { user } = useAuth();
   let email = user?.email;
   useEffect(() => {
@@ -26,7 +26,7 @@ const MyQuestion = () => {
   const getQuestions = () => {
     try {
       setLoading(true);
-      fetch("https://yellow-sparkly-station.glitch.me/questions")
+      fetch("http://localhost:5000/questions")
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
@@ -76,7 +76,7 @@ const MyQuestion = () => {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `https://yellow-sparkly-station.glitch.me/questions/${rowData?._id}`
+        `http://localhost:5000/questions/${rowData?._id}`
       );
       if (res?.status === 200) {
         getQuestions();
@@ -90,9 +90,7 @@ const MyQuestion = () => {
       {
         label: "Details",
         icon: "pi pi-file",
-        command: (e) => {
-         
-        },
+        command: (e) => {},
       },
     ];
     return (
@@ -138,7 +136,7 @@ const MyQuestion = () => {
   const paginatorRight = (
     <Button type="button" icon="pi pi-cloud" className="p-button-text" />
   );
- 
+
   return (
     <div>
       {/*  {userInfo?.payRole === "member" && (
@@ -189,7 +187,7 @@ const MyQuestion = () => {
           body={imageBodyTemplate}
         /> */}
 
-        <Column field="_id" header="Brand ID" />
+        {/* <Column field="_id" header="Brand ID" /> */}
         <Column field="name" header="Brand Name" />
         <Column
           header="Action"
@@ -199,8 +197,6 @@ const MyQuestion = () => {
           className="w-4 h-2"
         />
       </DataTable>
-
-     
     </div>
   );
 };

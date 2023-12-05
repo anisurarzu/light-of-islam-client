@@ -10,7 +10,7 @@ import splitButtonTemp from "../../components/SplitButton/SplitButtonTemp";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const ProblemList = () => {
+const SeriesList = () => {
   const [models, setModels] = useState();
   const [modelsForFilter, setModelsForFilter] = useState([]);
   const [message, setMessage] = useState("");
@@ -23,12 +23,13 @@ const ProblemList = () => {
   const getmodels = () => {
     try {
       setLoading(true);
-      fetch("http://localhost:5000/problem")
+      fetch("http://localhost:5000/series")
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
+          const sortedArray = data.sort((a, b) => a.name.localeCompare(b.name));
           // const question = data.filter((data) => data.email === email);
-          setModels(data);
+          setModels(sortedArray);
           setModelsForFilter(data);
           // console.log(question);
         });
@@ -41,7 +42,7 @@ const ProblemList = () => {
     if (searchText) {
       const matchedDetails = models?.filter(
         (details) =>
-          details?.modelName?.includes(searchText) ||
+          details?.seriesName?.includes(searchText) ||
           details?.brandName?.includes(searchText)
       );
       setModels(matchedDetails);
@@ -71,7 +72,7 @@ const ProblemList = () => {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `http://localhost:5000/problem/${rowData?._id}`
+        `http://localhost:5000/series/${rowData?._id}`
       );
       if (res?.status === 200) {
         getmodels();
@@ -156,7 +157,7 @@ const ProblemList = () => {
           type="text"
           name=""
           id=""
-          placeholder="search...by model or brand"
+          placeholder="search...by Name"
         />
       </div>
 
@@ -170,12 +171,12 @@ const ProblemList = () => {
         paginatorLeft={paginatorLeft}
         paginatorRight={paginatorRight}
         value={models}
-        header="Problem Information"
+        header="Brand Wise Series Information"
         responsiveLayout="scroll"
         loading={loading}
         showGridlines>
-        <Column field="_id" header="Model ID" />
-        <Column field="name" header="Problem Name" />
+        {/* <Column field="_id" header=" ID" /> */}
+        <Column field="name" header="Series Name" />
 
         <Column
           header="Action"
@@ -190,4 +191,4 @@ const ProblemList = () => {
   );
 };
 
-export default ProblemList;
+export default SeriesList;

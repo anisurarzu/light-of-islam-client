@@ -8,8 +8,8 @@ export default function UserList() {
   const { userInfo } = useAuth();
 
   useEffect(() => {
-    //https://yellow-sparkly-station.glitch.me/
-    fetch(`https://yellow-sparkly-station.glitch.me/users`)
+    //http://localhost:5000/
+    fetch(`http://localhost:5000/users`)
       .then((res) => res.json())
       .then((data) => {
         // setUserList(data);
@@ -39,8 +39,7 @@ export default function UserList() {
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5 text-gray-400"
             viewBox="0 0 20 20"
-            fill="currentColor"
-          >
+            fill="currentColor">
             <path
               fill-rule="evenodd"
               d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"

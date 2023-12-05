@@ -23,7 +23,7 @@ const WarrantyList = () => {
   const getmodels = () => {
     try {
       setLoading(true);
-      fetch("https://yellow-sparkly-station.glitch.me/warranty")
+      fetch("http://localhost:5000/warranty")
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
@@ -71,7 +71,7 @@ const WarrantyList = () => {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `https://yellow-sparkly-station.glitch.me/warranty/${rowData?._id}`
+        `http://localhost:5000/warranty/${rowData?._id}`
       );
       if (res?.status === 200) {
         getmodels();
@@ -114,8 +114,7 @@ const WarrantyList = () => {
             rowData?.status === "Accepted"
               ? "text-green-500"
               : "text-yellow-500"
-          }`}
-        >
+          }`}>
           {rowData?.status}
         </span>
       </div>
@@ -144,8 +143,7 @@ const WarrantyList = () => {
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5 text-gray-400"
           viewBox="0 0 20 20"
-          fill="currentColor"
-        >
+          fill="currentColor">
           <path
             fill-rule="evenodd"
             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -175,8 +173,7 @@ const WarrantyList = () => {
         header="Engineers Information"
         responsiveLayout="scroll"
         loading={loading}
-        showGridlines
-      >
+        showGridlines>
         <Column field="_id" header="Engineer ID" />
         <Column field="name" header="Warranty" />
 

@@ -21,7 +21,7 @@ const SendQuestion = () => {
   }, []);
 
   const getBrandList = async () => {};
-  //https://yellow-sparkly-station.glitch.me/
+  //http://localhost:5000/
 
   const onSubmit = async (data) => {
     console.log(data, "form");
@@ -33,7 +33,7 @@ const SendQuestion = () => {
       try {
         setLoading(true);
         await axios
-          .post("https://yellow-sparkly-station.glitch.me/questions", data)
+          .post("http://localhost:5000/questions", data)
           .then((res) => {
             if (res.data.insertedId) {
               setLoading(false);
@@ -62,12 +62,10 @@ const SendQuestion = () => {
       {
         <form
           className="w-full max-w-lg flex flex-col justify-center text-center  ml-auto mr-auto"
-          onSubmit={handleSubmit(onSubmit)}
-        >
+          onSubmit={handleSubmit(onSubmit)}>
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-            for="grid-first-name"
-          >
+            for="grid-first-name">
             Brand Name
           </label>
           <input

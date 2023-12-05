@@ -23,7 +23,7 @@ const ScholarQuestion = () => {
       answeredBy: userInfo?.displayName,
     };
     console.log(data);
-    fetch("https://yellow-sparkly-station.glitch.me/questions/answer", {
+    fetch("http://localhost:5000/questions/answer", {
       method: "PUT",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -40,7 +40,7 @@ const ScholarQuestion = () => {
   };
 
   useEffect(() => {
-    fetch("https://yellow-sparkly-station.glitch.me/questions")
+    fetch("http://localhost:5000/questions")
       .then((res) => res.json())
       .then((data) => {
         setScholarQuestions(data);
@@ -79,8 +79,7 @@ const ScholarQuestion = () => {
                         data-bs-target="#exampleModal"
                         onClick={() => setCurrentQuestion(question)}
                         type="button"
-                        className="text-white font-bold py-1 px-3 mr-1 rounded text-xs bg-yellow-500 hover:bg-yellow-600"
-                      >
+                        className="text-white font-bold py-1 px-3 mr-1 rounded text-xs bg-yellow-500 hover:bg-yellow-600">
                         Done
                       </button>
                     </td>
@@ -91,8 +90,7 @@ const ScholarQuestion = () => {
                         type="button"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
-                        className="text-white font-bold py-1 px-3 mr-1 rounded text-xs bg-green-500 hover:bg-green-600"
-                      >
+                        className="text-white font-bold py-1 px-3 mr-1 rounded text-xs bg-green-500 hover:bg-green-600">
                         Answer
                       </button>
                     </td>
@@ -109,8 +107,7 @@ const ScholarQuestion = () => {
         id="exampleModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div>
@@ -153,8 +150,7 @@ const ScholarQuestion = () => {
                     <button
                       type="button"
                       data-bs-dismiss="modal"
-                      className="mb-2 md:mb-0 bg-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-red-500"
-                    >
+                      className="mb-2 md:mb-0 bg-yellow-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-red-500">
                       Cancel
                     </button>
                   </div>

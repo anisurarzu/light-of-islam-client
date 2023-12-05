@@ -22,9 +22,7 @@ const AddWarranty = () => {
 
   const getBrandDropdownValues = async () => {
     try {
-      const res = await axios.get(
-        `https://yellow-sparkly-station.glitch.me/questions`
-      );
+      const res = await axios.get(`http://localhost:5000/questions`);
       if (res?.status === 200) {
         setBrandList(res?.data);
       }
@@ -35,10 +33,7 @@ const AddWarranty = () => {
     console.log("form", data);
 
     try {
-      const res = await axios.post(
-        `https://yellow-sparkly-station.glitch.me/warranty`,
-        data
-      );
+      const res = await axios.post(`http://localhost:5000/warranty`, data);
 
       if (res?.status === 200) {
         setLoading(false);
@@ -65,12 +60,10 @@ const AddWarranty = () => {
       {
         <form
           className="w-full max-w-lg flex flex-col justify-center text-center  ml-auto mr-auto"
-          onSubmit={handleSubmit(onSubmit)}
-        >
+          onSubmit={handleSubmit(onSubmit)}>
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left ml-1 "
-            for="grid-first-name"
-          >
+            for="grid-first-name">
             Warranty
           </label>
           <input

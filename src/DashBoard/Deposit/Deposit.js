@@ -13,22 +13,28 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { Dialog } from "primereact/dialog";
 import { QrReader } from "react-qr-reader";
+// import BarcodeReader from "react-barcode-reader";
+// import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 export default function FormikDoc() {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [brandList, setBrandList] = useState([]);
   const [modelList, setModelList] = useState([]);
+  const [seriesList, setSeriesList] = useState([]);
   const [problemList, setProblemList] = useState([]);
   const [engineerList, setEngineerList] = useState([]);
   const [warrantyList, setWarrantyList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
+  const [data, setData] = React.useState("Not Found");
   const [scannedContent, setScannedContent] = useState(null);
-  console.log("scannedContent", scannedContent?.text);
+  // console.log("scannedContent", scannedContent);
+
   const qrReaderRef = useRef(null);
   useEffect(() => {
     getBrandDropdownValues();
+
     getProblemList();
     getWarrantyList();
     getEngineerList();
@@ -45,6 +51,7 @@ export default function FormikDoc() {
       if (newSerialNumber) {
         const finalData = {
           customerName: data?.customerName,
+          contactNumber: data?.contactNumber,
           customerAddress: data?.customerAddress,
           brandName: data?.brand?.name,
           brandID: data?.brand?._id,
@@ -63,16 +70,30 @@ export default function FormikDoc() {
           serialNo: newSerialNumber,
           status: "Accepted",
         };
+        const customerInfo = {
+          customerName: data?.customerName,
+          contactNumber: data?.contactNumber,
+          customerAddress: data?.customerAddress,
+          orderInfo: finalData,
+        };
         try {
           setLoading(true);
           const res = await axios.post(
-            `https://yellow-sparkly-station.glitch.me/deposit`,
+            `http://localhost:5000/deposit`,
             finalData
           );
           if (res?.status === 200) {
-            toast.success("Successfully Added!");
-            setLoading(false);
-            formik?.resetForm();
+            try {
+              const res = await axios.post(
+                `http://localhost:5000/customerInfo`,
+                customerInfo
+              );
+              if (res?.status === 200) {
+                toast.success("Successfully Added!");
+                setLoading(false);
+                formik?.resetForm();
+              }
+            } catch (err) {}
           }
         } catch (err) {
           setLoading(false);
@@ -84,9 +105,7 @@ export default function FormikDoc() {
 
   const getBrandDropdownValues = async () => {
     try {
-      const res = await axios.get(
-        `https://yellow-sparkly-station.glitch.me/questions`
-      );
+      const res = await axios.get(`http://localhost:5000/questions`);
       if (res?.status === 200) {
         setBrandList(res?.data);
       }
@@ -94,9 +113,7 @@ export default function FormikDoc() {
   };
   const getProblemList = async () => {
     try {
-      const res = await axios.get(
-        `https://yellow-sparkly-station.glitch.me/problem`
-      );
+      const res = await axios.get(`http://localhost:5000/problem`);
       if (res?.status === 200) {
         setProblemList(res?.data);
       }
@@ -104,9 +121,7 @@ export default function FormikDoc() {
   };
   const getEngineerList = async () => {
     try {
-      const res = await axios.get(
-        `https://yellow-sparkly-station.glitch.me/eName`
-      );
+      const res = await axios.get(`http://localhost:5000/eName`);
       if (res?.status === 200) {
         setEngineerList(res?.data);
       }
@@ -114,9 +129,7 @@ export default function FormikDoc() {
   };
   const getWarrantyList = async () => {
     try {
-      const res = await axios.get(
-        `https://yellow-sparkly-station.glitch.me/warranty`
-      );
+      const res = await axios.get(`http://localhost:5000/warranty`);
       if (res?.status === 200) {
         setWarrantyList(res?.data);
       }
@@ -130,6 +143,7 @@ export default function FormikDoc() {
       );
       if (res?.status === 200) {
         setModelList(res?.data?.brandWiseModel);
+        setSeriesList(res?.data?.brandWiseSeries);
       }
     } catch (err) {}
   };
@@ -273,6 +287,23 @@ export default function FormikDoc() {
             />
           </div>
 
+          <div className="card flex justify-content-center">
+            <Dropdown
+              value={formik?.values?.series}
+              onChange={(e) => {
+                setSelectedCountry(e.value);
+                formik?.setFieldValue("series", e.value);
+              }}
+              options={seriesList}
+              optionLabel="name"
+              placeholder="Select a Series"
+              filter
+              valueTemplate={selectedCountryTemplate}
+              itemTemplate={countryOptionTemplate}
+              className="w-full md:w-14rem"
+              required
+            />
+          </div>
           <div className="card flex justify-content-center">
             <Dropdown
               value={formik?.values?.model}
@@ -445,7 +476,18 @@ export default function FormikDoc() {
               onError={handleError}
               onResult={handleScan}
               style={{ width: "100%", height: "auto" }}
+              legacyMode={true}
             />
+            {/* <BarcodeReader onError={handleError} onScan={handleScan} /> */}
+            {/* <BarcodeScannerComponent
+              width={500}
+              height={500}
+              onUpdate={(err, result) => {
+                if (result) setData(result.text);
+                else setData("Not Found");
+              }}
+            /> */}
+            <p>{data}</p>
           </div>
         </div>
       </Dialog>

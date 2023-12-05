@@ -23,7 +23,7 @@ const ModelList = () => {
   const getmodels = () => {
     try {
       setLoading(true);
-      fetch("https://yellow-sparkly-station.glitch.me/model")
+      fetch("http://localhost:5000/model")
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
@@ -72,7 +72,7 @@ const ModelList = () => {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `https://yellow-sparkly-station.glitch.me/model/${rowData?._id}`
+        `http://localhost:5000/model/${rowData?._id}`
       );
       if (res?.status === 200) {
         getmodels();
@@ -175,7 +175,7 @@ const ModelList = () => {
         responsiveLayout="scroll"
         loading={loading}
         showGridlines>
-        <Column field="_id" header="Model ID" />
+        {/* <Column field="_id" header="Model ID" /> */}
         <Column field="name" header="Model Name" />
 
         <Column

@@ -11,7 +11,7 @@ const AllEvents = () => {
 
   let email = user?.email;
   useEffect(() => {
-    fetch("https://yellow-sparkly-station.glitch.me/events")
+    fetch("http://localhost:5000/events")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
@@ -26,7 +26,7 @@ const AllEvents = () => {
     const check = window.confirm("Are you sure,you want to delete this event?");
 
     if (check) {
-      const url = `https://yellow-sparkly-station.glitch.me/event/${id}`;
+      const url = `http://localhost:5000/event/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -49,8 +49,7 @@ const AllEvents = () => {
         {events?.map((event) => (
           <div
             key={event?.id}
-            className="mt-8 relative grid grid-cols-1 xl:flex lg:flex mx-2  shadow-md rounded"
-          >
+            className="mt-8 relative grid grid-cols-1 xl:flex lg:flex mx-2  shadow-md rounded">
             {/* <img
               className="w-full xl:w-2/5 lg:w-2/5 object-cover  "
               src=""
@@ -86,8 +85,7 @@ const AllEvents = () => {
                     type="button"
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
-                    className=" "
-                  >
+                    className=" ">
                     <i class="fas fa-info-circle "></i>
                   </button>
                 </Link>

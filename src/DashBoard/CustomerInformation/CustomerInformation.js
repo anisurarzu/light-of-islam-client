@@ -11,10 +11,10 @@ import { DataTable } from "primereact/datatable";
 import { Button } from "primereact/button";
 import { toast } from "react-toastify";
 import { splitButtonTemp } from "../../components/SplitButton/SplitButtonTemp";
-import UpdateStatus from "./UpdateStatus";
+
 import axios from "axios";
 
-export default function Finance() {
+export default function CustomerInformation() {
   const { depositInfo, setDepositInfo } = useContext(NewAppContext);
   const [loading, setLoading] = useState(false);
   const [depositInfo2, setDepositInfo2] = useState([]);
@@ -196,15 +196,10 @@ export default function Finance() {
           paginatorLeft={paginatorLeft}
           paginatorRight={paginatorRight}
           value={depositInfo}
-          header="Order Information"
+          header="Customer Information"
           responsiveLayout="scroll"
           loading={loading}
           scrollable>
-          <Column
-            field="serialNo"
-            header="SL NO."
-            style={{ minWidth: "100px" }}
-          />
           <Column
             field="customerName"
             header="Customer"
@@ -212,63 +207,44 @@ export default function Finance() {
             style={{ minWidth: "150px" }}
           />
           <Column
+            field="phoneNumber"
+            header="Phone"
             className="text-sm"
-            field="brandName"
-            header="Brand"
+            style={{ minWidth: "150px" }}
+          />
+          <Column
+            field="address"
+            header="Address"
+            className="text-sm"
             style={{ minWidth: "150px" }}
           />
           <Column
             className="text-sm"
-            field="modelName"
-            header="Model"
+            field="totalOrder"
+            header="Total Order"
             style={{ minWidth: "150px" }}
           />
           <Column
             className="text-sm"
-            field="problemName"
-            header="Problem"
+            field="completedOrder"
+            header="Completed Order"
+            style={{ minWidth: "150px" }}
+          />
+          <Column
+            className="text-sm"
+            field="pendingOrder"
+            header="Pending Order"
             style={{ minWidth: "200px" }}
           />
           <Column
             className="text-sm"
-            field="warrantyName"
-            header="Warranty"
+            field="rejectedOrder"
+            header="ReejectedOrder"
             style={{ minWidth: "130px" }}
           />
-          <Column
-            className="text-sm"
-            field="serviceCost"
-            header="Service Cost"
-            style={{ minWidth: "150px" }}
-          />
 
-          <Column
-            field="engineerName"
-            header="Engineer"
-            style={{ minWidth: "150px" }}
-          />
-          <Column
-            field="orderDate"
-            header="Receive Date"
-            body={dateBodyTemplate}
-            style={{ minWidth: "150px" }}
-          />
-          <Column
-            field="deliveryDate"
-            header="Delivery Date"
-            body={dateBodyTemplate2}
-            style={{ minWidth: "150px" }}
-          />
-
-          <Column field="status" header="Status" body={statusBodyTemplate} />
-          <Column field="action" header="Update" body={actionButton} />
+          {/* <Column field="action" header="Update" body={actionButton} /> */}
         </DataTable>
-
-        <UpdateStatus
-          updateData={updateData}
-          showForm={showForm}
-          hideModal={hideModal}
-        />
       </div>
     </div>
   );

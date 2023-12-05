@@ -9,7 +9,7 @@ const MyEvent = () => {
   let userEmail = user?.email;
   console.log("br", userEmail);
   useEffect(() => {
-    fetch(`https://yellow-sparkly-station.glitch.me/bookingStatus`)
+    fetch(`http://localhost:5000/bookingStatus`)
       .then((res) => res.json())
       .then((data) => {
         const newBookingStatus = data.filter(
@@ -44,8 +44,7 @@ const MyEvent = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-gray-400"
                 viewBox="0 0 20 20"
-                fill="currentColor"
-              >
+                fill="currentColor">
                 <path
                   fill-rule="evenodd"
                   d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -107,8 +106,7 @@ const MyEvent = () => {
                   <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                     <span
                       aria-hidden
-                      class="absolute inset-0 bg-indigo-200 opacity-50 rounded-full"
-                    ></span>
+                      class="absolute inset-0 bg-indigo-200 opacity-50 rounded-full"></span>
                     <span class="relative">{booking?.eventLink}</span>
                   </span>
                 </td>
