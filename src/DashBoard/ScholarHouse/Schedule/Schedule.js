@@ -14,7 +14,7 @@ const Schedule = () => {
   //   console.log("scheduleCurrent", currentSchedule);
   let email = user?.email;
   useEffect(() => {
-    fetch("http://localhost:5000/schedule")
+    fetch("https://yellow-sparkly-station.glitch.me/schedule")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);
@@ -44,7 +44,7 @@ const Schedule = () => {
 
     console.log("bookedDates", data);
     if (data?.status === "Accept") {
-      fetch("http://localhost:5000/schedule/bookingInfo", {
+      fetch("https://yellow-sparkly-station.glitch.me/schedule/bookingInfo", {
         method: "PUT",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -63,7 +63,7 @@ const Schedule = () => {
         });
 
       //   send status to database
-      fetch("http://localhost:5000/schedule/bookingStatus", {
+      fetch("https://yellow-sparkly-station.glitch.me/schedule/bookingStatus", {
         method: "PUT",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -81,7 +81,7 @@ const Schedule = () => {
           // console.log(error);
         });
     } else {
-      fetch("http://localhost:5000/schedule/bookingStatus", {
+      fetch("https://yellow-sparkly-station.glitch.me/schedule/bookingStatus", {
         method: "PUT",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(data),

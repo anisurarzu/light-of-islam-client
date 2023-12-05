@@ -79,13 +79,13 @@ export default function FormikDoc() {
         try {
           setLoading(true);
           const res = await axios.post(
-            `http://localhost:5000/deposit`,
+            `https://yellow-sparkly-station.glitch.me/deposit`,
             finalData
           );
           if (res?.status === 200) {
             try {
               const res = await axios.post(
-                `http://localhost:5000/customerInfo`,
+                `https://yellow-sparkly-station.glitch.me/customerInfo`,
                 customerInfo
               );
               if (res?.status === 200) {
@@ -105,7 +105,9 @@ export default function FormikDoc() {
 
   const getBrandDropdownValues = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/questions`);
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/questions`
+      );
       if (res?.status === 200) {
         setBrandList(res?.data);
       }
@@ -113,7 +115,9 @@ export default function FormikDoc() {
   };
   const getProblemList = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/problem`);
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/problem`
+      );
       if (res?.status === 200) {
         setProblemList(res?.data);
       }
@@ -121,7 +125,9 @@ export default function FormikDoc() {
   };
   const getEngineerList = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/eName`);
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/eName`
+      );
       if (res?.status === 200) {
         setEngineerList(res?.data);
       }
@@ -129,7 +135,9 @@ export default function FormikDoc() {
   };
   const getWarrantyList = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/warranty`);
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/warranty`
+      );
       if (res?.status === 200) {
         setWarrantyList(res?.data);
       }

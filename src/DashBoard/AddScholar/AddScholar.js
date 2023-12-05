@@ -7,7 +7,7 @@ const AddScholar = () => {
   const [scholarId, setScholarId] = useState("");
   console.log(scholarId);
   useEffect(() => {
-    fetch("http://localhost:5000/scholarId")
+    fetch("https://yellow-sparkly-station.glitch.me/scholarId")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -18,7 +18,7 @@ const AddScholar = () => {
     console.log(data);
 
     if (data.iFb_id === scholarId) {
-      fetch("http://localhost:5000/users/scholar", {
+      fetch("https://yellow-sparkly-station.glitch.me/users/scholar", {
         method: "PUT",
         headers: {
           "content-type": "application/json",

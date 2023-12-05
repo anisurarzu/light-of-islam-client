@@ -16,10 +16,10 @@ const DashboardHome = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    /* http://localhost:5000/ */
+    /* https://yellow-sparkly-station.glitch.me/ */
     try {
       setLoading(true);
-      fetch(`http://localhost:5000/deposit`)
+      fetch(`https://yellow-sparkly-station.glitch.me/deposit`)
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);

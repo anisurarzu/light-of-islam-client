@@ -10,7 +10,7 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("http://localhost:5000/users/admin", {
+    fetch("https://yellow-sparkly-station.glitch.me/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

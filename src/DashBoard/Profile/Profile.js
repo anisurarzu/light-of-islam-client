@@ -16,7 +16,7 @@ const Profile = () => {
       image: imageURL,
     };
     console.log({ userInfo });
-    fetch("http://localhost:5000/users/profile/image", {
+    fetch("https://yellow-sparkly-station.glitch.me/users/profile/image", {
       method: "PUT",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(userInfo),

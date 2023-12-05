@@ -24,12 +24,14 @@ export default function Finance() {
 
   useEffect(() => {
     getOrderList();
-    //http://localhost:5000/
-    // http://localhost:5000
+    //https://yellow-sparkly-station.glitch.me/
+    // https://yellow-sparkly-station.glitch.me
   }, []);
   const getOrderList = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/deposit`);
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/deposit`
+      );
       if (res?.status === 200) {
         setLoading(false);
         const sortedData = res?.data?.sort(

@@ -23,7 +23,7 @@ const WarrantyList = () => {
   const getmodels = () => {
     try {
       setLoading(true);
-      fetch("http://localhost:5000/warranty")
+      fetch("https://yellow-sparkly-station.glitch.me/warranty")
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
@@ -71,7 +71,7 @@ const WarrantyList = () => {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `http://localhost:5000/warranty/${rowData?._id}`
+        `https://yellow-sparkly-station.glitch.me/warranty/${rowData?._id}`
       );
       if (res?.status === 200) {
         getmodels();

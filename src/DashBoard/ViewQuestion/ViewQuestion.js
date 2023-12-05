@@ -12,7 +12,7 @@ const ViewQuestion = () => {
   // console.log("orderid", orderId);
   console.log(questionId);
   useEffect(() => {
-    fetch(`http://localhost:5000/questions/${questionId}`)
+    fetch(`https://yellow-sparkly-station.glitch.me/questions/${questionId}`)
       .then((res) => res.json())
       .then((data) => setQuestion(data));
   }, []);

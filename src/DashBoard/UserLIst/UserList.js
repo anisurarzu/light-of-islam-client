@@ -8,8 +8,8 @@ export default function UserList() {
   const { userInfo } = useAuth();
 
   useEffect(() => {
-    //http://localhost:5000/
-    fetch(`http://localhost:5000/users`)
+    //https://yellow-sparkly-station.glitch.me/
+    fetch(`https://yellow-sparkly-station.glitch.me/users`)
       .then((res) => res.json())
       .then((data) => {
         // setUserList(data);

@@ -15,7 +15,7 @@ const CheckoutForm = ({ price }) => {
   console.log(price);
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://yellow-sparkly-station.glitch.me/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -88,7 +88,7 @@ const CheckoutForm = ({ price }) => {
         transaction: paymentIntent.client_secret.slice("_secret")[0],
         lastFourDigit: paymentMethod.card.last4,
       };
-      fetch("http://localhost:5000/paymentInfo", {
+      fetch("https://yellow-sparkly-station.glitch.me/paymentInfo", {
         method: "POST",
         headers: {
           "content-type": "application/json",

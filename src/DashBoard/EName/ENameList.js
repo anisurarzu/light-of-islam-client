@@ -26,7 +26,7 @@ const ENameList = () => {
   const getmodels = () => {
     try {
       setLoading(true);
-      fetch("http://localhost:5000/eName")
+      fetch("https://yellow-sparkly-station.glitch.me/eName")
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
@@ -74,7 +74,7 @@ const ENameList = () => {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `http://localhost:5000/eName/${rowData?._id}`
+        `https://yellow-sparkly-station.glitch.me/eName/${rowData?._id}`
       );
       if (res?.status === 200) {
         getmodels();
@@ -86,7 +86,9 @@ const ENameList = () => {
   const getEngineerOrderWiseDetails = async (id) => {
     console.log("id", id);
     try {
-      const res = await axios.get(`http://localhost:5000/deposit`);
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/deposit`
+      );
       if (res?.status === 200) {
         const details = res?.data?.filter((data) => data.engineerID === id);
         console.log("details", details);

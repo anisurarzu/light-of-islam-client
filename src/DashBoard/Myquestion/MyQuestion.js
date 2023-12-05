@@ -26,7 +26,7 @@ const MyQuestion = () => {
   const getQuestions = () => {
     try {
       setLoading(true);
-      fetch("http://localhost:5000/questions")
+      fetch("https://yellow-sparkly-station.glitch.me/questions")
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
@@ -76,7 +76,7 @@ const MyQuestion = () => {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `http://localhost:5000/questions/${rowData?._id}`
+        `https://yellow-sparkly-station.glitch.me/questions/${rowData?._id}`
       );
       if (res?.status === 200) {
         getQuestions();

@@ -23,7 +23,9 @@ const AddEName = () => {
 
   const getBrandDropdownValues = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/questions`);
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/questions`
+      );
       if (res?.status === 200) {
         setBrandList(res?.data);
       }
@@ -37,7 +39,10 @@ const AddEName = () => {
       toast.error("Can not add same Name!");
     } else {
       try {
-        const res = await axios.post(`http://localhost:5000/eName`, data);
+        const res = await axios.post(
+          `https://yellow-sparkly-station.glitch.me/eName`,
+          data
+        );
 
         if (res?.status === 200) {
           setLoading(false);

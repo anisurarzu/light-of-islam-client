@@ -21,7 +21,10 @@ export default function UpdateStatus({ updateData, showForm, hideModal }) {
       };
       try {
         setLoading(true);
-        const res = await axios.put(`http://localhost:5000/deposit`, finalData);
+        const res = await axios.put(
+          `https://yellow-sparkly-station.glitch.me/deposit`,
+          finalData
+        );
         if (res?.status === 200) {
           toast.success("Successfully Upsated!");
           setLoading(false);

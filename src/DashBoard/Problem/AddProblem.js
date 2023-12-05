@@ -22,7 +22,9 @@ const AddProblem = () => {
 
   const getBrandDropdownValues = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/questions`);
+      const res = await axios.get(
+        `https://yellow-sparkly-station.glitch.me/questions`
+      );
       if (res?.status === 200) {
         setBrandList(res?.data);
       }
@@ -33,7 +35,10 @@ const AddProblem = () => {
     console.log("form", data);
 
     try {
-      const res = await axios.post(`http://localhost:5000/problem`, data);
+      const res = await axios.post(
+        `https://yellow-sparkly-station.glitch.me/problem`,
+        data
+      );
 
       if (res?.status === 200) {
         setLoading(false);

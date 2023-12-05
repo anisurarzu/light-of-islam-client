@@ -26,7 +26,7 @@ const Event = () => {
     data.eventTime = currentEvent?.time;
     console.log("b-data", data);
     setIsBooked(true);
-    fetch("http://localhost:5000/events/booking", {
+    fetch("https://yellow-sparkly-station.glitch.me/events/booking", {
       method: "PUT",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -47,7 +47,7 @@ const Event = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/events")
+    fetch("https://yellow-sparkly-station.glitch.me/events")
       .then((res) => res.json())
       .then((data) => setEvent(data));
   }, []);

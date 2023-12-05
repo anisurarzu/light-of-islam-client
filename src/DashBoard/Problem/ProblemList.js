@@ -23,7 +23,7 @@ const ProblemList = () => {
   const getmodels = () => {
     try {
       setLoading(true);
-      fetch("http://localhost:5000/problem")
+      fetch("https://yellow-sparkly-station.glitch.me/problem")
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
@@ -71,7 +71,7 @@ const ProblemList = () => {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `http://localhost:5000/problem/${rowData?._id}`
+        `https://yellow-sparkly-station.glitch.me/problem/${rowData?._id}`
       );
       if (res?.status === 200) {
         getmodels();

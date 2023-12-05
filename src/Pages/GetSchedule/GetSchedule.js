@@ -35,7 +35,7 @@ const GetSchedule = () => {
   // get scholar information
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/scholar/${scholarId}`)
+    fetch(`https://yellow-sparkly-station.glitch.me/users/scholar/${scholarId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "single");
@@ -58,7 +58,7 @@ const GetSchedule = () => {
     data.bookingDate = dayjs(date).format("DD-MM-YYYY");
 
     console.log("schedule", data);
-    fetch("http://localhost:5000/schedule", {
+    fetch("https://yellow-sparkly-station.glitch.me/schedule", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -22,20 +22,22 @@ const EventDeatils = () => {
     data.eventName = currentDetails?.eventName;
     data.eveTime = currentDetails?.eventTime;
     // console.log("details-booking", data);
-    axios.post("http://localhost:5000/bookingStatus", data).then((res) => {
-      if (res.data.insertedId) {
-        // setMessage("Your event created SuccessFully!");
-        reset();
+    axios
+      .post("https://yellow-sparkly-station.glitch.me/bookingStatus", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          // setMessage("Your event created SuccessFully!");
+          reset();
 
-        window.location.replace("/dashboard/eventDetails");
-      }
-    });
+          window.location.replace("/dashboard/eventDetails");
+        }
+      });
   };
   //
 
   // getting booking data form db
   useEffect(() => {
-    fetch(`http://localhost:5000/event/${eventId}`)
+    fetch(`https://yellow-sparkly-station.glitch.me/event/${eventId}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data, "single");

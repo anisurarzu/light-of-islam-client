@@ -16,8 +16,8 @@ export default function Tnxld() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    //http://localhost:5000/
-    fetch(`http://localhost:5000/deposit`)
+    //https://yellow-sparkly-station.glitch.me/
+    fetch(`https://yellow-sparkly-station.glitch.me/deposit`)
       .then((res) => res.json())
       .then((data) => {
         const latestData = data.sort(
@@ -39,13 +39,15 @@ export default function Tnxld() {
         data.status = "Accepted";
         try {
           setLoading(true);
-          axios.put("http://localhost:5000/deposit", data).then((res) => {
-            setLoading(false);
-            if (res.status === 200) {
-              toast.success("Successfully Update!");
-              reset();
-            }
-          });
+          axios
+            .put("https://yellow-sparkly-station.glitch.me/deposit", data)
+            .then((res) => {
+              setLoading(false);
+              if (res.status === 200) {
+                toast.success("Successfully Update!");
+                reset();
+              }
+            });
         } catch (err) {
           setLoading(false);
           toast.error(err);

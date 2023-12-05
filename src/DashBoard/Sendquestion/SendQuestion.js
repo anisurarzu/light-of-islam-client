@@ -21,7 +21,7 @@ const SendQuestion = () => {
   }, []);
 
   const getBrandList = async () => {};
-  //http://localhost:5000/
+  //https://yellow-sparkly-station.glitch.me/
 
   const onSubmit = async (data) => {
     console.log(data, "form");
@@ -33,7 +33,7 @@ const SendQuestion = () => {
       try {
         setLoading(true);
         await axios
-          .post("http://localhost:5000/questions", data)
+          .post("https://yellow-sparkly-station.glitch.me/questions", data)
           .then((res) => {
             if (res.data.insertedId) {
               setLoading(false);

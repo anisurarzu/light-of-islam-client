@@ -11,7 +11,7 @@ const ScheduleList = () => {
   //   console.log("scheduleList", scheduleList);
   let email = user?.email;
   useEffect(() => {
-    fetch("http://localhost:5000/schedule")
+    fetch("https://yellow-sparkly-station.glitch.me/schedule")
       .then((res) => res.json())
       .then((data) => {
         // console.log("event data", data[0].email);

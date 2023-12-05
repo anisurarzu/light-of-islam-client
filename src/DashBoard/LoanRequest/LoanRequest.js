@@ -23,7 +23,7 @@ export default function LoanRequest() {
 
     axios
       //
-      .post("http://localhost:5000/deposit", data)
+      .post("https://yellow-sparkly-station.glitch.me/deposit", data)
       .then((res) => {
         if (res.data.insertedId) {
           reset();
