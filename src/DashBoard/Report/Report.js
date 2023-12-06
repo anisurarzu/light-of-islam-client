@@ -11,11 +11,14 @@ import { DataTable } from "primereact/datatable";
 import { Button } from "primereact/button";
 import { toast } from "react-toastify";
 import { splitButtonTemp } from "../../components/SplitButton/SplitButtonTemp";
-import UpdateStatus from "./UpdateStatus";
-import axios from "axios";
-import Invoice from "./Invoice/Invoice";
 
-export default function Finance() {
+import axios from "axios";
+
+import { Calendar } from "primereact/calendar";
+import { InputText } from "primereact/inputtext";
+import { useFormik } from "formik";
+
+export default function Report() {
   const { depositInfo, setDepositInfo } = useContext(NewAppContext);
   const [loading, setLoading] = useState(false);
   const [depositInfo2, setDepositInfo2] = useState([]);
@@ -25,34 +28,34 @@ export default function Finance() {
   const { userInfo } = useAuth();
 
   useEffect(() => {
-    getOrderList();
+    // getOrderList();
     //https://yellow-sparkly-station.glitch.me/
     // https://yellow-sparkly-station.glitch.me
   }, []);
-  const getOrderList = async () => {
-    try {
-      const res = await axios.get(
-        `https://yellow-sparkly-station.glitch.me/deposit`
-      );
-      if (res?.status === 200) {
-        setLoading(false);
-        const sortedData = res?.data?.sort(
-          (a, b) => new Date(b.orderDate) - new Date(a.orderDate)
-        );
 
-        const filteredDataWithStatus = sortedData.filter(
-          (item) => item.status !== "Remove"
+  const formik = useFormik({
+    initialValues: {
+      customerName: "",
+      value: "",
+      brand: "",
+    },
+    onSubmit: async (data) => {
+      try {
+        setLoading(true);
+        const res = await axios.get(
+          `http://localhost:5000/depositWithDate?startDate=${data?.startDate?.toISOString()}&endDate=${data?.endDate?.toISOString()}`
         );
-        // console.log("event data", data[0].email);
-        setDepositInfo(filteredDataWithStatus);
-        setDepositInfo2(filteredDataWithStatus);
-        setLoading(false);
-      }
-    } catch (err) {
-      setLoading(false);
-      toast.error(err);
-    }
-  };
+        if (res?.status === 200) {
+          setLoading(false);
+          // console.log("event data", data[0].email);
+          console.log("res", res);
+          setDepositInfo(res?.data);
+          setDepositInfo2(res?.data);
+        }
+      } catch (err) {}
+    },
+  });
+  console.log("res", depositInfo);
 
   // searching method
   const handleSearch = (event) => {
@@ -163,7 +166,7 @@ export default function Finance() {
   const hideModal = async () => {
     setShowForm(false);
     setShowForm1(false);
-    getOrderList();
+    // getOrderList();
 
     // setRowData(false);
   };
@@ -198,6 +201,39 @@ export default function Finance() {
 
   return (
     <div>
+      <form onSubmit={formik?.handleSubmit}>
+        <div className="grid grid-cos-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 pb-4">
+          <div>
+            <Calendar
+              id="startDate"
+              name="startDate"
+              value={formik?.values?.startDate}
+              className="w-full"
+              onChange={(e) => {
+                formik?.setFieldValue("startDate", e.target.value);
+              }}
+              placeholder="Start Date"
+              required
+            />
+          </div>
+          <div>
+            <Calendar
+              id="endDate"
+              name="endDate"
+              value={formik?.values?.endDate}
+              className="w-full"
+              onChange={(e) => {
+                formik?.setFieldValue("endDate", e.target.value);
+              }}
+              placeholder="End Date"
+              required
+            />
+          </div>
+          <div>
+            <Button type="submit" label="Submit" loading={loading} />
+          </div>
+        </div>
+      </form>
       <div>
         {/*  {userInfo?.payRole === "member" && (
           <Progress depositInfo={depositInfo} />
@@ -298,19 +334,7 @@ export default function Finance() {
           />
 
           <Column field="status" header="Status" body={statusBodyTemplate} />
-          <Column field="action" header="Action" body={actionButton} />
         </DataTable>
-
-        <UpdateStatus
-          updateData={updateData}
-          showForm={showForm}
-          hideModal={hideModal}
-        />
-        <Invoice
-          updateData={updateData}
-          showForm1={showForm1}
-          hideModal={hideModal}
-        />
       </div>
     </div>
   );

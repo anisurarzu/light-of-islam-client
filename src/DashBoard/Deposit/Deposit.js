@@ -13,6 +13,7 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { Dialog } from "primereact/dialog";
 import { QrReader } from "react-qr-reader";
+import Scanner from "../Scanner/Scanner";
 // import BarcodeReader from "react-barcode-reader";
 // import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
@@ -29,6 +30,9 @@ export default function FormikDoc() {
 
   const [data, setData] = React.useState("Not Found");
   const [scannedContent, setScannedContent] = useState(null);
+
+  const [scanning, setScanning] = useState(false);
+  const [results, setResults] = useState([]);
   // console.log("scannedContent", scannedContent);
 
   const qrReaderRef = useRef(null);
@@ -65,8 +69,9 @@ export default function FormikDoc() {
           warrantyID: data?.warranty?._id,
           imeiNumber: data?.imei,
           serviceCost: data?.serviceCost,
+          discount: data?.discount,
           deliveryDate: data?.date,
-          orderDate: new Date().toLocaleString(),
+          orderDate: new Date().toISOString(),
           serialNo: newSerialNumber,
           status: "Accepted",
         };
@@ -230,6 +235,20 @@ export default function FormikDoc() {
       handleOpenScanner();
     }
   }, [showForm]);
+
+  // scanner
+  const scan = () => {
+    setScanning(!scanning);
+    console.log("scanning", scanning);
+  };
+
+  const onDetected = (result) => {
+    console.log(parseInt(result.codeResult.code, 10));
+    // setResults(results.concat([result]));
+    formik?.setFieldValue("imei", parseInt(result.codeResult.code, 10));
+    setShowForm(false);
+    setScanning(false);
+  };
   return (
     <div className="pt-2">
       <h2 className="text-xl font-bold text-blue-700">
@@ -434,7 +453,7 @@ export default function FormikDoc() {
             <InputText
               id="discount"
               name="discount"
-              value={formik?.values?.serviceProfit}
+              value={formik?.values?.discount}
               className="w-full"
               onChange={(e) => {
                 formik?.setFieldValue("discount", e.target.value);
@@ -477,7 +496,7 @@ export default function FormikDoc() {
         resizable
         maximizable
         loading={true}>
-        <div>
+        {/* <div>
           <div>
             <QrReader
               delay={300}
@@ -486,17 +505,22 @@ export default function FormikDoc() {
               style={{ width: "100%", height: "auto" }}
               legacyMode={true}
             />
-            {/* <BarcodeReader onError={handleError} onScan={handleScan} /> */}
-            {/* <BarcodeScannerComponent
-              width={500}
-              height={500}
-              onUpdate={(err, result) => {
-                if (result) setData(result.text);
-                else setData("Not Found");
-              }}
-            /> */}
+           
             <p>{data}</p>
           </div>
+        </div> */}
+        <div>
+          <button onClick={scan}>{scanning ? "Stop" : "Start"}</button>
+          <ul className="results">
+            {results.map((result) => {
+              return (
+                <li>
+                  {result.codeResult.code} [{result.codeResult.format}]
+                </li>
+              );
+            })}
+          </ul>
+          {scanning ? <Scanner onDetected={onDetected} /> : null}
         </div>
       </Dialog>
     </div>

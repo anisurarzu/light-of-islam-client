@@ -31,6 +31,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
 import { ToastContainer } from "react-toastify";
+import Invoice from "./DashBoard/Finace/Invoice/Invoice";
 
 export const NewAppContext = createContext();
 function App() {
@@ -79,6 +80,9 @@ function App() {
                 <PrivateRoute path="/quize">
                   <QuizeHome></QuizeHome>
                 </PrivateRoute>
+                {/* <PrivateRoute path="/invoice/:orderID">
+                  <Invoice></Invoice>
+                </PrivateRoute> */}
                 <PrivateRoute path="/event">
                   <Event></Event>
                 </PrivateRoute>
