@@ -69,9 +69,10 @@ export default function FormikDoc() {
           warrantyID: data?.warranty?._id,
           imeiNumber: data?.imei,
           serviceCost: data?.serviceCost,
+          serviceProfit: data?.serviceProfit,
           discount: data?.discount,
           deliveryDate: data?.date,
-          orderDate: new Date().toISOString(),
+          orderDate: new Date().toISOString()?.slice(0, 10),
           serialNo: newSerialNumber,
           status: "Accepted",
         };

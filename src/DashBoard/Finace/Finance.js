@@ -282,7 +282,7 @@ export default function Finance() {
           <Column
             field="engineerName"
             header="Engineer"
-            style={{ minWidth: "150px" }}
+            style={{ minWidth: "200px" }}
           />
           <Column
             field="orderDate"

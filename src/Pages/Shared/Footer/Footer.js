@@ -38,7 +38,7 @@ const Footer = () => {
           <div className="mt-16 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
             <p className="order-2 md:order-1 mt-8 md:mt-0">
               {" "}
-              &copy; Light Of Islam, 2021.{" "}
+              &copy; Electrolab, 2024.{" "}
             </p>
             <div className="order-1 md:order-2">
               <span className="px-2">About us</span>

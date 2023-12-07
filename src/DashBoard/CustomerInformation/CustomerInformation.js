@@ -30,7 +30,7 @@ export default function CustomerInformation() {
   const getOrderList = async () => {
     try {
       const res = await axios.get(
-        `https://yellow-sparkly-station.glitch.me/deposit`
+        `https://yellow-sparkly-station.glitch.me/customerInfo`
       );
       if (res?.status === 200) {
         setLoading(false);
@@ -38,12 +38,12 @@ export default function CustomerInformation() {
           (a, b) => new Date(b.orderDate) - new Date(a.orderDate)
         );
 
-        const filteredDataWithStatus = sortedData.filter(
-          (item) => item.status !== "Remove"
-        );
+        // const filteredDataWithStatus = sortedData.filter(
+        //   (item) => item.status !== "Remove"
+        // );
         // console.log("event data", data[0].email);
-        setDepositInfo(filteredDataWithStatus);
-        setDepositInfo2(filteredDataWithStatus);
+        setDepositInfo(res?.data);
+        setDepositInfo2(res?.data);
         setLoading(false);
       }
     } catch (err) {

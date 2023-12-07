@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { NewAppContext } from "../../App";
 import Loader from "../../components/Loader/Loader";
 import Progress from "../../components/Progress/Progress";
@@ -19,9 +19,11 @@ import { InputText } from "primereact/inputtext";
 import { useFormik } from "formik";
 
 export default function Report() {
-  const { depositInfo, setDepositInfo } = useContext(NewAppContext);
+  // const { depositInfo, setDepositInfo } = useContext(NewAppContext);
   const [loading, setLoading] = useState(false);
+  const [depositInfo, setDepositInfo] = useState([]);
   const [depositInfo2, setDepositInfo2] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [showForm1, setShowForm1] = useState(false);
   const [updateData, setUpdateData] = useState([]);
@@ -38,19 +40,33 @@ export default function Report() {
       customerName: "",
       value: "",
       brand: "",
+      startDate: useMemo(
+        () => new Date(Date.now() - 17 * 24 * 60 * 60 * 1000),
+        []
+      ),
+      endDate: useMemo(() => new Date(), []),
     },
     onSubmit: async (data) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `http://localhost:5000/depositWithDate?startDate=${data?.startDate?.toISOString()}&endDate=${data?.endDate?.toISOString()}`
+          `https://yellow-sparkly-station.glitch.me/depositWithDate?startDate=${data?.startDate
+            ?.toISOString()
+            ?.slice(0, 10)}&endDate=${data?.endDate
+            ?.toISOString()
+            ?.slice(0, 10)}`
         );
         if (res?.status === 200) {
           setLoading(false);
-          // console.log("event data", data[0].email);
-          console.log("res", res);
-          setDepositInfo(res?.data);
-          setDepositInfo2(res?.data);
+          const sortedData = res?.data?.sort(
+            (a, b) => new Date(b.orderDate) - new Date(a.orderDate)
+          );
+          const filteredDataWithStatus = sortedData?.filter(
+            (item) => item.status === "Completed"
+          );
+          setDepositInfo(sortedData);
+          setDepositInfo2(sortedData);
+          setFilteredData(filteredDataWithStatus);
         }
       } catch (err) {}
     },
@@ -199,6 +215,30 @@ export default function Report() {
     );
   };
 
+  const totalAmount = depositInfo?.reduce(
+    (acc, item) => acc + parseInt(item.serviceCost, 10),
+    0
+  );
+  const discount = depositInfo?.reduce(
+    (acc, item) => acc + parseInt(item.discount, 10),
+    0
+  );
+  const finalAmount = totalAmount - discount;
+
+  const completedTotalAmount = filteredData?.reduce(
+    (acc, item) => acc + parseInt(item.serviceCost, 10),
+    0
+  );
+  const completedDiscount = filteredData?.reduce(
+    (acc, item) => acc + parseInt(item.discount, 10),
+    0
+  );
+  const completedFinalAmount = completedTotalAmount - completedDiscount;
+  const profit = filteredData?.reduce(
+    (acc, item) => acc + parseInt(item.serviceProfit, 10),
+    0
+  );
+
   return (
     <div>
       <form onSubmit={formik?.handleSubmit}>
@@ -230,7 +270,7 @@ export default function Report() {
             />
           </div>
           <div>
-            <Button type="submit" label="Submit" loading={loading} />
+            <Button type="submit" label="Search" loading={loading} />
           </div>
         </div>
       </form>
@@ -238,26 +278,37 @@ export default function Report() {
         {/*  {userInfo?.payRole === "member" && (
           <Progress depositInfo={depositInfo} />
         )} */}
-        <div class="flex bg-gray-50 items-center p-2 rounded-md my-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 text-gray-400"
-            viewBox="0 0 20 20"
-            fill="currentColor">
-            <path
-              fill-rule="evenodd"
-              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          <input
-            onChange={handleSearch}
-            className="bg-gray-50 outline-none ml-1 block  w-full"
-            type="text"
-            name=""
-            id=""
-            placeholder="search...by SL No or Customer Name"
-          />
+
+        <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-2">
+          <div className=" shadow-sm  rounded bg-green-500 p-3 text-white font-bold">
+            Total Order: {depositInfo?.length}
+          </div>
+          <div className="text-white shadow-sm  rounded bg-indigo-500 p-3 font-bold">
+            Amount: {totalAmount}
+          </div>
+          <div className="text-white shadow-sm  rounded-sm bg-yellow-500 p-3 font-bold">
+            Discount: {discount}
+          </div>
+          <div className="text-white shadow-sm  rounded-sm bg-green-500 p-3 font-bold">
+            Final Amount: {finalAmount}
+          </div>
+        </div>
+        <div className="grid grid-cols-1 xl:grid-cols-5 md:grid-cols-2 lg:grid-cols-5 gap-2 pt-2">
+          <div className="text-white shadow-sm  rounded-sm bg-green-500 p-3 font-bold">
+            Completed Order: {filteredData?.length}
+          </div>
+          <div className="text-white shadow-sm  rounded bg-indigo-500 p-3 font-bold">
+            Completed Amount: {completedTotalAmount}
+          </div>
+          <div className="text-white shadow-sm  rounded-sm bg-yellow-500 p-3 font-bold">
+            Completed Discount: {completedDiscount}
+          </div>
+          <div className="text-white shadow-sm  rounded-sm bg-green-500 p-3 font-bold">
+            Completed Final Amount: {completedFinalAmount}
+          </div>
+          <div className="text-white shadow-sm  rounded-sm bg-green-500 p-3 font-bold">
+            Completed Final Profit: {profit}
+          </div>
         </div>
 
         <DataTable
@@ -312,6 +363,12 @@ export default function Report() {
             className="text-sm"
             field="serviceCost"
             header="Service Cost"
+            style={{ minWidth: "150px" }}
+          />
+          <Column
+            className="text-sm"
+            field="discount"
+            header="Discount"
             style={{ minWidth: "150px" }}
           />
 
