@@ -330,6 +330,11 @@ export default function Report() {
             style={{ minWidth: "100px" }}
           />
           <Column
+            field="imei"
+            header="IMEI NO."
+            style={{ minWidth: "100px" }}
+          />
+          <Column
             field="customerName"
             header="Customer"
             className="text-sm"

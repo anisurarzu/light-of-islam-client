@@ -311,7 +311,6 @@ export default function FormikDoc() {
               valueTemplate={selectedCountryTemplate}
               itemTemplate={countryOptionTemplate}
               className="w-full md:w-14rem"
-              required
             />
           </div>
 
@@ -329,7 +328,6 @@ export default function FormikDoc() {
               valueTemplate={selectedCountryTemplate}
               itemTemplate={countryOptionTemplate}
               className="w-full md:w-14rem"
-              required
             />
           </div>
           <div className="card flex justify-content-center">
@@ -346,7 +344,6 @@ export default function FormikDoc() {
               valueTemplate={selectedCountryTemplate}
               itemTemplate={countryOptionTemplate}
               className="w-full md:w-14rem"
-              required
             />
           </div>
           <div className="card flex justify-content-center">
@@ -363,7 +360,6 @@ export default function FormikDoc() {
               valueTemplate={selectedCountryTemplate}
               itemTemplate={countryOptionTemplate}
               className="w-full md:w-14rem"
-              required
             />
           </div>
           <div className="card flex justify-content-center">
@@ -380,7 +376,6 @@ export default function FormikDoc() {
               valueTemplate={selectedCountryTemplate}
               itemTemplate={countryOptionTemplate}
               className="w-full md:w-14rem"
-              required
             />
           </div>
           <div className="card flex justify-content-center">
@@ -397,7 +392,6 @@ export default function FormikDoc() {
               valueTemplate={selectedCountryTemplate}
               itemTemplate={countryOptionTemplate}
               className="w-full md:w-14rem"
-              required
             />
           </div>
 
@@ -473,7 +467,6 @@ export default function FormikDoc() {
                 formik?.setFieldValue("date", e.target.value);
               }}
               placeholder="Delivery Date"
-              required
             />
           </div>
         </div>
