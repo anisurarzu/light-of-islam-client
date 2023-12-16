@@ -46,14 +46,13 @@ function App() {
               <Header></Header>
               <Switch>
                 <Route exact path="/">
-                  {/* <Dashboard></Dashboard> */}
-                  <Home />
+                  <Login></Login>
                 </Route>
                 <Route path="/contract">
                   <Contract></Contract>
                 </Route>
                 <Route path="/home">
-                  {/* <Dashboard></Dashboard> */}
+                  <Dashboard></Dashboard>
                   <Home />
                 </Route>
                 <Route path="/login">
