@@ -127,18 +127,12 @@ const Header = () => {
             )}
 
             <div>
-              {user?.email ? (
+              {user?.email && (
                 <button
                   className="ml-8 text-sm pb-2 btn-donate text-white rounded-full  px-4 p-2 phone-screen-class"
                   onClick={logOut}>
                   লগ আউট
                 </button>
-              ) : (
-                <Link to="/login">
-                  <span className=" text-sm btn-donate text-white rounded-full  p-2 px-4">
-                    লগ ইন
-                  </span>
-                </Link>
               )}
             </div>
           </div>

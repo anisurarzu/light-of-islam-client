@@ -1,5 +1,12 @@
 import { TextField } from "@mui/material";
-
+import {
+  DatePicker,
+  DateTimeField,
+  DateTimePicker,
+  LocalizationProvider,
+  TimePicker,
+} from "@mui/x-date-pickers";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import moment from "moment";
 import { AutoComplete } from "primereact/autocomplete";
 import { Calendar } from "primereact/calendar";
@@ -15,14 +22,6 @@ import { RadioButton } from "primereact/radiobutton";
 import { useEffect, useRef, useState } from "react";
 import { MdOutlineFilePresent, MdOutlineGTranslate } from "react-icons/md";
 import { toast } from "react-toastify";
-// import {
-//   DatePicker,
-//   DateTimeField,
-//   DateTimePicker,
-//   LocalizationProvider,
-//   TimePicker,
-//   AdapterMoment,
-// } from "@mui/x-date-pickers";
 export const InputField = ({
   id,
   type,
@@ -198,8 +197,7 @@ export const InputField = ({
             (type === "date" && timeOnly)
               ? "w-full"
               : "p-float-label w-full"
-          }
-        >
+          }>
           {!inputGroup && type === "text" && (
             <>
               <InputText
@@ -427,13 +425,13 @@ export const InputField = ({
                 dropdown
                 suggestions={autoFilteredValue}
                 completeMethod={autoCompleteMethod}
-                field={autoCompleteFieldName || "label"}
+                field={autoCompleteFieldName || "name"}
                 id={id}
                 name={name}
                 className={`rounded-md w-${width} ${
                   required &&
                   !value?.length &&
-                  !value?.[autoCompleteFieldName || "label"]?.length &&
+                  !value?.[autoCompleteFieldName || "name"]?.length &&
                   "autoComplete-red"
                 }`}
                 disabled={disabled}
@@ -567,6 +565,186 @@ export const InputField = ({
               </label>
             </>
           )}
+          {type === "date" && showTime && !timeOnly && !dateWriteAble && (
+            <LocalizationProvider dateAdapter={AdapterMoment}>
+              {dialog ? (
+                <DateTimeField
+                  {...rest}
+                  className={`rounded-md ${
+                    required && !value && "!border-red-500"
+                  } w-${width} `}
+                  slotProps={{
+                    textField: {
+                      size: "small",
+                      sx: {
+                        ...dateTimeStyle,
+                      },
+                    },
+                  }}
+                  id={id}
+                  name={name}
+                  clearable
+                  label={label}
+                  placeholder={label}
+                  disabled={disabled}
+                  maw={400}
+                  mx="auto"
+                  my="auto"
+                  format="DD/MM/YYYY hh:mm:ss a"
+                  ampm
+                  ampmInClock
+                  required={required}
+                  value={value ? moment(value) : null}
+                  onChange={(e) => {
+                    return onChange({
+                      ...e,
+                      value: e?._d,
+                      target: {
+                        ...e,
+                        value: e?._d,
+                      },
+                      originalEvent: {
+                        ...e,
+                        name: id,
+                      },
+                    });
+                  }}
+                />
+              ) : (
+                <DateTimePicker
+                  {...rest}
+                  className={`rounded-md ${
+                    required && !value && "!border-red-500"
+                  } w-${width} `}
+                  slotProps={{
+                    textField: {
+                      size: "small",
+                      sx: {
+                        ...dateTimeStyle,
+                      },
+                    },
+                  }}
+                  id={id}
+                  name={name}
+                  clearable
+                  label={label}
+                  placeholder={label}
+                  disabled={disabled}
+                  maw={400}
+                  mx="auto"
+                  my="auto"
+                  format="DD/MM/YYYY hh:mm:ss a"
+                  ampm
+                  ampmInClock
+                  required={required}
+                  value={value ? moment(value) : null}
+                  onChange={(e) => {
+                    return onChange({
+                      ...e,
+                      value: e?._d,
+                      target: {
+                        ...e,
+                        value: e?._d,
+                      },
+                      originalEvent: {
+                        ...e,
+                        name: id,
+                      },
+                    });
+                  }}
+                />
+              )}
+            </LocalizationProvider>
+          )}
+          {/* {console.log("helo ----", moment(value).format("hh:mm:ss a"))} */}
+          {type === "date" && !showTime && timeOnly && !dateWriteAble && (
+            <LocalizationProvider dateAdapter={AdapterMoment}>
+              <TimePicker
+                {...rest}
+                className={`rounded-md ${
+                  required && !value && "!border-red-500"
+                } w-${width} `}
+                //  InputProps={{ style: { height: 44, minWidth: 60 }, pattern: "[0-9]*", step: "any" }}
+                slotProps={{
+                  textField: {
+                    size: "small",
+                    sx: {
+                      ...dateTimeStyle,
+                    },
+                  },
+                }}
+                id={id}
+                name={name}
+                clearable
+                required={required}
+                label={label}
+                placeholder={label}
+                disabled={disabled}
+                maw={400}
+                mx="auto"
+                my="auto"
+                format="hh:mm:ss a"
+                ampm
+                ampmInClock
+                value={value ? moment(value) : null}
+                // defaultValue={moment(new Date())}
+                onChange={(e, d) => {
+                  // console.log("d", d);
+                  return onChange({
+                    ...e,
+                    value: e?._d,
+                    target: {
+                      ...e,
+                      value: e?._d,
+                    },
+                    originalEvent: {
+                      ...e,
+                      name: id,
+                    },
+                  });
+                }}
+              />
+            </LocalizationProvider>
+          )}
+          {type === "date" && showTime && !timeOnly && dateWriteAble && (
+            <LocalizationProvider dateAdapter={AdapterMoment}>
+              <DatePicker
+                {...rest}
+                className={`rounded-md ${
+                  required && !value && "!border-red-500"
+                } w-${width} `}
+                slotProps={{
+                  textField: {
+                    size: "small",
+                    sx: {
+                      ...dateTimeStyle,
+                    },
+                  },
+                }}
+                id={id}
+                name={name}
+                clearable
+                label={label}
+                placeholder={label}
+                disabled={disabled}
+                maw={400}
+                mx="auto"
+                my="auto"
+                format="DD/MM/YYYY"
+                required={required}
+                value={value ? moment(value) : null}
+                onChange={(e) => {
+                  const newValue = e ? e._d : null;
+                  onChange({
+                    target: {
+                      name: name, // Assuming name is correctly set
+                      value: newValue,
+                    },
+                  });
+                }}
+              />
+            </LocalizationProvider>
+          )}
 
           {type === "translate" && (
             <>
@@ -599,12 +777,10 @@ export const InputField = ({
                       label ? 2 : 1
                     } p-3 rounded-md bg-white`
                   : switchClassName
-              }
-            >
+              }>
               {label && <p className="text-gray-600  ">{label}</p>}
               <div
-                className={label ? "justify-self-end" : "justify-self-center"}
-              >
+                className={label ? "justify-self-end" : "justify-self-center"}>
                 <InputSwitch
                   checked={switchChecked || false}
                   onChange={setSwitchChecked}
@@ -697,8 +873,7 @@ export const InputField = ({
               required && !imagePreview
                 ? "border-red-500 hover:bg-gray-100 hover:border-gray-300"
                 : "border-gray-400 hover:bg-gray-100 hover:border-gray-300"
-            } rounded `}
-          >
+            } rounded `}>
             {imagePreview ? (
               <div className="imageBox flex flex-col items-center justify-center">
                 <img
@@ -709,8 +884,7 @@ export const InputField = ({
                 <button
                   type="button"
                   onClick={setImagePreview}
-                  className="text-red-600 text-center text-sm deleteButton px-2 py-2"
-                >
+                  className="text-red-600 text-center text-sm deleteButton px-2 py-2">
                   <i className="fa-solid fa-trash-can"></i>
                 </button>
               </div>
@@ -721,8 +895,7 @@ export const InputField = ({
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
                     viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
+                    fill="currentColor">
                     <path
                       fillRule="evenodd"
                       d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
@@ -757,16 +930,13 @@ export const InputField = ({
               required && !filePreview
                 ? "border-red-400 hover:bg-red-100 hover:border-red-300 "
                 : "border-gray-400 hover:bg-gray-100 hover:border-gray-300"
-            } rounded-lg `}
-          >
+            } rounded-lg `}>
             <label
-              className={`imageBox p-${fileUploadPadding || "2"} h-${height}`}
-            >
+              className={`imageBox p-${fileUploadPadding || "2"} h-${height}`}>
               <div
                 className={`flex items-center justify-center pt-${
                   padding || "7"
-                } gap-2`}
-              >
+                } gap-2`}>
                 <MdOutlineFilePresent className="text-3xl  font-light text-center" />
                 <p className="p- text-md tracking-wider text-gray-600 group-hover:text-gray-600 bg-cyan-400 rounded-md">
                   Attach File
@@ -794,8 +964,7 @@ export const InputField = ({
               required && !filePreview
                 ? "border-red-400 hover:bg-red-100 hover:border-red-300 "
                 : "border-gray-400 hover:bg-gray-100 hover:border-gray-300"
-            } rounded-lg `}
-          >
+            } rounded-lg `}>
             <label className={`imageBox h-12 p-${fileUploadPadding || "2"} `}>
               <div className="flex items-center justify-center pt-1 gap-2">
                 <MdOutlineFilePresent className="text-3xl  font-light " />
@@ -839,8 +1008,7 @@ export const InputField = ({
               filterBy="name"
               sourceFilterPlaceholder="Search"
               targetFilterPlaceholder="Search"
-              {...rest}
-            ></PickList>
+              {...rest}></PickList>
           </div>
         </div>
       )}

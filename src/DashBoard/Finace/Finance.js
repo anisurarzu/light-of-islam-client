@@ -14,6 +14,7 @@ import { splitButtonTemp } from "../../components/SplitButton/SplitButtonTemp";
 import UpdateStatus from "./UpdateStatus";
 import axios from "axios";
 import Invoice from "./Invoice/Invoice";
+import UpdateOrder from "./UpdateOrder";
 
 export default function Finance() {
   const { depositInfo, setDepositInfo } = useContext(NewAppContext);
@@ -21,6 +22,7 @@ export default function Finance() {
   const [depositInfo2, setDepositInfo2] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [showForm1, setShowForm1] = useState(false);
+  const [showForm2, setShowForm2] = useState(false);
   const [updateData, setUpdateData] = useState([]);
   const { userInfo } = useAuth();
 
@@ -84,6 +86,11 @@ export default function Finance() {
   };
   const invoiceView = (rowData) => {
     setShowForm1(true);
+    setUpdateData(rowData);
+  };
+  const updateOrder = (rowData) => {
+    console.log("------ hit");
+    setShowForm2(true);
     setUpdateData(rowData);
   };
 
@@ -163,6 +170,7 @@ export default function Finance() {
   const hideModal = async () => {
     setShowForm(false);
     setShowForm1(false);
+    setShowForm2(false);
     getOrderList();
 
     // setRowData(false);
@@ -170,6 +178,13 @@ export default function Finance() {
 
   const actionButton = (rowData) => {
     const buttonTemp = [
+      {
+        label: "Update Order",
+        icon: "",
+        command: (e) => {
+          updateOrder(rowData);
+        },
+      },
       {
         label: "Update Status",
         icon: "pi pi-comments",
@@ -243,6 +258,11 @@ export default function Finance() {
             style={{ minWidth: "100px" }}
           />
           <Column
+            field="imeiNumber"
+            header="Imei NO."
+            style={{ minWidth: "100px" }}
+          />
+          <Column
             field="customerName"
             header="Customer"
             className="text-sm"
@@ -304,6 +324,11 @@ export default function Finance() {
         <UpdateStatus
           updateData={updateData}
           showForm={showForm}
+          hideModal={hideModal}
+        />
+        <UpdateOrder
+          updateData={updateData}
+          showForm2={showForm2}
           hideModal={hideModal}
         />
         <Invoice

@@ -316,22 +316,6 @@ export default function FormikDoc() {
 
           <div className="card flex justify-content-center">
             <Dropdown
-              value={formik?.values?.series}
-              onChange={(e) => {
-                setSelectedCountry(e.value);
-                formik?.setFieldValue("series", e.value);
-              }}
-              options={seriesList}
-              optionLabel="name"
-              placeholder="Select a Series"
-              filter
-              valueTemplate={selectedCountryTemplate}
-              itemTemplate={countryOptionTemplate}
-              className="w-full md:w-14rem"
-            />
-          </div>
-          <div className="card flex justify-content-center">
-            <Dropdown
               value={formik?.values?.model}
               onChange={(e) => {
                 setSelectedCountry(e.value);
@@ -458,7 +442,6 @@ export default function FormikDoc() {
           </div>
 
           <div>
-            3765
             <Calendar
               id="date"
               name="date"
@@ -473,7 +456,6 @@ export default function FormikDoc() {
         </div>
 
         <div>
-          hj
           <Button type="submit" label="Submit" loading={loading} />
         </div>
       </form>

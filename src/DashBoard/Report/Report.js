@@ -330,8 +330,8 @@ export default function Report() {
             style={{ minWidth: "100px" }}
           />
           <Column
-            field="imei"
-            header="IMEI NO."
+            field="imeiNumber"
+            header="Imei NO."
             style={{ minWidth: "100px" }}
           />
           <Column

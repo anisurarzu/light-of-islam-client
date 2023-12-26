@@ -105,7 +105,7 @@ function App() {
                   <ViewQuestion></ViewQuestion>
                 </PrivateRoute>
               </Switch>
-              <Footer></Footer>
+              {/* <Footer></Footer> */}
             </NewAppContext.Provider>
 
             {/* Same as */}
