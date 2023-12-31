@@ -71,33 +71,23 @@ const DashboardHome = () => {
 
   return (
     <div className="">
-      {loading ? (
-        <Loader />
-      ) : (
-        <div>
-          <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">
-            <Card3
-              title={"Total Order"}
-              amount={dmfBalance?.length}
-              amount2={1}
-              totalRefundableOrder={totalRefundableOrder}
-              totalDeletedOrder={totalDeletedOrder}
-              totalCompletedOrder={totalCompletedOrder}
-            />
-            <Card
-              title={"Accepted Order Amount"}
-              amount={totalAcceptedAmount}
-            />
-            <Card
-              title={"Total Refund Amount"}
-              amount={totalRefundableAmount}
-            />
+      <div>
+        <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 mt-2">
+          <Card3
+            title={"Total Order"}
+            amount={dmfBalance?.length}
+            amount2={1}
+            totalRefundableOrder={totalRefundableOrder}
+            totalDeletedOrder={totalDeletedOrder}
+            totalCompletedOrder={totalCompletedOrder}
+          />
+          <Card title={"Accepted Order Amount"} amount={totalAcceptedAmount} />
+          <Card title={"Total Refund Amount"} amount={totalRefundableAmount} />
 
-            <div></div>
-          </div>
-          <Card2 amount={totalProfitableAmount} />
+          <div></div>
         </div>
-      )}
+        <Card2 amount={totalProfitableAmount} />
+      </div>
     </div>
   );
 };
