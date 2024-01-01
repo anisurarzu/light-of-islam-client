@@ -13,8 +13,9 @@ import { toast } from "react-toastify";
 import { splitButtonTemp } from "../../components/SplitButton/SplitButtonTemp";
 import UpdateStatus from "./UpdateStatus";
 import axios from "axios";
-import Invoice from "./Invoice/Invoice";
+
 import UpdateOrder from "./UpdateOrder";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Finance() {
   const { depositInfo, setDepositInfo } = useContext(NewAppContext);
@@ -25,6 +26,7 @@ export default function Finance() {
   const [showForm2, setShowForm2] = useState(false);
   const [updateData, setUpdateData] = useState([]);
   const { userInfo } = useAuth();
+  let history = useHistory();
 
   useEffect(() => {
     getOrderList();
@@ -85,8 +87,7 @@ export default function Finance() {
     setUpdateData(rowData);
   };
   const invoiceView = (rowData) => {
-    setShowForm1(true);
-    setUpdateData(rowData);
+    window.open(`/invoice/{2}`);
   };
   const updateOrder = (rowData) => {
     console.log("------ hit");
@@ -331,11 +332,11 @@ export default function Finance() {
           showForm2={showForm2}
           hideModal={hideModal}
         />
-        <Invoice
+        {/*  <Invoice
           updateData={updateData}
           showForm1={showForm1}
           hideModal={hideModal}
-        />
+        /> */}
       </div>
     </div>
   );
